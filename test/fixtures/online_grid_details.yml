@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  unique_id: 1
+  product_name: MyString
+  product_price: 1.5
+  product_image_url: MyString
+  shipping_time: MyString
+  shipping_cost: 1.5
+
+two:
+  unique_id: 1
+  product_name: MyString
+  product_price: 1.5
+  product_image_url: MyString
+  shipping_time: MyString
+  shipping_cost: 1.5

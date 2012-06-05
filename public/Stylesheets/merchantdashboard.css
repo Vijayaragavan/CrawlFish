@@ -1,0 +1,902 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body{
+	margin:0;
+	padding:0;
+	background:none repeat scroll 0 0 #FFF;
+	font-size:12px;
+	font-family:arial,tahoma,verdana,sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-weight:normal;
+	color:#000;
+	border:none;
+	height:100%;
+}
+
+table,tr,td,span,a,div,h2,th,ul,li,p,ol,select,input,textarea{
+	font-family: arial,tahoma,verdana,sans-serif;
+}
+
+img{
+	border:0;
+	outline:none;
+}
+
+a,:focus{
+	outline:none;
+}
+
+.cf-merchant-content{
+	width: 100%;
+	margin:0 auto;
+	height:auto!important;
+	min-height:100%;
+	position:relative;
+}
+
+.cf-merchant-header{
+	height:50px;
+	background: none repeat scroll 0 0 #F4F5F6;
+   	border-bottom: 0px solid #CCC;
+}
+
+.cf-merchant-header-logo{
+	width: 960px;
+	margin:0 auto;
+}
+
+.imgLogo img{
+	width:160px;
+	height:40px;
+	padding-left:15px;
+	padding-right:15px;
+	margin-top:5px;
+	border-right:1px solid #CCC;
+}
+
+.imgTag img{
+	width:200px;
+	height:23px;
+	padding-left:5px;
+}
+
+.cf-merchant-content-wrapper{
+	width: 960px;
+	margin:0 auto;
+	padding-top:15px;
+	padding-bottom:10px;
+}
+
+.cf-merchant-content-vendor{
+	float:left;
+	line-height:30px;
+}
+
+.span-vendor{
+	font-size:13px;
+}
+
+.span-vendor-name{
+	font-size:14px;
+	color:#C42525;
+}
+
+.cf-merchant-content-logout{
+	float:right;
+	font-size:13px;
+}
+
+.logout-a{
+	text-decoration:none;
+	text-align:center;
+	font-weight:normal;
+	color:#06C;
+	font-size:14px;
+}
+
+.logout-a:visited{
+	color:#06C;
+}
+
+.logout-a:hover{
+	color:#06F;
+	background: none;
+	text-decoration:underline;
+}
+
+.cf-merchant-content-complete{
+
+}
+
+.cf-merchant-content-center{
+	border:1px solid #CCC;
+}
+
+.complete-dashboard-div{
+	float:left;
+	padding-right:10px;
+}
+
+.complete-dashboard-a,.complete-products-a,.complete-datafeeds-a,.complete-financials-a{
+	color:#FFF;
+	text-decoration:none;
+	font-size:13px;
+	font-weight:bold;
+	height:23px;
+	display:block;
+	background:none repeat scroll 0 0 #444;
+	padding-top:5px;
+	padding-left:10px;
+}
+
+.complete-dashboard-a{
+	width:95px;
+}
+
+.complete-products-a{
+	width:92px;
+}
+
+.complete-datafeeds-a{
+	width:90px;
+}
+
+.complete-financials-a{
+	width:88px;
+}
+
+.complete-dashboard-a:visited,.complete-products-a:visited,.complete-datafeeds-a:visited,.complete-financials-a:visited{
+	color:#FFF;
+}
+
+.complete-dashboard-a:hover,.complete-products-a:hover,.complete-datafeeds-a:hover,.complete-financials-a:hover{
+	color:#FFF;
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.complete-dashboard-a:active,.complete-products-a:active,.complete-datafeeds-a:active,.complete-financials-a:active{
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.complete-dashboard-div a#active {
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.cf-merchant-content-create-product{
+	padding-top:15px;
+	padding-bottom:10px;
+	padding-left:15px;
+	float:left;
+}
+
+.cf-merchant-content-products-table{
+	padding-left:12px;
+	padding-right:10px;
+	padding-top:10px;
+	padding-bottom:15px;
+	width:945px;
+}
+
+.cf-merchant-content-products-table-tr{
+	border:1px solid #CCC;
+	font-size:13px;
+	font-weight:bold;
+	text-align:center;
+	background:none repeat scroll 0 0 #EEE;
+	height:45px;
+}
+
+.cf-merchant-content-divider{
+	border-top:2px solid #CCC;
+	padding-bottom:15px;
+}
+
+.create-product-button{
+	border:1px solid #999;
+	outline:none;
+	font-size:13px;
+	font-family:arial;
+	font-weight:bold;
+	background:none repeat scroll 0 0 #CCC;
+	height:30px;
+	color:#000;
+}
+
+.create-product-button:hover{
+	background:none repeat scroll 0 0 #EEE;
+}
+
+.cf-merchant-content-flash-notice{
+	font-size:13px;
+	padding-left:15px;
+	padding-top:20px;
+	padding-bottom:10px;
+	font-weight:bold;
+	color:#C42525;
+	float:left;
+}
+
+.td-action{
+	width:50px;
+	border:1px solid #CCC;
+	text-align:left;
+	height:40px;
+}
+
+.tr-product-not-found{
+	height:30px;		
+}
+
+.td-product-not-found{
+	text-align:center;	
+	border-bottom:1px solid #CCC;
+	font-size:13px;
+	color:#C42525;
+}
+
+.td-product-not-found-l{
+	border-left:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+}
+
+.td-product-not-found-r{
+	border-right:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+}
+
+.tr-purchase-total{
+	height:30px;
+}
+
+.td-product-name{
+	width:250px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.td-product-price{
+	width:75px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.td-product-avl{
+	width:80px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.td-product-del{
+	width:60px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.td-product-time{
+	width:100px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.td-product-cost{
+	width:70px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.td-product-offers{
+	width:90px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.td-product-warranty{
+	width:90px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.cf-partial-edit-form{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.partial-edit-td-label{
+	width:100px;
+	font-family:arial;
+	font-size:13px;
+}
+
+.cf-partial-edit-form-table{
+	padding-left:75px;
+}
+
+.partial-edit-td-txt,.partial-edit-td-txt-rdonly{
+	width:300px;
+	height:20px;
+	border:1px solid #CCC;
+	font-family:arial;
+	font-size:12px;
+}
+
+.partial-edit-td-txt-rdonly{
+	disabled:true;
+}
+
+.delete-text{
+	font-size:13px;
+	color:#333;
+}
+
+.cf-merchant-create-product{
+	width:500px;
+	padding-top:10px;
+	padding-left:10px;
+	padding-bottom:10px;
+}
+
+.cf-merchant-create-product-header{
+	font-size:13px;
+	color:#333;
+	padding-top:5px;
+	padding-bottom:5px;
+	font-weight:bold;
+}
+
+.cf-merchant-create-product-table{
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:22px;
+	width:500px;
+}
+
+.td-create-product-label{
+	width:100px;
+	font-size:13px;
+	height:20px;
+}
+
+.td-create-product-text{
+	border:1px solid #CCC;
+	font-size:12px;
+	width:300px;
+	height:20px;
+	font-family:arial;
+}
+
+.td-add-button-section{
+	text-align:right;
+}
+
+.td-create-product-add-button{
+	width:130px;
+	height:30px;
+	font-weight:bold;
+	font-size:13px;
+	background:none repeat scroll 0 0 #C42525;
+	border:none;
+	font-family:arial;
+	color:#FFF;
+}
+
+.cf-merchant-create-product-fieldset{
+	border:1px solid #CCC;
+	outline:none;
+	background:none repeat scroll 0 0 #F5F5F5;
+}
+
+.cf-merchant-create-product-fieldset-section{
+	padding-left:200px;
+	padding-right:100px;
+	padding-bottom:10px;
+	padding-top:10px;
+}
+
+.add-product-error{
+	font-size:13px;
+	color:#C42525;
+	font-weight:bold;
+	padding-left:22px;
+}
+
+.cf-dashboard-content-center{
+	padding-left:15px;
+}
+
+.cf-dashboard-content-header{
+	padding-top:10px;
+	padding-bottom:15px;
+	font-size:13px;
+	font-weight:bold;
+	width:350px;
+}
+
+.cf-dashboard-total-imp-clicks-wrapper{
+	padding-top:5px;
+	background:none repeat scroll 0  0 #F5F5F5;
+	border:2px solid #CCC;
+	width:800px;
+	padding-left:10px;
+	margin-left:50px;
+}
+
+.cf-dashboard-total-imp-clicks-text{
+	line-height:25px;
+	font-size:13px;
+	color:#C42525;
+}
+
+.cf-dashboard-total-imp-clicks-select{
+	margin-right:30px;
+}
+
+.cf-dashboard-total-imp-clicks-select select{
+	border:1px solid #CCC;
+	width:120px;
+	height:20px;
+	font-size:12px;
+	float:right;
+}
+
+.cf-dashboard-loading{
+	float:right;
+	padding-right:5px;
+}
+
+.cf-dashboard-total-imp-clicks-section{
+	padding-top:10px;
+	margin-left:65px;
+	margin-top:25px;
+	line-height:35px;
+	font-size:13px;
+	width:300px;
+	padding-bottom:20px;
+}
+
+.cf-dashboard-total-imp-clicks-section-content{
+	background:none repeat scroll 0 0 #DDD;
+	border:1px solid #CCC;
+	padding-left:10px;
+}
+
+.cf-dashboard-imp-clicks-range-wrapper{
+	padding-top:5px;
+	background:none repeat scroll 0  0 #F5F5F5;
+	border:2px solid #CCC;
+	width:800px;
+	padding-left:10px;
+	margin-left:50px;
+}
+
+.cf-dashboard-imp-clicks-select{
+	margin-right:30px;
+	padding-top:5px;
+}
+
+.from-date,.to-date{
+	font-weight:bold;
+	font-size:13px;
+	color:#000;
+}
+
+.from-date-txt,.to-date-txt{
+	font-weight:normal;
+	font-size:12px;
+	border:1px solid #CCC;
+	outline:none;
+	height:18px;
+	width:150px;
+}
+
+.search-submit{
+	width:80px;
+	height:23px;
+	font-weight:bold;
+	font-size:13px;
+	background:none repeat scroll 0 0 #C42525;
+	border:none;
+	font-family:arial;
+	color:#FFF;
+}
+
+.cf-dashboard-imp-clicks-range-wrapper select{
+	border:1px solid #CCC;
+	width:120px;
+	height:20px;
+	font-size:12px;
+	float:right;
+}
+
+.cf-dashboard-imp-clicks-range-table{
+	clear:both;
+	padding-top:10px;
+}
+
+.cf-dashboard-imp-clicks-range-section{
+	padding-top:10px;
+	margin-left:65px;
+	line-height:35px;
+	font-size:13px;
+	width:300px;
+	padding-bottom:20px;
+}
+
+.search-submit-loading{
+	float:right;
+	padding-top:2px;
+}
+
+.search-submit-td{
+	width:110px;
+}
+
+.cf-variable-pay-section,.cf-fixed-pay-section,.cf-purchase-pay-section{
+	padding:10px;
+}
+
+.cf-variable-pay-header{
+	line-height:25px;
+	font-size:13px;
+	color:#333;
+}
+
+.cf-variable-pay-common-wrapper,.cf-fixed-pay-common-wrapper,.cf-purchase-pay-common-wrapper{
+	padding-top:20px;
+}
+
+.cf-variable-pay-common-header{
+	padding-bottom:5px;
+	border-bottom:2px solid #999;
+}
+
+.cf-variable-pay-common-header-label{
+	font-size:13px;
+	font-weight:bold;
+	float:left;
+	color:#C42525;
+}
+
+.cf-variable-pay-common-header-type{
+	float:right;
+	font-size:13px;
+	color:#C42525;
+	padding-right:10px;
+}
+
+.cf-variable-pay-common-content{
+	background:none repeat scroll 0 0 #F5F5F5;
+	border:1px solid #DDD;
+	margin-left:5px;
+	margin-right:5px;
+	padding-left:15px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.cf-variable-pay-common-cutoff-text{
+	line-height:20px;
+	font-style:italic;
+	padding-left:10px;
+	padding-top:5px;
+	padding-right:10px;
+	color:#C42525;
+	color:#000;
+}
+
+.cf-fixed-pay-common-content{
+	background:none repeat scroll 0 0 #F5F5F5;
+	border:1px solid #DDD;
+	margin-left:5px;
+	margin-right:5px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:10px;
+	padding-bottom:10px;
+	line-height:23px;
+}
+
+.cf-variable-pay-common-cutoff-period-message,.cf-variable-pay-common-cutoff-period-value,.cf-variable-pay-common-cutoff-amount-message,.cf-variable-pay-common-cutoff-amount-value{
+	font-size:13px;
+	color:#06C;
+}
+
+.cf-variable-pay-common-cutoff-amount{
+	padding-top:10px;
+}
+
+.cf-variable-pay-prd-listing-imp-clicks-wrapper,.cf-variable-pay-prd-listing-purchase-wrapper{
+	padding-top:20px;
+}
+
+.cf-variable-pay-imp-clicks-header{
+	font-size:13px;
+	font-weight:bold;
+	padding-left:10px;
+	padding-top:20px;
+	padding-bottom:10px;
+}
+.cf-search-form{
+	padding-left:265px;
+	padding-right:255px;
+	width:430px;
+	clear:both;
+}
+
+.cf-search-form-product-search-txt{
+	width:420px;
+	height:22px;
+	border:1px solid #999;
+	font-size:12px;
+}
+
+.cf-variable-pay-purchase-table table{
+
+}
+
+.cf-fixed-pay-prd-listing-wrapper{
+	padding-top:15px;
+}
+
+.cf-fixed-pay-imp-clicks-table{
+
+}
+
+.td-product-imp-clicks{
+	width:150px;
+	border:1px solid #CCC;
+	text-align:center;
+}
+
+.clear{
+	clear:both;
+	padding-top:15px;
+}
+
+.clear-footer{
+	padding-top:70px;
+}
+
+.cf-merchant-footer{
+	border-top:1px solid #CCC;
+	position:absolute;
+	width:100%;
+	left:0;
+	bottom:0;
+	height:30px;
+	background: none repeat scroll 0 0 #F2F2FF;
+   	border-top:2px solid #DADADA;
+}
+
+.cf-merchant-footer-content{
+	text-align:center;
+	padding-top:5px;
+	color:#000;
+}
+
+.cf-merchant-footer-content a{
+	text-decoration:none;
+	text-align:center;
+	font-weight:normal;
+	height:30px;
+	margin-right:2px;
+	margin-left:3px;
+	color:#06C;
+	font-size:13px;
+	padding-left:10px;
+}
+
+.cf-merchant-footer-content a:visited{
+	color:#06C;
+}
+
+.cf-merchant-footer-content a:hover{
+	color:#06C;
+	background: none;
+	text-decoration:underline;
+}
+
+.gritter-title {
+        font-size:15px;
+	color:#FFF;
+        font-weight:bold;
+        padding:0 0 7px 0;
+}
+
+.gritter-item{
+	color: #FFF;
+	font-size: 12px;
+	font-family:arial;
+}
+
+ 
+.gritter-close {
+        position:absolute;
+        top:5px;
+        right:3px;
+        background:url(../images/gritter-close.png);
+        cursor:pointer;
+        width:30px;
+        height:30px;
+}
+
+
+.cf-dashboard-most-recognized-wrapper{
+	padding-top:5px;
+	background:none repeat scroll 0  0 #F5F5F5;
+	border:2px solid #CCC;
+	width:800px;
+	padding-left:10px;
+	margin-left:50px;
+	padding-bottom:5px;
+}
+
+.most-recognized{
+	font-size:13px;
+	line-height:25px;
+}
+
+.cf-dashboard-datafeed-wrapper{
+	padding-top:5px;
+	background:none repeat scroll 0  0 #F5F5F5;
+	border:2px solid #CCC;
+	width:800px;
+	padding-left:10px;
+	margin-left:60px;
+	padding-bottom:5px;
+}
+
+.cf-dashboard-datafeed-table{
+
+}
+.datafeed-upload-button
+{
+	width:80px;
+	height:23px;
+	font-weight:bold;
+	font-size:13px;
+	background:none repeat scroll 0 0 #C42525;
+	border:none;
+	font-family:arial;
+	color:#FFF;
+}
+.cf-datafeed-content{
+	font-size:13px;
+	color:#C42525;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.cf-dashboard-datafeed-table{
+	padding-top:5px;
+	padding-bottom:5px;
+	font-size:13px;
+}
+
+.datafeed-upload-section{
+	border:1px solid #F5F5F5;
+	outline:none;
+}
+
+.datafeed-filename,.datafeed-filesize,.datafeed-text,.datafeed-final-text{
+	padding:5px;
+	font-size:13px;
+	line-height:25px;
+}
+
+.datafeed-text{
+	color:#C42525;
+	font-weight:bold;
+}
+
+.datafeed-final-text{
+	color:#008000;
+}
+
+.cf-merchant-forgot-pwd-complete{
+	margin-top:15%;
+	background:none repeat scroll 0  0 #F5F5F5;
+	border:2px solid #CCC;
+	width:800px;
+	padding-left:10px;
+	margin-left:60px;
+	padding-top:10px;
+	padding-bottom:15px;
+}
+
+.cf-merchant-success-complete{
+	margin-top:15%;
+	background:none repeat scroll 0  0 #F5F5F5;
+	border:2px solid #CCC;
+	width:800px;
+	padding-left:10px;
+	margin-left:60px;
+	padding-top:25px;
+	padding-bottom:15px;
+}
+
+.cf-merchant-success-text{
+	font-size:13px;
+	color:#000;
+	line-height:35px;
+}
+
+.common_table_categorize-select{
+	float:right;
+	padding-left:10px;
+	padding-right:5px;
+	padding-bottom:3px;
+}
+
+.common_table_categorize-select select{
+	border:1px solid #CCC;
+	font-size:13px;
+	height:22px;
+	width:120px;
+}
+
+.cf-merchant-success-complete a{
+	width:75px;
+	height:23px;
+	font-weight:bold;
+	text-align:center;
+	padding-top:5px;
+	display:block;
+	background:none repeat scroll 0 0 #C42525;
+	color:#FFF;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.cf-merchant-success-complete a:visited{
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.cf-merchant-success-complete a:hover{
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.cf-merchant-forgot-pwd-header{
+	font-size:13px;
+	color:#C42525;
+	font-weight:bold;
+	padding-bottom:15px;
+}
+
+.fgt-login-name-lbl{
+	font-size:13px;
+	color:#000;
+}
+
+.fgt-login-name-txt{
+	border:1px solid #CCC;
+	width:300px;
+	height:20px;
+}
+
+.fgt-submit{
+	cursor:pointer;
+	width:80px;
+	height:25px;
+	font-weight:bold;
+	font-size:13px;
+	background:none repeat scroll 0 0 #C42525;
+	color:#FFF;
+	display:block;
+	text-align:center;
+	border:1px solid #CCC;
+}
+
+.cf-merchant-forgot-pwd-message{
+	padding-top:5px;
+	font-size:13px;
+	color:#000;
+}
+
+.pagination { padding: 3px; margin: 3px; text-align:center; padding-bottom:15px;padding-top:10px;color:#000;font-weight:bold;}
+.pagination a { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #aaaadd; text-decoration: none; color:#06C; align: center;}
+.pagination a:active { border: 1px solid #008000; color: #008000;}
+.pagination a:hover {border:1px solid #000;color: #000;background:none repeat scroll 0 0 #CCC}
+.pagination span.current { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #008000; background-color: #000099; color: #008000; }
+.pagination span.disabled { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #eee; color: #ddd; }
+

@@ -1,0 +1,4 @@
+<!--options_from_collection_for_select(@areas,'area_id','name')-->
+<span class="cf-label-area"><%= label_tag :area %> </span>
+<%= select("merchant_area", "id", @areas.collect {|p| [ p.branch_name.titlecase, p.branch_id ] },  { :prompt => "Pick an area"},:class=>"cf-label-select") %>
+

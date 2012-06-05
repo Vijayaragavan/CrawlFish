@@ -1,0 +1,22 @@
+<div class="cf-generic-results-content-header">
+
+  <div class="cf-generic-results-content-total-results">
+
+		  <% counts = get_counts %>
+		  <% current_counts = get_current_counts(@sub_category_flag) %>
+
+      <span class="total-results"><b><%= counts[0] %></b><% if counts[0] > 1 %>
+      <%= "results" %> <% else %> <%= "result" %> <% end %>found in <b><%= counts[1] %></b> <% if counts[1] > 1 %>
+      <%= "categories" %> <% else %> <%= "category" %> <% end %></span>
+
+  </div>
+
+  <div class="cf-generic-results-content-specific-results">
+
+		  <span><b>Displaying <font color="#C42525"><b><%= current_counts[0] %></b> <% if current_counts[0] > 1 %>
+	    <%= "results" %> <% else %> <%= "result" %> <% end %></font> in <%= current_counts[1]%></b></span>
+
+  </div>
+
+</div>
+

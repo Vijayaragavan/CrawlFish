@@ -1,0 +1,30 @@
+<% @arr_grid_more_os= @feature_array[4].split("$") %>
+<% if(@arr_grid_more_os.count>0) %>
+	<% @more_os=@arr_grid_more_os[0] %>
+<% else %>
+	<% @more_os=@feature_array[4].gsub(/\$/,",").titlecase %>
+<% end %>
+
+
+<div class="more-f1"><span class="more"><%=  @feature_array[0].upcase %></span> has other exciting phones too!&nbsp;<br/><br/><%= link_to "BROWSE", {:controller => 'search',:action => 'index',:query=>@feature_array[0].titlecase},:class=>'more-a'%></div>
+<br/>
+
+<% if @more_os.downcase.chomp=="n.a." %>
+<%else%>
+	<div class="more-f2">There are many phones with <span class="more"><%=  @more_os.titlecase %></span> Operating System<br/><br/><%= link_to "BROWSE", {:controller => 'search',:action => 'index',:query=>@more_os.titlecase},:class=>'more-a'%></div>
+	<br/>
+<% end %>
+
+<% if @mobile_general_form.downcase.chomp=="n.a." %>
+<%else%>
+	<div class="more-f2">There are many phones with <span class="more"><%=  @mobile_general_form.titlecase %></span> as Form Factor<br/><br/><%= link_to "BROWSE", {:controller => 'search',:action => 'index',:query=>@mobile_general_form.titlecase},:class=>'more-a'%></div>
+	<br/>
+<% end %>
+
+<% if @mobile_general_type.downcase.chomp=="n.a." %>
+<%else%>
+	<div class="more-f2">There are many phones belonging to <span class="more"><%=  @mobile_general_type.titlecase %></span> mobile category<br/><br/><%= link_to "BROWSE", {:controller => 'search',:action => 'index',:query=>@mobile_general_type.titlecase},:class=>'more-a'%></div>
+	<br/>
+<% end %>
+
+<br/>

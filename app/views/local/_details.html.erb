@@ -1,0 +1,113 @@
+<% @sub_categories.each do |i| %>
+
+          	  <% if @sub_category_id.to_i == i.sub_category_id %>
+
+              	<% if (i.sub_category_name == 'books_lists') %>
+
+              		<% @product_name = @product.flatten.map { |v| v.book_name }  %>
+              		<% @product_image_url = @product.flatten.map { |v| v.book_image_url } %>
+
+              	<% elsif (i.sub_category_name== 'mobiles_lists') %>
+
+              		<% @product_name = @product.flatten.map { |v| v.mobile_name }  %>
+			<% @product_image_url = @product.flatten.map { |v| v.mobile_image_url } %>
+              	<% end %>
+
+          	  <% end %>
+
+<% end %>
+
+
+
+<% @vendor.flatten.each do |j| %>
+
+<table class="cf-local-shop-main-content-header-table" cellpadding=5px cellspacing=0>
+
+<tr>
+	<td class="local-prd-img"><%= image_tag(@product_image_url.join)%></td>
+
+	<td class="local-prd-details">
+
+		<% if @deal_flag == 0 %>
+		<div class="cf-local-header-table-prod-name">
+			<%= link_to @product_name.join, {:controller => 'specific',:action => 'specific_search', :specific_product_id => @product_id, :sub_category_id => @sub_category_id }%>
+		</div>
+                <% @local_grid.each do |i| %>
+		<table cellpadding=10 cellspacing=0 border=0>
+		<tr>
+			<td class="td-shopping-info" colspan=2>Your shopping info: </td>
+		</tr>
+		<tr>
+			<td class="td-left"><b>Shop&nbsp;:&nbsp;</b><span style="color:#DD4B39"><b><%= j.vendor_name.titlecase %></b></span></td>
+			<td><span style="color:#333">Price&nbsp;:&nbsp;</span><span class="ls-grid-price-span">Rs.<%= i.price %></span></td>
+		</tr>
+		<tr>
+			<td class="td-left"><b>Area&nbsp;&nbsp;:&nbsp;</b><span style="color:#DD4B39"><b><%= j.branch_name.titlecase %></b></span></td>
+			<td><span class="ls-grid-avl-span"><%= i.availability.titlecase %></span></td>
+		</tr>
+		<tr>
+			<td class="td-left"><b>City&nbsp;&nbsp;&nbsp;:&nbsp;</b><span style="color:#DD4B39"><b><%= j.city_name.titlecase %></b></span></td>
+			<td><span class="ls-grid-avl-delivery">
+			<% if i.delivery.downcase == "y" %>
+    				 <%= i.delivery_time %>&nbsp;&&nbsp;<%=if (i.delivery_cost.to_i <= 0) then i.delivery_cost = "Free"; else ; i.delivery_cost; end  %>
+    			 <% else %>
+    				 <%= p "No Door Delivery" %>
+    			 <% end %>			
+			
+			</span></td>
+		</tr>
+		</table>
+
+		<% end %>
+
+		<%elsif @deal_flag == 1%>
+			<div class="cf-local-header-table-prod-name">
+				<span><%=@product_name.join %></span>
+			</div>
+			<table cellpadding=10 cellspacing=0 border=0 style="float:left">
+			<tr>
+				<td class="td-shopping-info" colspan=2>Your shopping info: </td>
+
+			</tr>
+
+			<tr>
+				<td class="td-left"><b>Shop&nbsp;:&nbsp;</b><span style="color:#DD4B39"><b><%= j.vendor_name.titlecase %></b></span></td>
+				<td class="deal-info" rowspan=3><%= @deal_info.flatten.join%></td></tr>	
+			</tr>
+
+			<tr>
+				<td class="td-left"><b>Area&nbsp;&nbsp;:&nbsp;</b><span style="color:#DD4B39"><b><%= j.branch_name.titlecase %></b></span></td>
+
+			</tr>
+
+			<tr>
+				<td class="td-left"><b>City&nbsp;&nbsp;&nbsp;:&nbsp;</b><span style="color:#DD4B39"><b><%= j.city_name.titlecase %></b></span></td>
+			</tr>
+
+			</table>
+			
+			
+		<% end %>
+
+	</td>
+	</tr>
+	<tr>
+	<td colspan=2><div style="padding-top:10px;border-top:1px solid #CCC;"></div></td>
+	</tr>
+</table>
+
+
+<div class="cf-local-shop-main-content-header-details-section">
+	<%if @deal_flag == 0%>
+	<div class="cf-local-shop-main-content-hds-header">
+		<% @local_grid.each do |i| %>
+		<span><i><b><%=@product_name.join%></b></i> is available in <b><%= j.vendor_name.titlecase %></b> shop in <b><%= j.branch_name.titlecase %>,<%= j.city_name.capitalize %></b> at price <b>Rs.<%=i.price%></b>. You can choose to buy from this shop. Please <a href="#deal">check</a> if there is any deal or coupon available on this product. To know more about <%= j.vendor_name.titlecase %> shop, <a href="#details">click here</a> </span>
+		<% end %>
+	</div>
+	<%elsif @deal_flag == 1%>
+	<div class="cf-local-shop-main-content-hds-header">
+		<span><i><b><%=@product_name.join%></b></i> is available in <b><%= j.vendor_name.titlecase %></b> shop in <b><%= j.branch_name.titlecase %>,<%= j.city_name.capitalize %></b>. This deal is valid only for today. You can choose to avail this deal from this shop. To know more about <%= j.vendor_name.titlecase %> shop, <a href="#details">click here</a> </span>
+	</div>	
+<% end %>
+</div>
+<% end %>

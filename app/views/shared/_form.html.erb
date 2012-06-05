@@ -1,0 +1,16 @@
+<%= form_tag "/shared/index", :method => 'get'  do %>
+<% @query = params[:query].to_s %>
+<table>
+  <tr>
+  <th scope="col">
+    <%= text_field_tag "query",@query,{:id => "cf-home-search-form-searchText", :title => "Enter your search query here to Find, compare and decide",:placeholder => "Enter Search Key",:onFocus => "setFocus()", :onBlur => "setNoFocus()"} %>
+  </th>
+  <th scope="col">
+
+  <%= submit_tag "",{:id => "cf-home-search-form-searchCompare" , :title => "Click here to search" ,:name => ""} %>
+
+  </th>
+  </tr>
+</table>
+<% end %>
+

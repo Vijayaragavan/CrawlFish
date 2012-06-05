@@ -1,0 +1,15 @@
+<%= form_for @merchants, :url => {:controller => 'merchants_sessions', :action => 'create'},:html => {:id => "forgot_pwd_form"},:validate => true  do |f| %>
+<table border=0 cellspacing=0 cellpadding=10>
+	<tr>
+	<td class="fgt-login-name-lbl">Login Name</td>
+	<td>
+		<%= f.text_field :login_name,:class=>'fgt-login-name-txt',:title=>"Enter your login name",:placeholder=>"Login Name" %>
+	</td>
+	</tr>
+
+	<tr>
+	<td>&nbsp;</td>
+	<td><%= f.submit "SUBMIT",:class=>'fgt-submit',:title => "Click here to submit request for forgot password" ,:name => ""%></td>
+	</tr>
+</table>
+<% end %>

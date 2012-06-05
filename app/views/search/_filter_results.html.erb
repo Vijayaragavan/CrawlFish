@@ -1,0 +1,27 @@
+<% if !(@hide_suggestions == 1) %>
+
+    <% if !(@matched_filter_keys.empty?) %>
+    <div class="cf-generic-right-sidebar-srch-suggestion">
+    <div class="cf-right-sidebar-matched-filter-results" >
+    <div class="cf-right-sidebar-matched-filter-results-heading"><h2>Suggestions</h2></div>
+    <% @matched_filter_keys.keys.each do |sub_category_id| %>
+
+    <ul class="cf-right-sidebar-matched-filter-results-ul">
+
+    <% @matched_filter_keys[sub_category_id].uniq.each do |i| %>
+
+    <li class="cf-right-sidebar-matched-filter-results-li">
+      <%= link_to i.capitalize, {:controller => 'filter', :action => 'suggestions', :sub_category_id => sub_category_id, :filter_key => i,:view_name => @view_name, :query => params[:query] }, {:style=>'color:#151B8D;'}%>
+    </li>
+
+    <% end %>
+
+    </ul>
+
+    <% end %>
+    </div>
+	    </div>
+    <% end %>
+
+<% end %>
+

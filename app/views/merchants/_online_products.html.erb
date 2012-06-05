@@ -1,0 +1,61 @@
+
+<div id ="products">
+<%= will_paginate @products%>
+<table cellspacing=0 cellpadding=0 class="cf-merchant-content-products-table" border=0>
+<tr>
+<td class="cf-merchant-content-products-table-tr">Action</td>
+<td class="cf-merchant-content-products-table-tr">Name</td>
+<td class="cf-merchant-content-products-table-tr">Price</td>
+<td class="cf-merchant-content-products-table-tr">Availability</td>
+<td class="cf-merchant-content-products-table-tr">Shipping Time</td>
+<td class="cf-merchant-content-products-table-tr">Shipping Cost</td>
+<td class="cf-merchant-content-products-table-tr">Redirect Url</td>
+<td class="cf-merchant-content-products-table-tr">Special Offers</td>
+<td class="cf-merchant-content-products-table-tr">Warranty</td>
+</tr>
+
+
+<% @products.each do |product| %>
+
+<tr>
+
+	<td class="td-action">
+		<div id="edit-link" >
+			<%= link_to "Edit /", {:controller => 'merchants_products',:action => 'edit', :part1_product_id => product.product_id,:merchant_action => "update"}, :remote => true %>
+		</div>
+
+		<div id="delete-link">
+			<%= link_to "Delete", {:controller => 'merchants_products',:action => 'delete', :part1_product_id => product.product_id,:merchant_action => "delete"}, :remote => true %>
+		</div>
+	</td>
+
+      <td class="td-product-name"><%= product.product_name %></td>
+      <td class="td-product-price"><%= product.product_price %></td>
+      <td class="td-product-avl"><%= product.product_availability %></td>
+      <td class="td-product-time"><%= product.product_shipping_time%></td>
+      <td class="td-product-cost"><%= product.product_shipping_cost %></td>
+      <td class="td-product-del"><%= product.product_redirect_url %></td>
+      <td class="td-product-offers"><%= product.product_special_offers %></td>
+      <td class="td-product-warranty"><%= product.product_warranty %></td>
+		</tr>
+
+  <% end %>
+
+<% if(@products.count==0) %>
+	<tr class="tr-product-not-found">
+		<td class="td-product-not-found-l"></td>
+		<td class="td-product-not-found"></td>
+		<td class="td-product-not-found"></td>
+		<td class="td-product-not-found"></td>
+		<td class="td-product-not-found"></td>
+		<td class="td-product-not-found"><b>Not Found!</b></td>
+		<td class="td-product-not-found"></td>
+		<td class="td-product-not-found"></td>
+		<td class="td-product-not-found-r"></td>
+	</tr>
+<%end%>
+
+</table>
+ <%= will_paginate @products %>
+</div>
+

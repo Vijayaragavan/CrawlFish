@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/genericsearchpage.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+function setFocus()
+{
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-home-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+        txtBox.style.border='1px solid #06C';
+    }
+}
+function setNoFocus()
+{
+    if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-home-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+	txtBox.style.border='1px solid #CCC';
+
+    }
+}
+//-->
+</script>
+</head>
+
+<body>
+
+<div class="cf-generic-content">
+
+<div class="cf-generic-header">
+
+	<div class="cf-generic-header-logo">
+		<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+
+
+
+	<!--	 <img id="imgLogo" src="/Images/CF_logoForPagesPng_v4.png" alt="CrawlFish Logo"/> -->
+
+	 <!-- end cf-generic-header-logo --></div>
+
+    	<div class="cf-generic-header-search-form">
+    		<%= render ('shared/form') %>
+    	<!-- end cf-generic-header-search-form --></div>
+
+	<!--<div class="cf-generic-header-links">-->
+		<!--<a href="home.html">Virtual Mall</a>-->
+	<!-- end cf-generic-header-links --><!--</div> -->
+
+<!-- end cf-generic-header --></div>
+
+
+<div class="cf-generic-content-wrapper">
+
+	<div class="cf-generic-left-sidebar">
+
+	<div class="cf-generic-left-sidebar-category-wrapper">
+
+    	<div class="cf-generic-left-sidebar-category">
+
+       	 		<div class="cf-generic-left-sidebar-category-h2">
+       	 			<h2>Category</h2>
+       	 		</div>
+
+       	 		<div id="categories">
+ 				<ul class="cf-generic-left-sidebar-links-ul">
+       					<%= render 'search/category' %>
+       				</ul>
+       			</div>
+       	<!--end cf-generic-left-sidebar-category--> </div>
+       	<!--end cf-generic-left-sidebar-category-wrapper--></div>
+
+       <div class="cf-generic-left-sidebar-filter">
+
+          	<div class="cf-generic-left-sidebar-filter-wrapper">
+
+          	<div class="cf-generic-left-sidebar-filter-h2">
+		       	 <h2>Refine by</h2>
+       	 	</div>
+
+          	<div class="cf-generic-left-sidebar-filter-content">
+
+          	<% @sub_categories.each do |i| %>
+
+          	  <% if @sub_category_flag == i.sub_category_id %>
+
+              	<% if (i.sub_category_name == 'books_lists') %>
+
+              		<div class="books_filters"><%= render 'search/books_filters' %></div>
+
+              	<% elsif (i.sub_category_name== 'mobiles_lists') %>
+
+              		<div class="mobiles_filters"><%= render 'search/mobiles_filters' %></div>
+
+              	<% end %>
+
+          	  <% end %>
+
+          	<% end %>
+          	</div>
+      		</div>
+      <!--end cf-generic-left-sidebar-filter--> </div>
+
+    <!--end cf-generic-left-sidebar--></div>
+
+	<div class="cf-generic-main-content">
+
+   	 	<div class="cf-generic-main-content-header">
+
+    			<div class="cf-result-messages">
+ 				<%= render 'search/result_messages' %>
+    			</div>
+
+    			<div class="tree-view">
+    				<span>You have filtered the search results by applying these filters</span>
+				<br/>
+    				<%= render 'search/tree' %>
+    			</div>
+
+   	 	<!-- end cf-generic-main-content-header --></div>
+
+
+   	 	<div class="cf-generic-main-content-details">
+
+   	 		<% if (Subcategories.what_is_my_name(@sub_category_flag).flatten.join == 'books_lists') %>
+
+   	 		  	<%= render 'search/books_results' %>
+
+   	 		<% elsif (Subcategories.what_is_my_name(@sub_category_flag).flatten.join == 'mobiles_lists') %>
+
+   	 			<%= render 'search/mobiles_results' %>
+
+   	 		<% end %>
+
+       		<!-- end cf-generic-main-content-details --></div>
+
+    <!-- end cf-generic-main-content --></div>
+
+	<div class="cf-generic-right-sidebar">
+
+		<%= render 'search/filter_results' %>
+
+		<div class="cf-generic-right-sidebar-ad-header">
+						    ADVT.
+	    	<!-- end cf-generic-right-sidebar-ad-header --></div>
+
+	
+		<% current_counts = get_current_counts(@sub_category_flag) %>
+
+		<% if current_counts[0] >=4 %>
+		<div class="cf-generic-right-sidebar-ad1">
+			<%= render 'search/generic_ad_1' %>
+		</div>
+
+		<div class="cf-generic-right-sidebar-ad2">
+			<%= render 'search/generic_ad_2' %>
+		</div>
+
+		<% elsif current_counts[0] < 4 %>
+			<div class="cf-generic-right-sidebar-ad1">
+				<%= render 'search/generic_ad_1' %>
+			</div>
+		<% end %>
+
+	</div>
+
+	<div class="clear"></div>
+	<div class="cf-generic-footer">
+ 		<div class="cf-generic-footer-details">
+			<div class="cf-generic-footer-content">
+			<%= render 'shared/footer' %>
+			<!-- end cf-generic-footer-content --></div>
+		</div>
+	<!-- end cf-generic-footer --></div>
+	</div>
+ 	<!-- end cf-generic-content --></div>
+
+
+
+</body>
+</html>
+

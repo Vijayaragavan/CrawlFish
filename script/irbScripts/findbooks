@@ -1,0 +1,48 @@
+def findbooks(firstletter,v1_currentCombination,keys,finishflag=0)
+
+    @modelname = firstletter.upcase+"FiltersCollections"
+
+
+    @currentfilterdetails = [ ]
+
+    @currentfilterdetails << @modelname.constantize.find(:all,:select => ['filter_id', 'filter_table_name','filter_table_column'],:conditions => ['filter_key LIKE ?',"%#{v1_currentCombination}%"])
+
+   if !(@currentfilterdetails.flatten.blank?)
+       @filterdetails << @currentfilterdetails.flatten
+    end
+
+
+
+  splitCombination = v1_currentCombination.gsub(/\-/i, ",").gsub(/ /i,",").gsub(/\+/,",").split(",").map(&:strip).reject(&:empty?)
+
+  residue = keys - splitCombination
+
+
+    if @currentfilterdetails.flatten(1).blank?
+
+       if finishflag == 1
+         fetchbooks
+       else
+
+         puts "in flat if"
+
+         return false
+       end
+    else
+       puts "in else"
+       puts keys
+       puts v1_currentCombination
+       puts residue
+
+       if residue.size > 0
+               splitSearchKey(residue.join(" "))
+       else
+               fetchbooks
+               return true
+       end
+
+
+     end
+
+  end
+

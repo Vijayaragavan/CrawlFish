@@ -1,0 +1,235 @@
+CrawlFish - Creator Manual
+
++---------------------------------------------------------------+
+|Author  : Senthil
+|Version : Two
+|Desc    : Install sphinx, thinking sphinx, crawlfishdevdb,
+|          crawlfish, create index.
++---------------------------------------------------------------+
+
+*****************************==Starting chapter 1 ==**************************
+
+------------
+Chapter - 1
+------------
+
+1. Lets install sphinx search which is dependent on svn, so install svn first.
+
+2. $ sudo apt-get install svn
+
+   let it run, be patient.
+
+3. cd to your favourite storage place in your ubuntu computer,
+
+   $ mkdir sphinx_installs
+   $ cd sphinx_installs
+   $ svn checkout http://sphinxsearch.googlecode.com/svn
+
+   Now, you will notice there will be a new folder "svn" created in your sphinx_installs folder.
+
+4. cd to,
+
+  $ cd svn/branches/rel20/
+  $ svn up -r 3193
+
+   wait for "Updated to revision 3193."
+
+5. now make sure you are in the svn/trunk folder and do the following,
+
+   $ sudo ./configure
+   $ sudo make
+   $ sudo make install
+
+   wait for sphinx search to get installed.
+
+6. Now, type this,
+================================================================================
+think@thinkComputer:~/svn/trunk$ search
+Sphinx 2.0.4-dev (rel20-r3193)
+Copyright (c) 2001-2012, Andrew Aksyonoff
+Copyright (c) 2008-2012, Sphinx Technologies Inc (http://sphinxsearch.com)
+
+Usage: search [OPTIONS] <word1 [word2 [word3 [...]]]>
+================================================================================
+
+Notice the version above, rel20-r3193.
+
+7. Go to your gemfile in the CrawlFish folder and add the following,
+
+   $ gem 'thinking-sphinx', '2.0.10'
+
+8. now,
+
+   $ bundle install
+
+9. cd to CrawlFish app path, go down finish chapter -2 and then goto step 10
+
+10 - Before :
+
+   Goto to config directory,
+
+   $ cd CrawlFish/config
+
+   Edit the sphinx.yml file,
+
+   $ stopwords: /home/think/CrawlFish/db/sphinx/data/stopwords.txt
+
+   put your app path above.
+
+
+10. In chapter you would have created the DB and loaded the tables with data,
+    now we are going to index the loaded data simply by,
+
+    $ rake ts:index
+
+11. Now, start the thinking_sphinx by doing,
+
+    $ rake ts:start
+
+12. We are pretty much finished, please note, whenever you change anything in the DB tables,
+    run the following command for thinking_sphinx to know,
+
+    @ rake ts:rebuild
+
+
+13. $ rails s
+
+
+Enjoy searching!
+
+
+*****************************==Starting chapter 2 ==**************************
+
+------------
+Chapter - 2
+------------
+
+
+1. cd to CrawlFish,
+
+        $ rails s
+        * if it throws gemfile error, then, add execjs and rubyracer gem(you know those 2 gems, I guess) on top of this apps gemfile, not anywhere else, this gemfile includes other important gems used in the app.
+
+2. $ bundle install
+
+3. change the username and password in database.yml file to your database username and password
+
+4. log into mysql,
+   I do it with this command, assuming crawlfishdevdb already exists,
+   $ mysql -u sector3 -p crawlfishdevdb
+   enter password when it prompts.
+
+5. drop crawlfishdevdb if exists, else create a new one
+
+        $ drop database crawlfishdevdb
+        $ create database crawlfishdevdb
+        $ use crawlfishdevdb
+
+6. In a new terminal(migrate terminal), cd to CrawlFish/db/migrate
+
+{(I have left a local vendor and a online vendor to be added by default. They will not be loaded with any data, you have to load in future if you wish or ignore them, add new vendors online/local and load data. This was left, if in worst case, you get errors and not able to add any vendors)}
+
+        $ rake db:migrate
+
+7. In mysql prompt(db terminal), run the following, (This means, you can only add vendors in CHENNAI->velachery->tnagar->tambaram, BANGALORE -> mjroad, nowhere else)
+
+        $ insert into cities(city_name,created_at) values('chennai',now()),('bangalore',now()),('delhi',now()),('mumbai',now());
+        $ select * from cities;
+
++---------+-----------+---------------------+------------+
+| city_id | city_name | created_at          | updated_at |
++---------+-----------+---------------------+------------+
+|       1 | chennai   | 2012-04-12 01:07:40 | NULL       |
+|       2 | bangalore | 2012-04-12 01:07:40 | NULL       |
+|       3 | delhi     | 2012-04-12 01:07:40 | NULL       |
+|       4 | mumbai    | 2012-04-12 01:07:40 | NULL       |
++---------+-----------+---------------------+------------+
+4 rows in set (0.00 sec)
+
+
+        $ insert into branches(branch_name,city_id,created_at) values('velachery',1,now()),('tnagar',1,now()),('tambaram',1,now()),('mjroad',2,now());
+
+        $ select * from branches;
++-----------+-------------+---------+---------------------+------------+
+| branch_id | branch_name | city_id | created_at          | updated_at |
++-----------+-------------+---------+---------------------+------------+
+|         1 | velachery   |       1 | 2012-04-12 01:09:36 | NULL       |
+|         2 | tnagar      |       1 | 2012-04-12 01:09:36 | NULL       |
+|         3 | tambaram    |       1 | 2012-04-12 01:09:36 | NULL       |
+|         4 | mjroad      |       2 | 2012-04-12 01:09:36 | NULL       |
++-----------+-------------+---------+---------------------+------------+
+4 rows in set (0.00 sec)
+
+8. load data in your part-2 db, I do it with the following commands,
+(Note: the path to your data file will be different, change it)
+
+        $ LOAD DATA LOCAL INFILE '/home/think/data/2012may02/part2-books.csv' INTO TABLE books_lists FIELDS TERMINATED BY '|' LINES TERMINATED BY '\n' set created_at=CURRENT_TIMESTAMP;
+
+        $ LOAD DATA LOCAL INFILE '/home/think/data/2012may02/part2-mobiles.dat' INTO TABLE mobiles_lists FIELDS TERMINATED BY '|' LINES TERMINATED BY '\n' set created_at=CURRENT_TIMESTAMP;
+
+9. in mysql terminal,
+        $ select * from priority_errors;
+
+        it should return 0 rows.
+
+10. Add a local vendor to your app, I run the following command,
+(Note: the app_path should be changed)
+
+        $ rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME=AZA CITY_NAME=Chennai BRANCH_NAME=VELachery EMAIL=a@v.com PHONE=128787509 ADDRESS=myaddress
+
+11. Load data into that vendor, I run this,
+(Note: app_path and data_file_path should be changed)
+
+        $ rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012apr12/Offline_BookAdda_books.dat CITY_NAME=chennai BRANCH_NAME=Velachery VENDOR_NAME=manick
+
+12. mysql terminal,
+
+        $ select * from priority_errors;
+
+        ideally, it should be empty, 1 to 10 rows is okay, there must have been some problems we need to fix, leave it, move on.
+
+13. Thats it, you have successfully added & loaded one local vendor, cd to CrawlFish
+
+        $ rails s
+
+        Now, you should be able to search. Goto specific page and check for the vendor you added, for all products there should be a vendor, we are doing a part-1 search, not a part-2 search.
+
+14. lets add an online vendor. Different rake task, note its addonline not addlocal, I do the following,
+(Note: change the app and data_file_paths for the following 2 commands)
+
+        $ rake vendor:addonline APP_PATH=/home/think/CrawlFish VENDOR_NAME=flipkart VENDOR_LOGO=https://encrypted-tbn3.google.com/images?q=tbn:ANd9GcThwHj9fGJnfY-EWhrWoo_d-cFLB71O4pzhLzy7f7TjjmwGPi16 VENDOR_WEBSITE=www.flipkart.com EMAIL=c@d.com PHONE=93432903075
+
+        $ rake vendor:loadonline VENDOR_NAME=flipkart APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Online_Flipkart_books.dat
+
+15. mysql terminal,
+
+        $ select * from priority_errors;
+
+        ideally, it should be empty, 1 to 10 rows is okay, there must have been some problems we need to fix, leave it, move on.
+        Moral: every time you do anything, you check priority_errors table and confirm what you done makes sense.
+        Moral no.2 : If situation goes out of control, connect to the debug database and check the debug table, which will give a whole junk of what you have been doing with crawlfishdevdb.
+
+16. Lets add mobiles to a new local vendor, im gonna call him thangapandi, run the following commands,
+(Note: change the app and data_file_paths for the following 2 commands)
+
+        $ rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME=thangapandi CITY_NAME=Chennai BRANCH_NAME=tambaram EMAIL=a@v.com PHONE=112387509 ADDRESS=myaddress
+
+        $ rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_Saholic_mobiles.dat CITY_NAME=chennai BRANCH_NAME=velachery VENDOR_NAME=aza
+
+
+*****************************==Ending chapter 2 ==**************************
+
+
+*****************************== Known issues==**************************************************************
+
+1. The filters for mobiles after operating system versions will not be properly represented due datas new structure. It will be fixed.
+
+******************************== Message==*********************************************************************
+
+* Kindly, document the defects you find.
+
+* Thanks.
+
+
+***********************************== Thats it, Test it ==***************************************************************
+

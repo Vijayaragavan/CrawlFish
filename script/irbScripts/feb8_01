@@ -1,0 +1,26 @@
+a1 = a.flatten(1).group_by{|i.length|i}
+keyArray = Array.new
+(a1.length-1).downto(0) {|i|
+  keyArray << a1.values[i].length
+}
+finalHashIndex = keyArray.max
+
+
+finalHash = Hash.new
+
+
+(finalHashIndex).downto(0) {|hashIndex|
+
+  (a1.length-1).downto(0) {|i|
+     if a1.values[i].length == hashIndex
+       if finalHash.has_key?(hashIndex)
+         finalHash[hashIndex] << a1.values[i].uniq
+       else
+         if !(a1.values[i].uniq.nil?)
+           finalHash[hashIndex] << a1.values[i].uniq
+          end
+       end
+      end
+      }
+      }
+

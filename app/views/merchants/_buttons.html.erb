@@ -1,0 +1,30 @@
+<% case @from  when "dashboard" then %>
+
+      <div class="complete-dashboard-div"><%= link_to "DASHBOARD",{:controller => "merchants_dashboard", :action => "index",:vendor_id => @vendor_id},:class=>'complete-dashboard-a',:id => "active" %></div>
+      <div class="complete-dashboard-div"><%= link_to "CATALOGUE",{:controller => "merchants_products", :action => "index",:vendor_id => @vendor_id},:class=>'complete-products-a'%></div>
+			<div class="complete-dashboard-div"><%= link_to "DATA FEEDS",{:controller => "merchants_datafeed", :action => "index",:vendor_id => @vendor_id},:class=>'complete-datafeeds-a'%></div>
+			<div class="complete-dashboard-div"><%= link_to "FINANCIALS",{:controller => "merchants_financials", :action => "index",:vendor_id => @vendor_id},:class=>'complete-financials-a' %></div>
+
+      <% when "catalogue" then %>
+
+      <div class="complete-dashboard-div"><%= link_to "DASHBOARD",{:controller => "merchants_dashboard", :action => "index",:vendor_id => @vendor_id},:class=>'complete-dashboard-a' %></div>
+      <div class="complete-dashboard-div"><%= link_to "CATALOGUE",{:controller => "merchants_products", :action => "index",:vendor_id => @vendor_id},:class=>'complete-products-a',:id => "active"%></div>
+			<div class="complete-dashboard-div"><%= link_to "DATA FEEDS",{:controller => "merchants_datafeed", :action => "index",:vendor_id => @vendor_id},:class=>'complete-datafeeds-a'%></div>
+			<div class="complete-dashboard-div"><%= link_to "FINANCIALS",{:controller => "merchants_financials", :action => "index",:vendor_id => @vendor_id},:class=>'complete-financials-a' %></div>
+
+			<% when "datafeed" then %>
+
+      <div class="complete-dashboard-div"><%= link_to "DASHBOARD",{:controller => "merchants_dashboard", :action => "index",:vendor_id => @vendor_id},:class=>'complete-dashboard-a' %></div>
+      <div class="complete-dashboard-div"><%= link_to "CATALOGUE",{:controller => "merchants_products", :action => "index",:vendor_id => @vendor_id},:class=>'complete-products-a'%></div>
+			<div class="complete-dashboard-div"><%= link_to "DATA FEEDS",{:controller => "merchants_datafeed", :action => "index",:vendor_id => @vendor_id},:class=>'complete-datafeeds-a',:id => "active"%></div>
+			<div class="complete-dashboard-div"><%= link_to "FINANCIALS",{:controller => "merchants_financials", :action => "index",:vendor_id => @vendor_id},:class=>'complete-financials-a' %></div>
+
+			<% when "financials" then %>
+
+      <div class="complete-dashboard-div"><%= link_to "DASHBOARD",{:controller => "merchants_dashboard", :action => "index",:vendor_id => @vendor_id},:class=>'complete-dashboard-a' %></div>
+      <div class="complete-dashboard-div"><%= link_to "CATALOGUE",{:controller => "merchants_products", :action => "index",:vendor_id => @vendor_id},:class=>'complete-products-a'%></div>
+			<div class="complete-dashboard-div"><%= link_to "DATA FEEDS",{:controller => "merchants_datafeed", :action => "index",:vendor_id => @vendor_id},:class=>'complete-datafeeds-a'%></div>
+			<div class="complete-dashboard-div"><%= link_to "FINANCIALS",{:controller => "merchants_financials", :action => "index",:vendor_id => @vendor_id},:class=>'complete-financials-a' ,:id => "active"%></div>
+
+<% end %>
+

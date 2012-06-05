@@ -1,0 +1,27 @@
+class Create<<ALPHA>>FiltersCollections < ActiveRecord::Migration
+  def up
+
+  execute "DROP TABLE IF EXISTS <<alpha>>_filters_collections"
+  execute <<-SQL
+  CREATE TABLE IF NOT EXISTS <<alpha>>_filters_collections (
+  vendor_id int(11) unsigned NOT NULL AUTO_INCREMENT,
+  vendor_name varchar(255) NOT NULL,
+  vendor_logo text,
+  business_type varchar(255) NOT NULL,
+  vendor_website text,
+  vendor_email varchar(255) NOT NULL,
+  vendor_phone varchar(255) NOT NULL,
+  vendor_fax varchar(255) DEFAULT "NA",
+  vendor_address text NOT NULL,
+  created_at datetime NOT NULL,
+  updated_at datetime DEFAULT NULL,
+  PRIMARY KEY (vendor_id)
+  ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+  SQL
+  end
+
+  def down
+  execute "DROP TABLE IF EXISTS <<alpha>>_filters_collections"
+  end
+end
+

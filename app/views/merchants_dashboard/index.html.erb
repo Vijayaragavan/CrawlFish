@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/merchantdashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-merchant-content">
+
+	<div class="cf-merchant-header">
+		<%=render 'merchants/header'%>
+	<!-- end cf-merchant-header --></div>
+
+<div class="cf-merchant-content-wrapper">
+	<%=render 'merchants/vendor_header_details'%>
+
+		<div class="clear"></div>
+
+<div class="cf-merchant-content-complete">
+			<div class="cf-merchant-content-divider"></div>
+		  <%= render ("merchants/buttons") %>
+		  <div style="padding-top:28px"></div>
+<div class="cf-merchant-content-center">
+<div class="cf-dashboard-content-center">
+
+	<div class="cf-dashboard-content-header"> You can review your performance in this dashboard.</div>
+
+	<div class="cf-dashboard-most-recognized-wrapper">
+		<div class="most-recognized"><b><span style="color:#C42525">Most Recognized Category (Based on Impressions):</span></b> <%= @most_recognized_impressions.titlecase %></div>
+
+		<div class="most-recognized"><b><span style="color:#C42525">Most Recognized Category (Based on Clicks):</span></b> <%= @most_recognized_clicks.titlecase %></div>
+	</div>
+	<div class="clear"></div>
+	<div class="cf-dashboard-total-imp-clicks-wrapper">
+		<div class="cf-dashboard-total-imp-clicks-text">
+			In this section you can view your total number of impressions and button clicks for all products since joining merchant program of CrawlFish.
+		<ul>
+			<li><b>Total number of impressions:</b> sum of number of page impressions for each product in all categories listed in CrawlFish</li>
+			<li><b>Total number of button clicks:</b> sum of number of 'Visit Shop' button [user visits your shops page by clicking 'Visit Shop' button] clicks for each product in all categories listed in CrawlFish</li>
+		</ul>
+
+		</div>
+
+		<div id="dashboard-vendor-id" data-vendor_id="<%= @vendor_id %>">  </div>
+
+
+		<div class="cf-dashboard-total-imp-clicks-select">
+
+			<%= select("dashboard_sub_category", "id",options_for_select(@options).titlecase) %>
+
+			<div id="loading-bar-dashboard" style="display:none;" class="cf-dashboard-loading">
+				   <%= image_tag "/Images/156.gif", :size => "20x20" %>
+			</div>
+		</div>
+
+		<div id="show-impressions-clicks" class="cf-dashboard-total-imp-clicks-section">
+			<%= render ("merchants_dashboard/impressions_clicks") %>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div class="cf-dashboard-imp-clicks-range-wrapper">
+			<div class="cf-dashboard-total-imp-clicks-text">
+				You can also view number of impressions and button clicks for all products between a period in time
+			</div>
+		<div id="show-range-form" >
+			<%= render ("merchants_dashboard/range") %>
+		</div>
+
+		<div id="show-range-result" class="cf-dashboard-imp-clicks-range-section"></div>
+	</div>
+
+	<div class="clear"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="clear-footer"></div>
+	<div class="cf-merchant-footer">
+    		<div class="cf-merchant-footer-content">
+			<%= render 'shared/footer' %>
+        	</div>
+     	<!-- end cf-merchant-footer --></div>
+</div>
+</body>
+</html>
+

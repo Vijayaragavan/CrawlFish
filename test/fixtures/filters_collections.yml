@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  filter_key: MyString
+  filter_id: 1
+  filter_table_name: MyString
+  sub_category_id: 1
+
+two:
+  filter_key: MyString
+  filter_id: 1
+  filter_table_name: MyString
+  sub_category_id: 1

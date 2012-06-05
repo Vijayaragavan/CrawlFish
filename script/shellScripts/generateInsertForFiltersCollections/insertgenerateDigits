@@ -1,0 +1,10 @@
+
+count=0
+
+for i in {0..9}
+do
+echo $i
+cat inserts | sed -e 's/xxx/'$i'/g' | sed -e 's/yyy/1'$i'/g' >> output
+count=`expr $count + 1`
+done  
+echo $count 

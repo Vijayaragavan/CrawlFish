@@ -1,0 +1,22 @@
+<%= form_tag url_for(:controller => 'merchants_dashboard', :action => 'range'),:id => "dashboard_range_form"  do  %>
+<%= hidden_field_tag 'vendor_id',@vendor_id %>
+
+<div class="cf-dashboard-imp-clicks-select">
+	<%= select("range_sub_category", "id",options_for_select(@options).titlecase) %>
+</div>
+
+<table class="cf-dashboard-imp-clicks-range-table" cellpadding=5 cellspacing = 0 border = 0>
+<tr>
+
+	<td class="from-date"><%= label_tag :from_date %></td>
+	<td><%= text_field_tag :from_date,nil,:class=>'from-date-txt'%></td>
+	<td class="to-date"><%= label_tag :to_date%></td>
+	<td><%= text_field_tag :to_date,nil,:class=>'to-date-txt'%></td>
+	<td class="search-submit-td"><%= submit_tag "Search",:class=>"search-submit"%>
+		<div id="loading-bar-range-form" style="display:none;" class="search-submit-loading">
+		   <%= image_tag "/Images/156.gif", :size => "19x18" %>
+		</div>
+	</td>
+</table>
+<% end %>
+

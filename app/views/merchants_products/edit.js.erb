@@ -1,0 +1,32 @@
+$("#edit-form").dialog({
+  autoOpen: true,
+  width: 600,
+  modal: true,
+  draggable:false,
+  resizable:false,
+  title: 'Edit Product',
+  buttons: [
+        {
+            text: "Edit",
+            className: 'edit-button-class',
+            click: function() {
+
+                $("#product-edit-form").submit();
+            }
+        },
+        {
+            text: "Close",
+            className: 'close-button-class',
+            click: function() {
+                $(this).dialog("close")
+            }
+        }
+    ],
+  open: function() {
+    $("#edit-form").html("<%= escape_javascript(render('edit')) %>");
+    var x = $(this).position().center + $(this).outerWidth();
+    var y = $(this).position().center - $(document).scrollTop();
+    $("#edit-form").dialog('option', 'position', [x,y]);
+    },
+});
+

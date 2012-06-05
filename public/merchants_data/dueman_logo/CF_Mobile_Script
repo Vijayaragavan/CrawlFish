@@ -1,0 +1,119 @@
+#! /bin/sh
+
+## Command to convert the data in Mobiles sheet to txt file
+	if ssconvert -O 'eol=unix quoting-mode=always sheet=Mobiles_Lists' ~/Desktop/$1 ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv1.txt
+	then
+	echo "-- Level 1 conversion successful for Mobiles\n\n" > ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Level 1 conversion failed..."
+	exit 1
+	fi
+
+## Finding the data count begins
+	m_i1_count=`awk -F\",\" '{ if(NR==1 && $1!="\"Mobile Name") exit; else print NR }' ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv1.txt | tail -1`
+	m_i1_count=`expr $m_i1_count - 1`
+	if test $m_i1_count -gt 0
+	then
+	echo "-- Total count of data present after Level 1 conversion: $m_i1_count\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Insufficient data to be processed, after level 1 conversion..."
+	exit 1
+	fi
+
+## Level 2 Conversion for mobiles
+	if awk -F\", '{ for(i=1;i<=NF;i++) { printf "%s",$i }; printf "\n" }' ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv1.txt > ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv2.txt
+	then
+	echo "-- Level 2 conversion to a standard format\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Error occured in level 2 conversion..."
+	exit 1
+	fi
+
+## Validating the data count
+	m_i2_count=`awk -F\" '{ if(NR==1 && $2!="Mobile Name") exit; else print NR }' ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv2.txt | tail -1`
+	m_i2_count=`expr $m_i2_count - 1`
+	if test $m_i2_count -gt 0 -a $m_i2_count -eq $m_i1_count
+	then
+	echo "-- Total count of data present after Level 2 conversion: $m_i2_count\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Insufficient data to be processed or data mismatch, after level 2 conversion..."
+	exit 1
+	fi
+	
+## Removing unwanted data from the file	
+	if awk -F\" '{ for(i=2;i<NF;i++) { if ($i=="") print NR,",", i,"-->",$0} }' ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv2.txt > ~/Desktop/CF_Scripts_Output/Trash/Improper_mobile_data.txt
+	then
+	echo "-- Improper/Incomplete data has been removed. Check out Improper_data.txt file\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Error occured while removing unwanted data from mobiles_conv2.txt file..."
+	exit 1
+	fi
+
+## Level 3 Conversion for mobiles
+	if awk -F\" '{ for(i=2;i<NF;i++) { if ($i=="") next} print }' ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv2.txt > ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv3.txt
+	then
+	echo "-- Level 3 conversion successful for Mobiles\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Level 3 conversion failed..."
+	exit 1
+	fi
+	
+## Finding the proper count of data
+	m_p1_count=`awk -F\" '{ if(NR==1 && $2!="Mobile Name") exit; else print NR }' ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv3.txt | tail -1`
+	m_p1_count=`expr $m_p1_count - 1` 
+	if test $m_p1_count -lt 1
+	then
+	echo "Insufficient data for mobiles..."
+	exit 1
+	else
+	echo "-- Total count of data present after Level 3 conversion: $m_p1_count\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	fi
+
+## Validating the header files
+	if awk -f m_conv1.awk ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv3.txt > ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv4.txt
+	then
+	echo "-- Level 4 conversion successful for Mobiles\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Level 4 conversion failed..."
+	exit 1
+	fi
+
+## Validating the output of level 4 conversion
+	if test -s ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv4.txt
+	then
+	echo "-- Column headers are properly defined as expected\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "\nColumn headers are not properly defined, pls check the headers in Mobiles_Lists sheet..."
+	exit 1
+	fi
+
+## Validating the file count again
+	m_p2_count=`awk -F\| '{ if(NR==1 && $1!="Mobile Name") exit; else print NR }' ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv4.txt | tail -1`
+	m_p2_count=`expr $m_p2_count - 1` 
+	if test $m_p2_count -lt 1
+	then
+	echo "Insufficient data for mobiles..."
+	exit 1
+	else
+	echo "-- Total count of data present after Level 4 conversion: $m_p2_count\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	fi
+
+## Final Conversion
+	if awk -f m_conv2.awk ~/Desktop/CF_Scripts_Output/Trash/Mobiles_Conv4.txt > ~/Desktop/CF_Scripts_Output/Files/final_"$2"_"$3"_mobiles.dat
+	then
+	echo "-- Final conversion for Mobiles is successful\n\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Final conversion failed..."
+	exit 1
+	fi
+
+## Final count in the Books DAT file
+	m_f_count=`awk -F\| '{ print NR }' ~/Desktop/CF_Scripts_Output/Files/final_"$2"_"$3"_mobiles.dat | wc -l`
+	if test $m_f_count -eq $m_p2_count
+	then
+	echo "-- Final data count in the Mobiles DAT file: $m_f_count\n" >> ~/Desktop/CF_Scripts_Output/Logs/mobiles_log.csv
+	else
+	echo "Something Fishy in the DAT file conversion..."
+	exit 1
+	fi
+

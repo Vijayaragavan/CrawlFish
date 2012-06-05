@@ -1,0 +1,57 @@
+app
+
+app/assets
+	app/assets/javascripts/application.js
+	app/assets/stylesheets/application.css
+	app/assets/stylesheets/scaffolds.css.scss
+	app/assets/stylesheets/jquery.css
+
+app/helpers	- no change
+app/mailers	- no change
+app/models	- no change
+app/views
+	app/views/converse/index.js.erb	- change - implemented
+	app/views/footer/*	- change - implemented
+	app/views/local/*	- change - implemented
+	app/views/search/_result_messages - change - not implemented *
+	app/views/search/generic.html.erb - change - 2 implemented and 1 not implemented *
+	app/views/shared
+		removed 2 .erb files
+		_form.html.erb - change - not implemented
+		index.html.erb - change - 1 implemented and rest not implemented
+		no_results.erb - change  - not implemented
+	app/views/
+		merchant_dashboard - added
+		merchant_financials - added
+	app/views/specific
+		mobile_specifications
+		specific
+		mobiledetails
+	app/views/merchants/* - change - implemented
+	app/views/merchants_lists/* - change - implemented
+	app/views/merchants_sessions/* - change - implemented
+	app/views/merchants_products/* - change - implemented
+	
+app/controllers - changes done
+	app/controllers/application_controller - no change
+	app/controllers/footer_controller	- change - implemented
+	app/controllers/local_controller 	- no change
+	app/controllers/main_controller 	- change - not implemented
+	app/controllers/search_controller 	- change - not implemented
+	2 controllers added
+	app/controllers/merchants_controller - change - implemented
+	app/controllers/merchants_lists_controller - change - implemented
+	app/controllers/merchants_products_controller - change - implemented
+
+config	- routes.rb
+db 	- no change
+doc	- no change
+fix     - no change
+lib	- no change
+log	- no change
+public - few images - new and updated images,stylesheets
+script - no change
+test	- no change
+tmp 	- no change
+vendor	- no change
+

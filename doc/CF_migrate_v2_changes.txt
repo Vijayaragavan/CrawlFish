@@ -1,0 +1,319 @@
+CrawlFish - db/migrate folder clean up
+
++---------------------------------------------------------------+
+|Author  : Senthil
+|Version : Two
+|Desc    : Updating the files in the db/migrate folder to handle the errors discussed in the rest of this file.
+|Warning : Please mention the updates moving on before changing anything in the db/migrate folder.
++---------------------------------------------------------------+
+
+========================================== Priority_errors bug START =============================
+
+The following files are updated to handle a error.
+
+Error description: If you delete from part1 products tables, the delete trigger on that table should
+remove all the links in crawlfishdevdb and then the product itself should get deleted. This was not happening for the
+products which are inserted in priority_errors table.
+
+If the following files are updated then this error will be fixed,
+
+/home/think/CrawlFish/db/migrate/20120308133139_create_procedure_to_insert_update_delete_products_table.rb
+/home/think/CrawlFish/db/migrate/20120308133822_create_procedure_insert_log_select_count_selectid.rb
+/home/think/CrawlFish/db/migrate/20120308141915_create_procedure_build_part3.rb
+/home/think/CrawlFish/db/migrate/20120308142015_create_procedure_gateway_of_crawlfish.rb
+/home/think/CrawlFish/db/migrate/20120312172980_create_procedure_insert_into_link_products_lists_vendors.rb
+
+========================================== Priority_errors bug END =============================
+
+
+Other general Fixes:
+
+========================================== 1 START =============================
+
+Spelling mistakes:
+
+advertisers -> adverisers
+
+20120513191927_create_trigger_insert_update_delete_advertisers_lists.rb
+
+  def down
+    execute "DROP TRIGGER IF EXISTS t_Insert_adverisers_Lists"
+    execute "DROP TRIGGER IF EXISTS t_Update_adverisers_Lists"
+    execute "DROP TRIGGER IF EXISTS t_Delete_adverisers_Lists"
+  end
+
+
+think@thinkComputer:~/CrawlFish/db/migrate$ grep "purhcase" *
+
+purchase => purhcase
+
+20111211103174_create_product_purchase_commission_vendors.rb:  purhcase_commission INT UNSIGNED NOT NULL,
+20111211103286_create_trigger_on_vendors_lists.rb:                INSERT INTO product_purchase_commission_vendors(vendor_id, sub_category_id, purhcase_commission, subscribed_date,                     cut_off_amount, cut_off_period, history_flag, created_at)
+20111211103286_create_trigger_on_vendors_lists.rb:                INSERT INTO product_purchase_commission_vendors(vendor_id, sub_category_id, purhcase_commission, subscribed_date,                     cut_off_amount, cut_off_period, history_flag, created_at)
+20111211103286_create_trigger_on_vendors_lists.rb:                INSERT INTO product_purchase_commission_vendors(vendor_id, sub_category_id, purhcase_commission, subscribed_date,                     cut_off_amount, cut_off_period, history_flag, created_at)
+20111211103286_create_trigger_on_vendors_lists.rb:                INSERT INTO product_purchase_commission_vendors(vendor_id, sub_category_id, purhcase_commission, subscribed_date,                     cut_off_amount, cut_off_period, history_flag, created_at)
+20111211103486_create_trigger_on_product_purchase_commission_vendors.rb:                        new.purhcase_commission,
+20111211103486_create_trigger_on_product_purchase_commission_vendors.rb:                        new.purhcase_commission,
+20111211103486_create_trigger_on_product_purchase_commission_vendors.rb:                        old.purhcase_commission,
+
+========================================== 1 END =============================
+
+========================================== 2 START =============================
+
+
+If you are creating a temporary table, please drop it within the scope of where you are creating it.
+
+Added this migration,
+
+20111211084251_create_function_drop_temporary_table_features.rb
+
+This will drop the features temp table used in the files below,
+
+20111211103286_create_trigger_on_vendors_lists.rb
+20111211103286_create_trigger_on_vendors_lists.rb
+
+
+========================================== 2 END =============================
+
+
+========================================== 3 START =============================
+
+Always keep your tables name plural.. Because a table is a collection of objects hence plural,
+
+think@thinkComputer:~/CrawlFish/db/migrate$ grep "_logs" *
+
+_log  =>  _logs
+
+20120313093503_create_vendor_product_transactions_logs.rb:  execute "DROP TABLE IF EXISTS vendor_product_transactions_logs"
+20120313093503_create_vendor_product_transactions_logs.rb:  CREATE TABLE IF NOT EXISTS vendor_product_transactions_logs (
+20120313093503_create_vendor_product_transactions_logs.rb:  execute "DROP TABLE IF EXISTS vendor_product_transactions_logs"
+20120313093603_create_vendor_product_purchases_logs.rb:  execute "DROP TABLE IF EXISTS vendor_product_purchases_logs"
+20120313093603_create_vendor_product_purchases_logs.rb:  CREATE TABLE IF NOT EXISTS vendor_product_purchases_logs (
+20120313093603_create_vendor_product_purchases_logs.rb:  execute "DROP TABLE IF EXISTS vendor_product_purchases_logs"
+20120313094003_create_trigger_on_vendor_product_transactions_log.rb:    execute "DROP TRIGGER IF EXISTS t_insert_vendor_product_transactions_logs"
+20120313094003_create_trigger_on_vendor_product_transactions_log.rb:    CREATE TRIGGER t_insert_vendor_product_transactions_logs AFTER INSERT ON vendor_product_transactions_logs
+20120313094003_create_trigger_on_vendor_product_transactions_log.rb:    DECLARE v_DebugID VARCHAR(255) DEFAULT 't_insert_vendor_product_transactions_logs';
+20120313094003_create_trigger_on_vendor_product_transactions_log.rb:    INSERT INTO monetization.variable_pay_logs(vendor_id,sub_category_id,product_id,total_impressions_amount,total_button_clicks_amount,
+20120313094003_create_trigger_on_vendor_product_transactions_log.rb:    call debug.debug_insert(v_DebugID,concat('Inserted a record into variable_pay_logs table for the vendor_id ',new.vendor_id,' sub_category_id ',
+20120313094003_create_trigger_on_vendor_product_transactions_log.rb:    execute "DROP TRIGGER IF EXISTS t_insert_vendor_product_transactions_logs"
+20120313094103_create_trigger_on_vendor_product_purchases_log.rb:    execute "DROP TRIGGER IF EXISTS t_insert_vendor_products_purchases_logs"
+20120313094103_create_trigger_on_vendor_product_purchases_log.rb:    CREATE TRIGGER t_insert_vendor_products_purchases_logs AFTER INSERT ON vendor_product_purchases_logs
+20120313094103_create_trigger_on_vendor_product_purchases_log.rb:    DECLARE v_DebugID VARCHAR(255) DEFAULT 't_insert_vendor_product_purchases_logs';
+20120313094103_create_trigger_on_vendor_product_purchases_log.rb:    INSERT INTO monetization.product_purchase_commission_logs(vendor_id,sub_category_id,product_id,total_pp_comm_amount,log_date,created_at)
+20120313094103_create_trigger_on_vendor_product_purchases_log.rb:    call debug.debug_insert(v_DebugID,concat('Inserted a record into product_purchase_commission_logs table for the vendor_id ',new.vendor_id,' sub_category_id ',
+20120313094103_create_trigger_on_vendor_product_purchases_log.rb:    execute "DROP TRIGGER IF EXISTS t_insert_vendor_products_purchases_logs"
+
+
+
+========================================== 3 END =============================
+
+
+========================================== 4 START =============================
+
+When I loaded the part1 data before loading part2, the records are successfully inserting into part1 tables and priority errors,
+so now i ran the procedure "p_Delete_products_from_Part1()", i got this error,
+
+ERROR 1146 (42S02): Table 'crawlfishdevdb.local_chennai_mambalam_SayarMobiles_products' doesn't exist
+
+I understood whats that,
+
+You are qualifying things based on varchars, when you do it, use f_stripstring() the saviour function.
+
+I changed the following file,
+
+20120308134140_create_procedure_to_delete_products_from_part1.rb
+
+     IF loopcounter <= v_count THEN
+        /* added stripstring functions to varchar by senthil 2012may16 */
+        SELECT f_stripstring(vendor_table_name),f_stripstring(product_name),f_stripstring(product_identifier1),f_stripstring(product_identifier2) INTO
+        v_table_name,v_product_name,v_identifier1,v_identifier2 FROM vendor_data_priorities
+        WHERE id=loopcounter AND priority_errors_flag=0;
+
+        IF v_table_name IS NOT NULL THEN
+       /* added stripstring functions to varchar by senthil 2012may16 */
+        SET @v_query = CONCAT('DELETE FROM ',v_table_name,' WHERE f_stripstring(product_name) = ? AND f_stripstring(product_identifier1) = ? AND f_stripstring(product_identifier2) = ?');
+
+
+========================================== 4 END =============================
+
+
+========================================== 5 START =============================
+
+
+while dropping foreign key constraints in this file,
+
+20120513191208_add_foreign_keys_to_link_advertisers_lists_subcategories.rb
+
+ def down
+        execute"ALTER TABLE link_advertisers_lists_sub_categories DROP CONSTRAINT IF EXISTS fk_link_advertisers_lists"
+        execute"ALTER TABLE link_advertisers_lists_sub_categories DROP CONSTRAINT IF EXISTS fk_link_advertisers_lists_sub_categories"
+  end
+
+Change it to this , its throwing a syntax error,
+
+ def down
+        execute"ALTER TABLE link_advertisers_lists_sub_categories DROP FOREIGN KEY fk_link_advertisers_lists"
+        execute"ALTER TABLE link_advertisers_lists_sub_categories DROP FOREIGN KEY fk_link_advertisers_lists_sub_categories"
+  end
+
+General Advice: Dont use IF EXISTS in migration:down methods, if any db object does not exist let the system throw an error.
+
+
+========================================== 5 END =============================
+
+
+========================================== 6 START =============================
+
+In your down method in this file,
+
+20120508191617_add_foreign_keys_to_vendors_variable_pays.rb
+
+You are dropping a constraint in monetization db, so mention that,
+
+Changed from this,
+
+  def down
+    execute "ALTER TABLE vendors_variable_pays DROP FOREIGN KEY fk_vendors_variable_pays_impression_rates"
+    execute "ALTER TABLE vendors_variable_pays DROP FOREIGN KEY fk_vendors_variable_pays_button_click_rates"
+    execute "ALTER TABLE vendors_variable_pays DROP FOREIGN KEY fk_vendors_variable_pays_cut_off_periods"
+    execute "ALTER TABLE vendors_variable_pays DROP FOREIGN KEY fk_vendors_variable_pays_cut_off_amounts"
+  end
+
+to this,
+
+  def down
+    execute "ALTER TABLE monetization.vendors_variable_pays DROP FOREIGN KEY fk_vendors_variable_pays_impression_rates"
+    execute "ALTER TABLE monetization.vendors_variable_pays DROP FOREIGN KEY fk_vendors_variable_pays_button_click_rates"
+    execute "ALTER TABLE monetization.vendors_variable_pays DROP FOREIGN KEY fk_vendors_variable_pays_cut_off_periods"
+    execute "ALTER TABLE monetization.vendors_variable_pays DROP FOREIGN KEY fk_vendors_variable_pays_cut_off_amounts"
+  end
+
+
+same here,
+
+from,
+
+  def down
+    execute "ALTER TABLE vendors_fixed_pays DROP FOREIGN KEY fk_vendors_fixed_pays_fixed_pays"
+    execute "ALTER TABLE vendors_fixed_pays DROP FOREIGN KEY fk_vendors_fixed_pays_cut_off_periods"
+  end
+
+to,
+
+  def down
+    execute "ALTER TABLE monetization.vendors_fixed_pays DROP FOREIGN KEY fk_vendors_fixed_pays_fixed_pays"
+    execute "ALTER TABLE monetization.vendors_fixed_pays DROP FOREIGN KEY fk_vendors_fixed_pays_cut_off_periods"
+  end
+
+
+========================================== 6 END =============================
+
+========================================== 7 START =============================
+
+In the following file, in down method
+
+mobile_rams and assorteds are to be switched between 14 and 15.
+
+
+    execute "ALTER TABLE link_f14_mobiles_lists DROP FOREIGN KEY fk1_links_mobiles_14"
+    execute "ALTER TABLE link_f14_mobiles_lists DROP FOREIGN KEY fk1_links_mobile_rams"
+    execute "ALTER TABLE link_f15_mobiles_lists DROP FOREIGN KEY fk1_links_mobiles_15"
+    execute "ALTER TABLE link_f15_mobiles_lists DROP FOREIGN KEY fk1_links_assorteds"
+
+Changed to this,
+
+execute "ALTER TABLE link_f14_mobiles_lists DROP FOREIGN KEY fk1_links_mobiles_14"
+    execute "ALTER TABLE link_f14_mobiles_lists DROP FOREIGN KEY fk1_links_assorteds"
+    execute "ALTER TABLE link_f15_mobiles_lists DROP FOREIGN KEY fk1_links_mobiles_15"
+    execute "ALTER TABLE link_f15_mobiles_lists DROP FOREIGN KEY fk1_links_mobile_rams"
+
+========================================== 7 END =============================
+
+========================================== 8 START =============================
+
+the migration file,
+
+20111211103162_add_foreign_keys_to_link_vendors_lists_branches.rb
+
+Changed from,
+
+  def down
+
+    execute "ALTER TABLE link_products_lists_vendors DROP FOREIGN KEY fk_link_vendors_lists_branches_1"
+    execute "ALTER TABLE link_products_lists_vendors DROP FOREIGN KEY fk_link_vendors_lists_branches_2"
+
+  end
+
+
+to
+
+
+      execute "ALTER TABLE link_vendors_lists_branches DROP FOREIGN KEY fk_link_vendors_lists_branches_1"
+    execute "ALTER TABLE link_vendors_lists_branches DROP FOREIGN KEY fk_link_vendors_lists_branches_2"
+
+
+Same here,
+
+from
+
+  def down
+
+    execute "ALTER TABLE link_products_lists_vendors DROP FOREIGN KEY fk_link_vendors_lists_cities_1"
+    execute "ALTER TABLE link_products_lists_vendors DROP FOREIGN KEY fk_link_vendors_lists_cities_2"
+
+  end
+
+to,
+
+
+  def down
+
+    execute "ALTER TABLE link_vendors_lists_cities DROP FOREIGN KEY fk_link_vendors_lists_cities_1"
+    execute "ALTER TABLE link_vendors_lists_cities DROP FOREIGN KEY fk_link_vendors_lists_cities_2"
+
+  end
+
+========================================== 8 END =============================
+
+========================================== 9 START =============================
+
+Now this is something bad,
+
+20111211103154_create_link_vendors_lists_subcategories.rb
+
+ def down
+  end
+
+
+Changed to ,
+
+  def down
+
+  execute "DROP TABLE link_vendors_lists_sub_categories"
+
+  end
+
+========================================== 9 END =============================
+
+========================================== 10 START =============================
+
+
+This line was added to the down method ,
+
+20120306155314_create_procedure_insert_update_link_mobiles_lists.rb
+
+execute "DROP PROCEDURE p_Insert_link_f5_c_mobiles_lists"
+
+========================================== 10 END =============================
+
+========================================== 11 START =============================
+
+This line was added to the down method ,
+
+20120306155320_create_procedure_delete_link_mobiles_lists.rb
+
+
+   execute "DROP PROCEDURE IF EXISTS p_Delete_link_f5_c_mobiles_lists"
+
+========================================== 11 END =============================
+

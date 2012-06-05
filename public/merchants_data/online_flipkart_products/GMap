@@ -1,0 +1,41 @@
+Google Map
+-----------
+
+1.rails new gmap
+
+2.gem 'gmaps4rails'
+
+3.bundle install
+
+4.rails generate gmaps4rails:install
+
+5.rails g scaffold Location name:string address:string longitude:float latitude:float gmaps:boolean
+
+6.rake db:migrate
+
+7.<%= yield :scripts %> in footer of your app/views/layouts/applicaiton.html.erb
+
+8.<link href="/Stylesheets/gmaps4rails.css" rel="stylesheet" type="text/css"> in your view html
+
+9.class Location < ActiveRecord::Base
+	acts_as_gmappable
+	def gmaps4rails_address
+		address
+	end
+	def gmaps4rails_infowindow
+         "<h4>#{name}</h4>"
+	 "<h4>#{address}</h4>"
+     	end
+	end
+
+
+in app/models/location.rb
+
+10.In def of view.html.erb name i.e controller, paste this @json = Location.all.to_gmaps4rails
+	app/controllers/locations_controller.rb
+
+11.Add this in your view.html.erb file
+
+<%= gmaps("map_options" => { "detect_location" => false, "center_on_user" => true, "zoom" => 10,"auto_zoom"=>false},
+	 "markers" =>{"data" => '[{"description": "", "title": "", "sidebar": "", "lng": "77.5945627", "lat": "12.9715987", "picture": "", "width": "", "height": ""}]'}
+	) %>

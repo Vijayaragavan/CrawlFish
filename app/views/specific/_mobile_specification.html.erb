@@ -1,0 +1,783 @@
+<% @mobile_general_brand = @feature_array[0] %>
+<% @mobile_general_colors = @feature_array[1] %>
+<% @mobile_general_type = @feature_array[2] %>
+<% @mobile_general_form = @feature_array[3] %>
+<% @mobile_platform_os = @feature_array[4] %>
+<% @mobile_display_type_color = @feature_array[5] %>
+<% @mobile_memory_internal = @feature_array[6] %>
+<% @mobile_memory_cardslots = @feature_array[7] %>
+<% @mobile_camera_primary = @feature_array[8] %>
+<% @mobile_camera_secondary = @feature_array[9] %>
+<% @mobile_platform_processor = @feature_array[10] %>
+<% @mobile_data_messaging = @feature_array[11] %>
+<% @mobile_data_browser_support = @feature_array[12] %>
+<% @mobile_memory_ram = @feature_array[13] %>
+<% @mobile_assorted = @feature_array[14] %>
+<% @mobile_misc = @feature_array[15] %>
+
+<% @arr_display_tc = @mobile_display_type_color.split(",") %>
+
+<% if(@arr_display_tc.count>1) %>
+
+	<% @mobile_display_type = @arr_display_tc[0] %>
+	<% @mobile_display_color = @arr_display_tc[1] %>
+
+<% elsif(@arr_display_tc.count==1) %>
+
+	<% @mobile_display_type = @arr_display_tc[0] %>
+	<% @mobile_display_color = "No" %>
+
+<% else %>
+
+	<% @mobile_display_type = "No" %>
+	<% @mobile_display_color = "No" %>
+
+<% end %>
+
+<% @arr_assorted = @mobile_assorted.split("%") %>
+
+<% if(@arr_assorted.count==11) %>
+
+<% @mobile_data_2g = @arr_assorted[0].split("$")%>
+
+<% if(@mobile_data_2g.count>1) %>
+	
+	<% if(@mobile_data_2g[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_2g_value = "No" %>
+	<% else %>
+		<% @mobile_data_2g_value = @mobile_data_2g[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_2g.count==1) %>
+
+	<% if(@mobile_data_2g[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_2g_value = "No" %>
+	<% else %>
+		<% @mobile_data_2g_value = @mobile_data_2g[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_2g_value = "No" %>
+
+<% end %>
+
+<% @mobile_data_3g = @arr_assorted[1].split("$")%>
+
+<% if(@mobile_data_3g.count>1) %>
+
+	<% if(@mobile_data_3g[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_3g_value = "No" %>
+	<% else %>
+		<% @mobile_data_3g_value = @mobile_data_3g[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_3g.count==1) %>
+
+	<% if(@mobile_data_3g[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_3g_value = "No" %>
+	<% else %>
+		<% @mobile_data_3g_value = @mobile_data_3g[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_3g_value = "No" %>
+
+<% end %>
+
+
+<% @mobile_data_gprs = @arr_assorted[2].split("$")%>
+
+<% if(@mobile_data_gprs.count>1) %>
+
+	<% if(@mobile_data_gprs[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_gprs_value = "No" %>
+	<% else %>
+		<% @mobile_data_gprs_value = @mobile_data_gprs[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_gprs.count==1) %>
+
+	<% if(@mobile_data_gprs[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_gprs_value = "No" %>
+	<% else %>
+		<% @mobile_data_gprs_value = @mobile_data_gprs[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_gprs_value = "No" %>
+
+<% end %>
+
+<% @mobile_data_edge = @arr_assorted[3].split("$")%>
+
+<% if(@mobile_data_edge.count>1) %>
+
+	<% if(@mobile_data_edge[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_edge_value = "No" %>
+	<% else %>
+		<% @mobile_data_edge_value = @mobile_data_edge[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_edge.count==1) %>
+
+	<% if(@mobile_data_edge[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_edge_value = "No" %>
+	<% else %>
+		<% @mobile_data_edge_value = @mobile_data_edge[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_edge_value = "No" %>
+
+<% end %>
+
+
+<% @mobile_data_internet = @arr_assorted[4].split("$")%>
+
+<% if(@mobile_data_internet.count>1) %>
+
+	<% if(@mobile_data_internet[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_internet_value = "No" %>
+	<% else %>
+		<% @mobile_data_internet_value = @mobile_data_internet[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_internet.count==1) %>
+
+	<% if(@mobile_data_internet[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_internet_value = "No" %>
+	<% else %>
+		<% @mobile_data_internet_value = @mobile_data_internet[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_internet_value = "No" %>
+
+<% end %>
+
+
+<% @mobile_data_wlan = @arr_assorted[5].split("$")%>
+
+<% if(@mobile_data_wlan.count>1) %>
+
+	<% if(@mobile_data_wlan[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_wlan_value = "No" %>
+	<% else %>
+		<% @mobile_data_wlan_value = @mobile_data_wlan[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_wlan.count==1) %>
+
+	<% if(@mobile_data_wlan[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_wlan_value = "No" %>
+	<% else %>
+		<% @mobile_data_wlan_value = @mobile_data_wlan[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_wlan_value = "No" %>
+
+<% end %>
+
+
+<% @mobile_data_bluetooth = @arr_assorted[6].split("$")%>
+
+<% if(@mobile_data_bluetooth.count>1) %>
+
+	<% if(@mobile_data_bluetooth[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_bluetooth_value = "No" %>
+	<% else %>
+		<% @mobile_data_bluetooth_value = @mobile_data_bluetooth[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_bluetooth.count==1) %>
+
+	<% if(@mobile_data_bluetooth[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_bluetooth_value = "No" %>
+	<% else %>
+		<% @mobile_data_bluetooth_value = @mobile_data_bluetooth[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_bluetooth_value = "No" %>
+
+<% end %>
+
+<% @mobile_data_usb = @arr_assorted[7].split("$")%>
+
+<% if(@mobile_data_usb.count>1) %>
+
+	<% if(@mobile_data_usb[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_usb_value = "No" %>
+	<% else %>
+		<% @mobile_data_usb_value = @mobile_data_usb[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_usb.count==1) %>
+
+	<% if(@mobile_data_usb[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_usb_value = "No" %>
+	<% else %>
+		<% @mobile_data_usb_value = @mobile_data_usb[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_usb_value = "No" %>
+
+<% end %>
+
+<% @mobile_data_gps = @arr_assorted[10].split("$")%>
+
+<% if(@mobile_data_gps.count>1) %>
+
+	<% if(@mobile_data_gps[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_gps_value = "No" %>
+	<% else %>
+		<% @mobile_data_gps_value = @mobile_data_gps[1] %>
+	<% end %>
+
+<% elsif(@mobile_data_gps.count==1) %>
+
+	<% if(@mobile_data_gps[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_data_gps_value = "No" %>
+	<% else %>
+		<% @mobile_data_gps_value = @mobile_data_gps[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_data_gps_value = "No" %>
+
+<% end %>
+
+
+<% @mobile_camera_video = @arr_assorted[8].split("$")%>
+
+<% if(@mobile_camera_video.count>1) %>
+
+	<% if(@mobile_camera_video[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_camera_video_value = "No" %>
+	<% else %>
+		<% @mobile_camera_video_value = @mobile_camera_video[1] %>
+	<% end %>
+
+<% elsif(@mobile_camera_video.count==1) %>
+
+	<% if(@mobile_camera_video[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_camera_video_value = "No" %>
+	<% else %>
+		<% @mobile_camera_video_value = @mobile_camera_video[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_camera_video_value = "No" %>
+
+<% end %>
+
+<% @mobile_multimedia_radio = @arr_assorted[9].split("$")%>
+
+<% if(@mobile_multimedia_radio.count>1) %>
+
+	<% if(@mobile_multimedia_radio[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_multimedia_radio_value = "No" %>
+	<% else %>
+		<% @mobile_multimedia_radio_value = @mobile_multimedia_radio[1] %>
+	<% end %>
+
+<% elsif(@mobile_multimedia_radio.count==1) %>
+
+	<% if(@mobile_multimedia_radio[0].chomp.downcase.gsub(".","")=="na") %>
+		<% @mobile_multimedia_radio_value = "No" %>
+	<% else %>
+		<% @mobile_multimedia_radio_value = @mobile_multimedia_radio[0] %>
+	<% end %>
+
+<% else %>
+
+	<% @mobile_multimedia_radio_value = "No" %>
+
+<% end %>
+
+
+<% else %>
+	
+<% end %>
+
+<% @arr_misc = @mobile_misc.split("%") %>
+
+<% if(@arr_misc.count==12) %>
+
+<% if(@arr_misc[0].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_multimedia_ringtone = "No" %>
+
+<% else %>
+
+	<% @mobile_multimedia_ringtone = @arr_misc[0] %>
+
+<% end %>
+
+<% if(@arr_misc[1].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_multimedia_speaker = "No" %>
+
+<% else %>
+
+	<% @mobile_multimedia_speaker = @arr_misc[1] %>
+
+<% end %>
+
+<% if(@arr_misc[2].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_general_sensors = "No" %>
+
+<% else %>
+
+	<% @mobile_general_sensors = @arr_misc[2] %>
+
+<% end %>
+
+<% if(@arr_misc[3].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_battery_type = "No" %>
+
+<% else %>
+
+	<% @mobile_battery_type = @arr_misc[3] %>
+
+<% end %>
+
+<% if(@arr_misc[4].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_battery_standby = "No" %>
+
+<% else %>
+
+	<% @mobile_battery_standby = @arr_misc[4] %>
+
+<% end %>
+
+<% if(@arr_misc[5].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_battery_talktime = "No" %>
+
+<% else %>
+
+	<% @mobile_battery_talktime = @arr_misc[5] %>
+
+<% end %>
+
+<% if(@arr_misc[6].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_battery_music = "No" %>
+
+<% else %>
+
+	<% @mobile_battery_music = @arr_misc[6] %>
+
+<% end %>
+
+<% if(@arr_misc[7].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_multimedia_audiojack = "No" %>
+
+<% elsif(@arr_misc[7].chomp.downcase=="yes") %>
+
+	<% @mobile_multimedia_audiojack = "Yes" %>
+
+<% end %>
+
+<% @arr_mobile_display_sr = @arr_misc[8].split(",") %>
+
+<% if(@arr_mobile_display_sr.count>1) %>
+	
+	<% @mobile_display_resolution=@arr_mobile_display_sr[0] %>
+	<% @mobile_display_size=@arr_mobile_display_sr[1] %>
+
+<% elsif(@arr_mobile_display_sr.count==1) %>
+	<% @mobile_display_resolution=@arr_mobile_display_sr[0] %>
+	<% @mobile_display_size="No" %>
+<% else %>
+	<% @mobile_display_resolution="No" %>
+	<% @mobile_display_size="No" %>
+<% end %>
+
+
+<% if(@arr_misc[9].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_platform_chipset = "No" %>
+
+<% else%>
+
+	<% @mobile_platform_chipset = @arr_misc[9]  %>
+
+<% end %>
+
+<% if(@arr_misc[10].chomp.downcase.gsub(".","")=="na") %>
+
+	<% @mobile_platform_gpu = "No" %>
+
+<% else%>
+
+	<% @mobile_platform_gpu = @arr_misc[10]  %>
+
+<% end %>
+
+<% @arr_mobile_multimedia_mv = @arr_misc[11].split(",") %>
+
+<% @arr_mobile_multimedia_mv.each do |mv| %>
+
+<% if ( mv =~ /MP3.* player/ ) %>
+	<% @mobile_multimedia_music = mv %>
+<% end %>
+
+<% if ( mv =~ /(.*)MP4.* player/ ) %>
+	<% @mobile_multimedia_video = mv %>
+<% end %>
+
+<% end %>
+
+<% if(@mobile_multimedia_music.nil?) %>
+	<% @mobile_multimedia_music="No" %>
+<% end %>
+
+<% if(@mobile_multimedia_video.nil?) %>
+	<% @mobile_multimedia_video="No" %>
+<% end %>
+
+<% else %>
+	<%@mobile_multimedia_ringtone="No"%>
+	<%@mobile_multimedia_speaker="No"%>
+	<%@mobile_general_sensors="No"%>
+	<%@mobile_battery_type="No"%>
+	<%@mobile_battery_standby="No"%>
+	<%@mobile_battery_talktime="No"%>
+	<%@mobile_battery_music="No"%>
+	<%@mobile_multimedia_audiojack="No"%>
+	<%@mobile_display_resolution="No"%>
+	<%@mobile_display_size="No"%>
+	<%@mobile_platform_chipset="No"%>
+	<%@mobile_platform_gpu="No"%>
+	<%@mobile_multimedia_music="No"%>
+	<%@mobile_multimedia_video="No"%>
+<% end %>
+
+
+<table class="cf-specific-product-details-prd" border=0 cellspacing=0 cellpadding=0>
+
+<tr>
+	<td id="spec-name-author" colspan=2 style="text-align:left;padding-left:10px">GENERAL</td>
+</tr>
+
+<tr id="spec-row"> 
+	<td id="spec-name">Brand:</td>
+	<td id="spec-value"><%=  @mobile_general_brand.upcase %></td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Form:</td>
+	<td id="spec-value"><%=  @mobile_general_form.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Type:</td>
+	<td id="spec-value"><%=  @mobile_general_type.titlecase  %></td> 
+</tr>	
+
+<tr id="spec-row">
+	<td id="spec-name">Color:</td>
+	<td id="spec-value"><%=  @mobile_general_colors.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Sensor:</td>
+	<td id="spec-value"><%=  @mobile_general_sensors.titlecase  %></td> 
+</tr>
+
+<tr>
+	<td id="spec-name" colspan=2 style="text-align:left;padding-left:10px">PLATFORM</td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Processor:</td>
+	<td id="spec-value">
+	<% if @mobile_platform_processor.chomp.downcase.gsub(".","")=="na"%>
+		No
+	<%else%>
+		<%= @mobile_platform_processor.titlecase %>
+	<%end%>
+	</td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">GPU:</td>
+	<td id="spec-value"><%=  @mobile_platform_gpu.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Chipset:</td>
+	<td id="spec-value"><%=  @mobile_platform_chipset.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">OS:</td>
+	<td id="spec-value">
+		<% @arr_mobile_platform_os = @mobile_platform_os.split("$") %>
+		<% if @arr_mobile_platform_os.count > 1 %>
+			<% if @arr_mobile_platform_os[0].chomp.downcase.gsub(".","")=="na" && @arr_mobile_platform_os[1].chomp.downcase.gsub(".","")=="na" %>
+				No
+			<% elsif @arr_mobile_platform_os[0].chomp.downcase.gsub(".","")!="na" && @arr_mobile_platform_os[1].chomp.downcase.gsub(".","")=="na" %>
+				<%= @arr_mobile_platform_os[0].titlecase %>
+			<% elsif @arr_mobile_platform_os[0].chomp.downcase.gsub(".","")=="na" && @arr_mobile_platform_os[1].chomp.downcase.gsub(".","")!="na" %>
+				No
+			<% elsif @arr_mobile_platform_os[0].chomp.downcase.gsub(".","")!="na" && @arr_mobile_platform_os[1].chomp.downcase.gsub(".","")!="na" %>
+				<%= @arr_mobile_platform_os[0].titlecase %>, <%= @arr_mobile_platform_os[1].titlecase %>
+			<%end%>
+		<% else %>
+			No
+		<% end %>		
+	</td> 
+</tr>
+
+<tr>
+	<td id="spec-name" colspan=2 style="text-align:left;padding-left:10px">BATTERY</td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Type:</td>
+	<td id="spec-value"><%=  @mobile_battery_type.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Stand By Time:</td>
+	<td id="spec-value"><%=  @mobile_battery_standby.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Talktime:</td>
+	<td id="spec-value"><%=  @mobile_battery_talktime.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Playback Time:</td>
+	<td id="spec-value"><%=  @mobile_battery_music.titlecase  %></td> 
+</tr>
+
+<tr>
+	<td id="spec-name" colspan=2 style="text-align:left;padding-left:10px">DISPLAY</td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Type:</td>
+	<td id="spec-value"><%=  @mobile_display_type.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Colors:</td>
+	<td id="spec-value"><%=  @mobile_display_color.titlecase  %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Size:</td>
+	<td id="spec-value"><%=  @mobile_display_size.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Resolution:</td>
+	<td id="spec-value"><%=  @mobile_display_resolution.titlecase  %></td> 
+</tr>
+
+<tr>
+	<td id="spec-name" colspan=2 style="text-align:left;padding-left:10px">CAMERA</td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Primary:</td>
+	<td id="spec-value">
+		<% @arr_mobile_camera_primary = @mobile_camera_primary.split("$") %>
+		<% if @arr_mobile_camera_primary.count > 1 %>
+			<% if @arr_mobile_camera_primary[0].chomp.downcase.gsub(".","")=="na" && @arr_mobile_camera_primary[1].chomp.downcase.gsub(".","")=="na" %>
+				No
+			<% elsif @arr_mobile_camera_primary[0].chomp.downcase.gsub(".","")!="na" && @arr_mobile_camera_primary[1].chomp.downcase.gsub(".","")=="na" %>
+				<%= @arr_mobile_camera_primary[0].gsub("check quality","").titlecase %>
+			<% elsif @arr_mobile_camera_primary[0].chomp.downcase.gsub(".","")=="na" && @arr_mobile_camera_primary[1].chomp.downcase.gsub(".","")!="na" %>
+				No
+			<% elsif @arr_mobile_camera_primary[0].chomp.downcase.gsub(".","")!="na" && @arr_mobile_camera_primary[1].chomp.downcase.gsub(".","")!="na" %>
+				<%= @arr_mobile_camera_primary[0].gsub("check quality","").titlecase %>, <%= @arr_mobile_camera_primary[1].gsub("check quality","").titlecase %>
+			<%end%>
+		<% else %>
+			No
+		<% end %>		
+	</td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Secondary:</td>
+	<td id="spec-value">
+	<% if @mobile_camera_secondary.gsub("$",",").chomp.downcase.gsub(".","")=="na"%>
+		No
+	<%else%>
+		<%=  @mobile_camera_secondary.gsub("$",",").gsub("check quality","").titlecase  %>
+	<%end%>
+	</td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Video:</td>
+	<td id="spec-value"><%=  @mobile_camera_video_value.gsub("check quality","").titlecase %></td> 
+</tr>
+
+<tr>
+	<td id="spec-name" colspan=2 style="text-align:left;padding-left:10px">MEMORY</td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Internal:</td>
+	<td id="spec-value">
+	<% if @mobile_memory_internal.chomp.downcase.gsub(".","")=="na"%>
+		No
+	<%else%>
+		<%=  @mobile_memory_internal.titlecase  %>
+	<%end%>
+	</td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">RAM:</td>
+	<td id="spec-value">
+	<% if @mobile_memory_ram.chomp.downcase.gsub(".","")=="na"%>
+		No
+	<%else%>
+		<%=  @mobile_memory_ram.titlecase  %>
+	<%end%>
+	</td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">External:</td>
+	<td id="spec-value">
+		<% @arr_mobile_memory_cardslots = @mobile_memory_cardslots.split("$") %>
+		<% if @arr_mobile_memory_cardslots.count > 1 %>
+			<% if @arr_mobile_memory_cardslots[0].chomp.downcase.gsub(".","")=="na" && @arr_mobile_memory_cardslots[1].chomp.downcase.gsub(".","")=="na" %>
+				No
+			<% elsif @arr_mobile_memory_cardslots[0].chomp.downcase.gsub(".","")!="na" && @arr_mobile_memory_cardslots[1].chomp.downcase.gsub(".","")=="na" %>
+				<%= @arr_mobile_memory_cardslots[0].gsub("check quality","").titlecase %>
+			<% elsif @arr_mobile_memory_cardslots[0].chomp.downcase.gsub(".","")=="na" && @arr_mobile_memory_cardslots[1].chomp.downcase.gsub(".","")!="na" %>
+				No
+			<% elsif @arr_mobile_memory_cardslots[0].chomp.downcase.gsub(".","")!="na" && @arr_mobile_memory_cardslots[1].chomp.downcase.gsub(".","")!="na" %>
+				<%= @arr_mobile_memory_cardslots[0].gsub("check quality","").titlecase %>, <%= @arr_mobile_memory_cardslots[1].gsub("check quality","").titlecase %>
+			<%end%>
+		<% else %>
+			No
+		<% end %>	
+	</td> 
+</tr>
+
+<tr>
+	<td id="spec-name" colspan=2 style="text-align:left;padding-left:10px">MULTIMEDIA</td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Music:</td>
+	<td id="spec-value"><%=  @mobile_multimedia_music.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Video:</td>
+	<td id="spec-value"><%=   @mobile_multimedia_video.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Radio:</td>
+	<td id="spec-value"><%=  @mobile_multimedia_radio_value.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Ringtone:</td>
+	<td id="spec-value"><%=  @mobile_multimedia_ringtone.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Audio Jack:</td>
+	<td id="spec-value"><%=  @mobile_multimedia_audiojack.gsub("check quality","").titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Speaker:</td>
+	<td id="spec-value"><%= @mobile_multimedia_speaker.titlecase %></td> 
+</tr>
+
+<tr>
+	<td id="spec-name" colspan=2 style="text-align:left;padding-left:10px">DATA AND CONNECTIVITY</td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Messaging:</td>
+	<td id="spec-value"><%=  @mobile_data_messaging.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Browser Support:</td>
+	<td id="spec-value">
+	<% if @mobile_data_browser_support.chomp.downcase.gsub(".","")=="na"%>
+		No
+	<%else%>
+		<%=  @mobile_data_browser_support.titlecase  %>
+	<%end%>
+	</td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">2G:</td>
+	<td id="spec-value"><%=  @mobile_data_2g_value.upcase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">3G:</td>
+	<td id="spec-value"><%=  @mobile_data_3g_value.upcase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">GPRS:</td>
+	<td id="spec-value"><%= @mobile_data_gprs_value.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">EDGE:</td>
+	<td id="spec-value"><%= @mobile_data_edge_value.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Internet:</td>
+	<td id="spec-value"><%= @mobile_data_internet_value.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">WLAN:</td>
+	<td id="spec-value"><%= @mobile_data_wlan_value.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Bluetooth:</td>
+	<td id="spec-value"><%= @mobile_data_bluetooth_value.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">USB:</td>
+	<td id="spec-value"><%= @mobile_data_usb_value.titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">GPS:</td>
+	<td id="spec-value"><%= @mobile_data_gps_value.titlecase %></td> 
+</tr>
+</table>

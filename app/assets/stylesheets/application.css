@@ -1,0 +1,50 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree .
+ *= require gritter
+*/
+.ui-dialog div.ui-dialog-titlebar{
+	background-color: #F5F5F5;
+	border:1px solid #CCC;
+	border-left:5px solid #C42525;
+	color:#000;
+}
+
+.ui-dialog-buttonset span{
+	background-color: #C42525;
+	color:#FFF;
+}
+
+.ui-dialog .ui-dialog-titlebar-close{
+	border:1px solid #CCC;
+}
+
+.ui-dialog .ui-dialog-titlebar-close span{
+	background-color: #999;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus{
+	border:1px solid #DDD;
+	background-color: #DDD;
+}
+
+.ui-datepicker .ui-datepicker-header{
+	background-color: #C42525;
+}
+
+.ui-datepicker-prev ui-corner-all,.ui-state-hover,.ui-datepicker-prev-hover{
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.ui-datepicker .ui-datepicker-title select{
+	border:1px solid #EEE;
+}
+.field_with_errors .message {
+	    color: #D00;
+	    padding-left: 5px;
+	    font-size: 12 px;
+	}
+

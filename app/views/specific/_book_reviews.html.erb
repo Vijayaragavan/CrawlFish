@@ -1,0 +1,35 @@
+<div class="cf-specific-product-details-header-reviews-text">
+	<% if @desc_rating_widget.empty? %>	
+		<div class="cf-specific-reviews-description">Description</div>
+			<div style="padding-top:5px;"></div>
+			<span style="font-size:12px">Sorry! There is no description available for this book.</span>
+	<%else%>
+		<% if @desc_rating_widget[0].blank? %>
+			<div class="cf-specific-reviews-description">Description</div>
+			<div style="padding-top:5px;"></div>
+				<span style="font-size:12px">Sorry! There is no description available for this book.</span>
+		<% else %>
+			<div class="cf-specific-reviews-description">Description</div>
+			<div class="cf-specific-reviews-description-text">
+			<%= @desc_rating_widget[0].gsub('â€™','\'').gsub('â€¦','...').gsub('â€“','-').gsub('â€œ','"').gsub('â€','"').gsub('â€˜','\'').gsub('â€¢','-').gsub('â€¡','c').gsub('/â€”','k -- ').html_safe%>
+			</div>
+		<% end %>
+	<%end%>
+
+</div>
+<div style="padding-top:20px"></div>
+<div class="cf-specific-product-details-header-reviews-link">
+	<% if @desc_rating_widget.empty? %>	
+		<div class="cf-specific-reviews-description">Review</div>
+		<div style="padding-top:15px;"></div>
+		<span style="font-size:12px">Sorry! There is no review available for this book.</span>
+	<%else%>
+		<% if @desc_rating_widget[2].blank? %>
+			<div class="cf-specific-reviews-description">Review</div>
+			<div style="padding-top:15px;"></div>
+				<span style="font-size:12px">Sorry! There is no description available for this book.</span>
+		<% else %>
+			<%= @desc_rating_widget[2].html_safe%>
+		<% end %>
+	<%end%>
+</div>

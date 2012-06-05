@@ -1,0 +1,13 @@
+for i in `ls ls *_create_?[a-z]*_filters_collections.rb`
+do
+file=$i
+#alpha=${file:22:1}
+
+#ALPHA="${alpha^^}"
+
+echo "hi"
+
+cat template >> temp; mv temp $file
+
+done
+ 

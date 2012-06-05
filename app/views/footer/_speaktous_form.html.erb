@@ -1,0 +1,60 @@
+<% if @flash.nil? %>
+	<div id="speaktous-notification" style="display:none"></div>
+	<div id="speaktous-no-notification" style="display:none"></div>
+<%else%>
+	<%if(@flash.chomp.downcase=="create_speaktous")%>
+		<div id="speaktous-notification" style="display:inline"></div>
+	<%end%>
+	<%if(@flash.chomp.downcase=="no_create_speaktous")%>
+		<div id="speaktous-no-notification" style="display:inline"></div>
+	<%end%>
+<%end%>
+
+<div class="cf-speaktous-section">
+
+<%= form_for @speaktous, :url => {:controller => 'footer', :action => 'speak_to_us_submit'},:html => {:id => "speak_to_us_form"},:validate => true  do |f| %>
+	<table class="cf-speaktous-table" border=0 cellspacing=0 cellpadding=10>
+	<tr>
+	<td class="header">Type</td>
+	<td class="details">
+		<%= select_tag("sts_flag", options_for_select([['Advertise With Us', '0'], ['Suggestions', '1'],['Issues/Defects/Bugs','2'],['Queries', '3']], '0'),:class=>'details-select')%>
+	</td>
+	</tr>
+	
+	<tr>
+	<td class="header">Name</td>
+		<td class="details">
+			<%= f.text_field :name,:class=>'details-name',:title=>"Enter your name",:placeholder=>"Name" %>
+		</td>
+	</tr>
+	<tr>
+	<td class="header">Contact Number</td>
+		<td class="details">
+			<%= f.text_field :contact_number,:class=>'details-number',:title=>"Enter a contact number of yours",:placeholder=>"Contact Number" %>
+		</td>
+	</tr>
+	
+	<tr>
+	<td class="header">Email</td>
+		<td class="details">
+			<%= f.text_field :email,:class=>'details-email',:title=>"Enter an email id to contact you",:placeholder=>"Email ID" %>
+		</td>
+	</tr>
+	
+	<tr>
+	<td class="header">Message</td>
+		<td class="details">
+			<%= f.text_area :message,:class=>'message-textarea',:rows => 5,:title=>"Enter your message here",:placeholder=>"Enter your message here" %>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>&nbsp;</td>
+		<td>
+			<%= f.submit "SUBMIT",:class=>'details-submit',:title => "Click here to send SMS" ,:name => ""%>
+		</td>
+	</tr>
+                
+</table>
+<%end%>
+</div>

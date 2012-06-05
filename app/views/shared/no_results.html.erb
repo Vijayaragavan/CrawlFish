@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/genericsearchpage.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="cf-generic-content">
+
+<div class="cf-generic-header">
+
+	<div class="cf-generic-header-logo">
+		<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+	 <!-- end cf-generic-header-logo --></div>
+
+    	<div class="cf-generic-header-search-form">
+    		<%= render ('shared/form') %>
+    	<!-- end cf-generic-header-search-form --></div>
+
+<!-- end cf-generic-header --></div>
+
+
+<div class="cf-generic-content-wrapper">
+	<div class="cf-generic-no-results-main-content">
+		<div class="cf-generic-no-results">
+			<div class="cf-generic-no-results-header">
+				<span style="color:#C42525">No Results Found!</span>
+			</div>
+			<div class="cf-generic-no-results-content">
+				<% if @message="No results fetched!" %>
+				<span>Sorry! We did not get any results for your search keyword.</span>
+				<div style="padding-bottom:5px"></div>				
+				<div class="cf-generic-no-results-points">
+					<div class="cf-generic-no-results-points-header">
+						<span style="color:#C42525">Suggestions!</span>
+					</div>
+					<ul>
+						<li>Please search with different keywords</li>
+						<li>Make sure that you have typed search keyword correctly without any spelling mistakes</li>
+						<li>Visit <%= link_to "CrawlFish 101",{:controller => 'footer',:action => 'faq'}%> to learn better to search in CrawlFish</li>
+						</ul>
+				</div>
+				<div style="padding-top:10px"></div>	
+				<div class="cf-generic-no-results-link">
+					<%= link_to "BACK", :back %>
+				</div>
+				<% else %>
+				<% end %>
+			</div>
+			
+			
+		</div>		
+	<!-- end cf-generic-no-results-main-content --></div>
+
+	<div class="clear"></div>
+	<div class="cf-generic-footer">
+ 		<div class="cf-generic-footer-details">
+			<div class="cf-generic-footer-content">
+			<%= render 'shared/footer' %>
+			<!-- end cf-generic-footer-content --></div>
+		</div>
+	<!-- end cf-generic-footer --></div>
+<!-- end cf-generic-content-wrapper --></div>
+<!-- end cf-generic-content --></div>
+

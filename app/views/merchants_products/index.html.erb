@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/merchantdashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-merchant-content">
+
+	<div class="cf-merchant-header">
+		<%=render 'merchants/header'%>
+	<!-- end cf-merchant-header --></div>
+
+	<div class="cf-merchant-content-wrapper">
+
+		<%=render 'merchants/vendor_header_details'%>
+
+		<div class="clear"></div>
+
+
+		<div id="container" style="display:none">
+			<div id="basic-template">
+        			<a class="ui-notify-close" href="#">x</a>
+        			<h1>#{title}</h1>
+        			<p>#{text}</p>
+    			</div>
+		</div>
+
+
+
+		<div id="edit-form" title="Edit" style="display:none"></div>
+
+		<div id="delete-dialog" title="Delete" style="display:none"></div>
+
+
+
+		<% if @flash.nil? %>
+			<div id="delete-notification" style="display:none"></div>
+			<div id="delete-close-notification" style="display:none"></div>
+			<div id="edit-notification" style="display:none"></div>
+			<div id="edit-close-notification" style="display:none"></div>
+			<div id="create-notification" style="display:none"></div>
+			<div id="create-close-notification" style="display:none"></div>
+		<%else%>
+			<%if(@flash.chomp.downcase=="edit_success")%>
+			<div id="edit-notification" style="display:inline"></div>
+			<%end%>
+			<%if(@flash.chomp.downcase=="edit_close")%>
+			<div id="edit-close-notification" style="display:inline"></div>
+			<%end%>
+			<%if(@flash.chomp.downcase=="delete_success")%>
+			<div id="delete-notification" style="display:inline"></div>
+			<%end%>
+			<%if (@flash.chomp.downcase=="delete_close")%>
+			<div id="delete-close-notification" style="display:inline"></div>
+			<%end%>
+			<%if(@flash.chomp.downcase=="create_success")%>
+			<div id="create-notification" style="display:inline"></div>
+			<%end%>
+			<%if (@flash.chomp.downcase=="create_close")%>
+			<div id="create-close-notification" style="display:inline"></div>
+			<%end%>
+		<%end%>
+
+		<div class="cf-merchant-content-complete">
+			<div class="cf-merchant-content-divider"></div>
+			<%= render ("merchants/buttons") %>
+			<div style="padding-top:28px"></div>
+			<div class="cf-merchant-content-center">
+				<div class="cf-merchant-content-create-product">
+
+				 <%= button_to "Add Product", {:controller => "merchants_products", :action => "new",:vendor_id => @vendor_id, :model_name => @model_name, :type => @type}, :class=>'create-product-button' %>
+				</div>
+<!--			<div class="cf-merchant-content-flash-notice"><%= @flash %></div>-->
+				<div style="clear:both"></div>
+        <div class="cf-search-form">
+
+				<%= form_tag url_for(:controller => 'merchants_products', :action => 'search'),:id => "products-search-form"  do  %>
+
+				<%= text_field_tag "query",nil ,:class=>'cf-search-form-product-search-txt',:placeholder=>'Enter your product name here' %>
+
+				<% end %>
+
+				</div>
+
+
+				<div id="live-search-results">
+
+
+				<% if @type == "local" %>
+					<%= render ('merchants/local_products') %>
+				<% elsif @type == "online" %>
+					<%= render ('merchants/online_products') %>
+				<% end %>
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	<!-- end cf-merchant-content-wrapper --></div>
+	<div class="clear-footer"></div>
+	<div class="cf-merchant-footer">
+    		<div class="cf-merchant-footer-content">
+			<%= render 'shared/footer' %>
+        	</div>
+     	<!-- end cf-merchant-footer --></div>
+
+<!-- end cf-merchant-content --></div>
+</body>
+</html>
+

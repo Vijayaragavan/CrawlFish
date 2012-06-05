@@ -1,0 +1,47 @@
+
+<div id="variable-product-listings">
+<%= will_paginate @variable_product_listings %>
+
+<div id="loading-bar-dashboard" style="display:none;" class="cf-dashboard-loading">
+				   <img alt="156" height="20" src="/Images/156.gif" width="20" />
+</div>
+<table cellspacing=0 cellpadding=0 class="cf-merchant-content-products-table" border=0>
+<tr>
+<td class="cf-merchant-content-products-table-tr"><b>Product Name</b></td>
+<td class="cf-merchant-content-products-table-tr"><b>Number Of Impressions</b></td>
+<td class="cf-merchant-content-products-table-tr"><b>Total Cost Of Impressions</b></td>
+<td class="cf-merchant-content-products-table-tr"><b>Number Of Button Clicks</b></td>
+<td class="cf-merchant-content-products-table-tr"><b>Total Cost Of Button Clicks</b></td>
+
+</tr>
+
+
+
+<% @variable_product_listings.each do |variable_item| %>
+  <tr>
+
+	  <td class="td-product-name"><%= variable_item.product_name%></td>
+	  <td class="td-product-imp-clicks"><%= variable_item.impressions_count %></td>
+    <td class="td-product-imp-clicks"><%= variable_item.total_impressions %></td>
+	  <td class="td-product-imp-clicks"><%= variable_item.clicks_count %></td>
+    <td class="td-product-imp-clicks"><%= variable_item.total_clicks %></td>
+
+  </tr>
+
+<% end %>
+
+<tr class="tr-purchase-total">
+
+<td class="td-product-name"></td>
+<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Total:</b> <%= @variable_product_listings.collect(&:impressions_count).sum.to_i %></span></td>
+<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Total:</b> Rs.<%= @variable_product_listings.collect(&:total_impressions).sum.to_f %></span> </td>
+<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Total:</b> <%= @variable_product_listings.collect(&:clicks_count).sum.to_i %></span> </td>
+<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Total:</b> Rs.<%= @variable_product_listings.collect(&:total_clicks).sum.to_f %></span> </td>
+
+
+</tr>
+
+</table>
+
+</div>
+

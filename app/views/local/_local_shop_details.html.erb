@@ -1,0 +1,80 @@
+<div id="TabbedPanelsLocal1" class="TabbedPanels">
+
+<ul class="TabbedPanelsTabGroup">
+	<li class="TabbedPanelsTab" tabindex="0"><span class="local-shop-tab-header">Shop Details</span></li>
+	<li class="TabbedPanelsTab" tabindex="0"><span class="local-shop-tab-header">Shop Location</span></li>
+</ul>
+
+<div class="TabbedPanelsContentGroup">
+
+	<div class="TabbedPanelsContent">
+
+	<div class="cf-local-shop-tab-vendor-details">
+		<% @vendor.each do |vendor_fields| %>
+		<table class="cf-local-shop-tab-vendor-details-table" cellspacing=0 cellpadding=0 border=0>
+		<tr>
+		<td class="cf-local-shop-tab-vdt-img">
+
+		  <% if vendor_fields.vendor_logo.downcase == "na" %>
+		      <% @logo = "/Images/CF_informationLogoPng_v01.png" %>
+			<% else %>
+			    <% @logo = vendor_fields.vendor_logo %>
+			<% end %>
+
+			<%= image_tag(@logo,:alt =>vendor_fields.vendor_name,:title => vendor_fields.vendor_name)%>
+
+			<div class="cf-local-shop-tab-vdt-name">
+
+				<%= vendor_fields.vendor_name.capitalize%>
+			</div>
+		</td>
+		<td class="cf-local-shop-tab-vdt-td">
+			<div class="cf-local-shop-tab-vdt-address">
+				<% @arr_vendor_address = vendor_fields.vendor_address.split(",") %>
+				<% @arr_vendor_address.each do |a| %>
+					<%=a.titlecase%>
+					<br/>
+				<%end%>
+				<b>Contact:</b> <%=vendor_fields.vendor_phone%>
+				<br/>
+				<b>Email:</b> <%=vendor_fields.vendor_email%>
+				<br/>
+				<b>Store Timing:</b> <%=vendor_fields.working_time%>
+				<br/>
+			</div>
+		</td>
+		</tr>
+
+		<tr>
+		<td colspan=2>
+			<div style="padding-top:15px"></div>
+			<div class="cf-local-shop-tab-vdt-description">
+		  		<%= vendor_fields.vendor_description %>
+			</div>
+		</td>
+		</tr>
+
+		</table>
+		<% end %>
+        </div>
+	<!-- end TabbedPanelsContent --></div>
+
+
+
+	<div class="TabbedPanelsContent">
+
+		<div class="cf-local-shop-tab-vendor-address-location">
+
+		<div id="gmap">
+
+		</div>
+
+		<div id="gmap-error"><div class="gmap-error-message">Please select a branch!</div></div>
+
+		</div>
+
+
+	<!-- end TabbedPanelsContent --></div>
+<!-- end TabbedPanelsContentGroup --></div>
+<!-- end TabbedPanels --></div>
+

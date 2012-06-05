@@ -1,0 +1,44 @@
+# 
+for i in {a..z}
+do
+ for j in {a..z}
+ do
+  for k in {a..z}
+  do
+  for l in {a..z}
+   do
+   for m in {a..z}
+     do
+     for n in {a..z}
+       do
+              echo "|"$i$j$k$l$m$n" "$j$k$m$l$i$n" "$n$l$i$m$j$k "|""123""|""table_name""|""456""|""now()"
+       done
+     done
+   done
+  done
+ done
+done
+
+#for i in {0..9}
+#do
+#  for j in {0..9}
+#  do
+#    for k in {0..9}
+#    do
+#      for l in {0..9}
+#      do
+#        for m in {0..9}
+#        do
+#          for n in {0..9}
+#          do
+#         echo "|"$i$j$k$l$m$n$j$k$l$i$l$i$j$k "|""2456""|""some_table""|""000""|""now()"
+#         done
+#       done
+#      done
+#   done
+# done
+#done
+   
+
+
+

@@ -1,0 +1,170 @@
+IF v_firstLetter = '0' THEN
+  SELECT COUNT(*) INTO v_count FROM zero_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO zero_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '1' THEN
+  SELECT COUNT(*) INTO v_count FROM one_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO one_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '2' THEN
+  SELECT COUNT(*) INTO v_count FROM two_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO two_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '3' THEN
+  SELECT COUNT(*) INTO v_count FROM three_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO three_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '4' THEN
+  SELECT COUNT(*) INTO v_count FROM four_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO four_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '5' THEN
+  SELECT COUNT(*) INTO v_count FROM five_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO five_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '6' THEN
+  SELECT COUNT(*) INTO v_count FROM six_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO six_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '7' THEN
+  SELECT COUNT(*) INTO v_count FROM seven_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO seven_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '8' THEN
+  SELECT COUNT(*) INTO v_count FROM eight_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO eight_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+
+IF v_firstLetter = '9' THEN
+  SELECT COUNT(*) INTO v_count FROM nine_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO nine_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+

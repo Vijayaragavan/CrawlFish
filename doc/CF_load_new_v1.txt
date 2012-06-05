@@ -1,0 +1,20 @@
+################################################################# Online Vendor ADD #################################################################################
+
+rake vendor:addonline APP_PATH=/home/think/CrawlFish VENDOR_NAME=Flipkart VENDOR_LOGO="http://blog.flipkart.com/wp-content/uploads/2011/02/blog-logo-unit.png" VENDOR_WEBSITE=www.flipkart.com EMAIL=business@flipkart.com PHONE=1287426509 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=purchase SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=na ADDRESS=na LATITUDE=na LONGITUDE=na CITY_NAME=na BRANCH_NAME=na DESCRIPTION="Good online shop" WORKING_TIME=na MISCELLANEOUS="Online wallet, COD, 30 days replacement guarentee, EMI"
+
+
+rake vendor:addonline APP_PATH=/home/karthik/Desktop/CrawlFish2012_may03/CrawlFish VENDOR_NAME=Landmark VENDOR_LOGO="http://blog.landmark.com/wp-content/uploads/2011/02/blog-logo-unit.png" VENDOR_WEBSITE=www.landmark.com EMAIL=business@landmark.com PHONE=1287439509 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=variable SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=na ADDRESS=na LATITUDE=na LONGITUDE=na CITY_NAME=na BRANCH_NAME=na DESCRIPTION="Good online shop" WORKING_TIME=na MISCELLANEOUS="Online wallet, COD, 30 days replacement guarentee"
+
+################################################################### Local Vendor ADD ################################################################################
+
+rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME="SayarMobiles" VENDOR_LOGO=na VENDOR_WEBSITE=na EMAIL=sayar-mobiles@gmail.com PHONE=128787509 SUB_CATEGORIES="mobiles_lists" MONETIZATION_TYPE=fixed SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=457633344 ADDRESS="mambalam, chennai-24" LATITUDE=128.083 LONGITUDE=56.098 CITY_NAME=chennai BRANCH_NAME=mambalam DESCRIPTION="Good mobile shop" WORKING_TIME="9AM to 8.30PM" MISCELLANEOUS=na
+
+######################################################################################################################################################################
+
+
+
+rake vendor:addonline APP_PATH=/home/think/CrawlFish VENDOR_NAME=Crossword VENDOR_LOGO="http://blog.crossword.com/wp-content/uploads/2011/02/blog-logo-unit.png" VENDOR_WEBSITE=www.crossword.com EMAIL=crossword@gmail.com PHONE=1287426345 SUB_CATEGORIES="books_lists" MONETIZATION_TYPE=variable SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=454738242 ADDRESS="tnagar, chennai-24" LATITUDE=na LONGITUDE=na CITY_NAME=na BRANCH_NAME=na DESCRIPTION="Good online book shop" WORKING_TIME=na MISCELLANEOUS="COD, 30 days replacement guarentee"
+
+
+rake vendor:addlocal APP_PATH=/home/karthik/Desktop/CrawlFish2012_may03/CrawlFish VENDOR_NAME="Aza" VENDOR_LOGO=na VENDOR_WEBSITE=na EMAIL=aza@gmail.com PHONE=128799509 SUB_CATEGORIES="mobiles_lists" MONETIZATION_TYPE=fixed SUBSCRIBED_DATE=2012-04-20 VENDOR_FAX=457633344 ADDRESS="velachery, chennai-24" LATITUDE=156.083 LONGITUDE=34.098 CITY_NAME=chennai BRANCH_NAME=velachery DESCRIPTION="Good mobile shop" WORKING_TIME="9AM to 9PM" MISCELLANEOUS=na
+

@@ -1,0 +1,42 @@
+<% @local_deal.each do |i| %>
+
+<% @local_deal_product_details.each do |j| %>
+	<% if i.sub_category_id == 1 %>
+		<% @deal_product_image_url=j.book_image_url %>
+		<% @deal_product_name=j.book_name %>
+	<% elsif i.sub_category_id == 2 %>
+		<% @deal_product_image_url=j.mobile_image_url %>
+		<% @deal_product_name=j.mobile_name %>
+	<% end %>
+<% end %>
+
+<table class="cf-specific-deal-online-table" cellpadding="5px" cellspacing=0>
+
+<tr>
+<td rowspan=4 class="cf-specific-deal-online-img">
+	<%= image_tag(@deal_product_image_url, :alt => @deal_product_name, :title => @deal_product_name) %>
+</td>
+</tr>
+
+<tr>
+<td colspan=2 class="cf-specific-deal-online-prd-name">
+	<%= @deal_product_name %>
+</td>
+</tr>
+
+<tr>
+<td class="cf-specific-deal-online-deal-info">
+	<b>Deal:</b> <%= i.deal_info %>
+</td>
+</tr>
+
+<tr>
+<td colspan=2 class="cf-specific-deal-online-visit-shop">
+	
+	<%= link_to "Visit Shop",{:action => 'show_local_shop',:controller => 'local', :vendor_id => i.vendor_id, :product_id => i.product_id, :sub_category_id => i.sub_category_id,:unique_id=>i.unique_id,:deal =>1} %>
+
+</td>
+</tr>
+
+</table>
+<% end %>

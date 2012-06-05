@@ -1,0 +1,9 @@
+rake vendor:addonline["http://blog.flipkart.com/wp-content/uploads/2011/02/blog-logo-unit.png","http://www.flipkart.com/","support@flipkart.com","9962265010","bangalore"] APP_PATH=/home/vijayaragavanv/rubyonrails/CrawlFish2012apr11/CrawlFish VENDOR_ID=1 VENDOR_TYPE=online VENDOR_NAME=flipkart
+
+rake vendor:load VENDOR_TYPE=online VENDOR_NAME=flipkart DATA_FILE_PATH=/home/vijayaragavanv/Online_Flipkart_books.dat APP_PATH=/home/vijayaragavanv/rubyonrails/CrawlFish2012apr11/CrawlFish
+
+
+
+rake vendor:add["http://www.antya.com/antya/wp-content/uploads/2007/09/cross_logo.gif","http://www.crossword.in/","support@crossword.in","9962265010","chennai"] APP_PATH=/home/vijayaragavanv/rubyonrails/CrawlFish-2012feb24/CrawlFish VENDOR_ID=2 VENDOR_TYPE=online VENDOR_NAME=crossword
+
+rake vendor:load VENDOR_TYPE=online VENDOR_NAME=crossword DATA_FILE_PATH=/home/vijayaragavanv/Desktop/CF_Final_Crossword.dat APP_PATH=/home/vijayaragavanv/rubyonrails/CrawlFish-2012feb24/CrawlFish

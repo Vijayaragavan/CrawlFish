@@ -1,0 +1,56 @@
+<% @arr_grid_spec_genre = @feature_array[1].split("%") %>
+<% if(@arr_grid_spec_genre.count>1) %>
+	<% if(@arr_grid_spec_genre[0]=="books") %>
+		<% @spec_genre=@arr_grid_spec_genre[1].gsub(/\%/,",").titlecase %>
+	<% else %>
+		<% @spec_genre=@feature_array[1].gsub(/\%/,",").titlecase %>
+	<% end %>
+<%else%>
+	<% @spec_genre=@feature_array[1].gsub(/\%/,",").titlecase %>
+<% end %>
+
+<table class="cf-specific-product-details-prd" border=0 cellspacing=0 cellpadding=0>
+<tr id="spec-row"> 
+	<td id="spec-name-author">Author:</td>
+	<td id="spec-value-author"><%=  @feature_array[0].titlecase %></td>
+</tr>
+<tr id="spec-row"> 
+	<td id="spec-name">Genre:</td>
+	<td id="spec-value"><%= @spec_genre %></td> 
+</tr>
+	
+<tr id="spec-row">
+	<td id="spec-name">ISBN:</td>
+	<td id="spec-value"><%=  @feature_array[2].titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">ISBN13:</td>
+	<td id="spec-value"><%=  @feature_array[3].titlecase %></td>	
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Binding:</td>
+	<td id="spec-value"><%=  @feature_array[4].titlecase %></td> 
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Publishing date:</td>
+	<td id="spec-value"><%=  @feature_array[5].titlecase %></td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Publisher:</td>
+	<td id="spec-value"id="spec-value"><%=  @feature_array[6].titlecase %></td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Edition:</td>
+	<td id="spec-value"><%=  @feature_array[7].titlecase %></td>
+</tr>
+
+<tr id="spec-row">
+	<td id="spec-name">Language:</td>
+	<td id="spec-value"><%=  @feature_array[8].titlecase %></td>
+</tr>
+</table>

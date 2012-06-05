@@ -1,0 +1,79 @@
+
+<%= will_paginate @books ,:params => { :from_pagination => 1 } %>
+	<table class="list" cellpadding="10px" cellspacing="0px" border="0px">
+	      <% @books.each do |book| %>
+		<tr class="list_tr">
+			<td class="image_record">
+				<%= link_to image_tag(book.book_image_url) ,{:controller => 'specific',:action => 'specific_search', :specific_product_id => book.books_list_id, :sub_category_id => @sub_category_flag}%>
+			</td>
+
+        		<td class="product_table_data">
+				<% features = book.book_features.split("#") %>
+			         	<table class="product_table" cellpadding="3px" cellspacing="0px" border="0px">
+					<tr>
+			         	<td class="product_name"colspan="2">
+				       		<%= link_to (book.book_name), {:controller => 'specific',:action => 'specific_search', :specific_product_id => book.books_list_id, :sub_category_id => @sub_category_flag}, {:class => "css_class"} %>
+         				</td>
+         				</tr>
+
+         				<tr>
+         				<td class="feature1">
+         				<% if !(features[0].chomp.downcase.gsub(".","")== "na") %>
+         					<b>Author : </b><%=features[0].titlecase%>
+					<%else%>
+						<b>Author : </b> N.A.
+         				<%end%>
+         				</td>
+					
+					<td class="feature2">
+         				<% if !(features[6].chomp.downcase.gsub(".","")== "na") %>
+         					<b>Publisher : </b> <%=features[6].titlecase%>
+         				<%else%>
+						<b>Author : </b> N.A.
+					<%end%>
+					</td>
+
+         				</tr>
+
+
+          				<tr>
+					<td class="feature3">
+          				<% if !(features[4].chomp.downcase.gsub(".","")== "na") %>
+         					<b>Binding : </b> <%=features[4].titlecase%>
+					<%else%>
+						<b>Binding : </b> N.A.         				
+					<%end%>
+          				</td>
+          				<td class="feature4">
+					<% if !(features[2].chomp.downcase.gsub(".","")== "na") %>
+						<b>ISBN : </b> <%=features[2].capitalize%>
+					<%else%>
+						<b>ISBN :</b> N.A.
+					<%end%>
+          				</td>
+          				</tr>
+
+					<tr>
+						<%  @available_from_final_books = @available_from_final[@sub_category_flag].map{|i|  p i[1] if i[0] == book.books_list_id }.join %>
+	          				<td class="list-price-range">
+	          					<span class="list-price-range-details">
+	          						Available from <span style="font-weight:bold;color:#06C;font-size:14px;">Rs.<%= @available_from_final_books %></span>
+	          					</span>
+	          				</td>
+
+          				</tr>
+					<tr>
+						<td class="compare" colspan="2">
+
+          						<%= link_to "COMPARE", {:controller => 'specific',:action => 'specific_search', :specific_product_id => book.books_list_id, :sub_category_id => @sub_category_flag, :starts_at => @available_from_final_books }%>
+          					</td>
+					</tr>
+
+         				</table>
+         		</td>
+       		</tr>
+       		<% end %>
+
+      </table>
+<%= will_paginate @books ,:params => { :from_pagination => 1 } %>
+

@@ -1,0 +1,163 @@
+class Add<<class_vendor_type>><<class_vendor_name>>Products < ActiveRecord::Migration
+
+  def up
+ 
+  execute <<-SQL
+
+  CREATE TABLE IF NOT EXISTS <<vendor_type>>_<<vendor_name>>_products (
+  product_id int(11) unsigned NOT NULL AUTO_INCREMENT,
+  product_name varchar(255) NOT NULL,
+  product_image_url text,
+  product_category varchar(255) NOT NULL,
+  product_sub_category varchar(255) NOT NULL,
+  product_brand varchar(255) NOT NULL,
+  product_features text NOT NULL,
+  product_price double NOT NULL,
+  product_shipping_time varchar(255) NOT NULL,
+  product_shipping_cost double NOT NULL,
+  product_redirect_url text NOT NULL,
+  product_special_offers text,
+  reason varchar(255) NOT NULL,
+  validity varchar(255) NOT NULL,
+  configured_by varchar(255) NOT NULL,
+  created_at datetime NOT NULL,
+  updated_at datetime DEFAULT NULL,
+  PRIMARY KEY (product_id)
+  ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+
+  SQL
+
+    execute <<-SQL
+    CREATE TRIGGER t_Insert_<<vendor_type>>_<<vendor_name>>_products AFTER INSERT ON <<vendor_type>>_<<vendor_name>>_products
+    FOR EACH ROW
+    BEGIN
+
+    DECLARE v_DebugID varchar(100) DEFAULT 't_Insert_<<vendor_type>>_<<vendor_name>>_products';
+
+    DECLARE v_VendorID INT DEFAULT <<vendor_id>>;
+
+    DECLARE v_delete_flag INT DEFAULT 0;
+
+    DECLARE v_type_flag VARCHAR(10) DEFAULT '<<vendor_type>>';
+
+    call p_Insert_update_delete_products_table(      v_delete_flag,
+                                                     v_VendorID,
+                                                     v_DebugID,
+                                                     new.product_features,
+                                                     new.configured_by,
+                                                     new.reason,
+                                                     new.validity,
+                                                     new.product_id,
+                                                     new.product_name,
+                                                     new.product_image_url,
+                                                     new.product_price,
+                                                     new.product_shipping_time,
+                                                     new.product_shipping_cost,
+                                                     v_type_flag);
+
+    END;
+
+    SQL
+
+    execute <<-SQL
+    CREATE TRIGGER t_Update_<<vendor_type>>_<<vendor_name>>_products AFTER UPDATE ON <<vendor_type>>_<<vendor_name>>_products
+    FOR EACH ROW
+    BEGIN
+
+    DECLARE v_DebugID varchar(100) DEFAULT 't_Update_<<vendor_type>>_<<vendor_name>>_products';
+
+    DECLARE v_VendorID INT DEFAULT <<vendor_id>>;
+
+    DECLARE v_delete_flag INT DEFAULT 0;
+
+    DECLARE v_type_flag VARCHAR(10) DEFAULT '<<vendor_type>>';
+
+    call p_Insert_update_delete_products_table(      v_delete_flag,
+                                                     v_VendorID,
+                                                     v_DebugID,
+                                                     new.product_features,
+                                                     new.configured_by,
+                                                     new.reason,
+                                                     new.validity,
+                                                     new.product_id,
+                                                     new.product_name,
+                                                     new.product_image_url,
+                                                     new.product_price,
+                                                     new.product_shipping_time,
+                                                     new.product_shipping_cost,
+                                                     v_type_flag);
+
+
+    END;
+
+    SQL
+    execute <<-SQL
+    CREATE TRIGGER t_Delete_<<vendor_type>>_<<vendor_name>>_products AFTER DELETE ON <<vendor_type>>_<<vendor_name>>_products
+    FOR EACH ROW
+    BEGIN
+
+    DECLARE v_DebugID varchar(100) DEFAULT 't_Delete_<<vendor_type>>_<<vendor_name>>_products';
+
+    DECLARE v_VendorID INT DEFAULT <<vendor_id>>;
+
+    DECLARE v_delete_flag INT DEFAULT 1;
+
+    DECLARE v_type_flag VARCHAR(10) DEFAULT '<<vendor_type>>';
+
+    call p_Insert_update_delete_products_table(      v_delete_flag,
+                                                     v_VendorID,
+                                                     v_DebugID,
+                                                     old.product_features,
+                                                     old.configured_by,
+                                                     old.reason,
+                                                     old.validity,
+                                                     old.product_id,
+                                                     old.product_name,
+                                                     old.product_image_url,
+                                                     old.product_price,
+                                                     old.product_shipping_time,
+                                                     old.product_shipping_cost,
+                                                     v_type_flag);
+
+
+    END;
+
+    SQL
+
+    execute <<-SQL
+    INSERT INTO vendors_lists(vendor_id,
+                              vendor_name,
+                              vendor_logo,
+                              business_type,
+                              vendor_website,
+                              vendor_email,
+                              vendor_phone,
+                              vendor_address,
+                              created_at)
+      values(<<vendor_id>>,
+             "<<vendor_name>>",
+             "<<vendor_logo>>",
+             "<<business_type>>",
+             "<<vendor_website>>",
+             "<<vendor_email>>",
+             "<<vendor_phone>>",
+             "<<vendor_address>>",
+             now());
+
+
+
+    SQL
+
+
+  end
+
+
+  def down
+        execute "DELETE FROM vendors_lists WHERE vendor_id = <<vendor_id>>"
+        execute "DROP TRIGGER IF EXISTS t_Delete_<<vendor_type>>_<<vendor_name>>_products"
+        execute "DROP TRIGGER IF EXISTS t_Update_<<vendor_type>>_<<vendor_name>>_products"
+        execute "DROP TRIGGER IF EXISTS t_Insert_<<vendor_type>>_<<vendor_name>>_products"
+        execute "DROP TABLE IF EXISTS <<vendor_type>>_<<vendor_name>>_products"
+  end
+end
+

@@ -1,0 +1,81 @@
+def startHashSearch(hashkey)
+
+    flag = 0
+
+    currentArraykey = 0
+
+    if !(hashkey == 0)
+
+    hashkey.downto(1) { |hashkey|
+
+      (0).upto(hashkey-1) { |arraykey|
+
+
+        firstletter = @handsawHash[hashkey][arraykey][0]
+        currentHashValue = @handsawHash[hashkey][arraykey]
+
+         if findbooks(firstletter,currentHashValue)
+
+           currentArraykey = arraykey
+           flag = 1
+
+           break
+
+         end
+
+       }
+
+       if (flag == 1)
+
+         startHashSearch(currentArraykey)
+
+         break
+
+       end
+
+      }
+   end
+
+  end
+
+  def findbooks(firstletter,v1_currentHashValue)
+    if firstletter == '0'
+      @modelname = "Zero"+"FiltersCollections"
+    elsif firstletter == '1'
+      @modelname = "One"+"FiltersCollections"
+    elsif firstletter == '2'
+      @modelname = "Two"+"FiltersCollections"
+    elsif firstletter == '3'
+      @modelname = "Three"+"FiltersCollections"
+    elsif firstletter == '4'
+      @modelname = "Four"+"FiltersCollections"
+    elsif firstletter == '5'
+      @modelname = "Five"+"FiltersCollections"
+    elsif firstletter == '6'
+      @modelname = "Six"+"FiltersCollections"
+    elsif firstletter == '7'
+      @modelname = "Seven"+"FiltersCollections"
+    elsif firstletter == '8'
+      @modelname = "Eight"+"FiltersCollections"
+    elsif firstletter == '9'
+      @modelname = "Nine"+"FiltersCollections"
+    else
+      @modelname = firstletter.upcase+"FiltersCollections"
+    end
+
+    @currentfilterdetails = [ ]
+
+    @currentfilterdetails << @modelname.constantize.find(:all,:select => ['filter_id', 'filter_table_name','filter_table_column'],:conditions => ['filter_key LIKE ?',"%#{v1_currentHashValue}%"])
+
+    if !(@currentfilterdetails.flatten.blank?)
+       @filterdetails << @currentfilterdetails.flatten
+       return true
+
+    else @currentfilterdetails.flatten(1).blank?
+
+      return false
+
+    end
+
+  end
+

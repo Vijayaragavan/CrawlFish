@@ -1,0 +1,104 @@
+<% if @online_grids_count > 0 %>
+<div class="in-out-of-stock-links">
+<% if params[:include].nil? %>
+      <% @include = 1 %>
+      <%= form_out_of_stock_links("online","inline","include",0).html_safe %>
+      <%= form_out_of_stock_links("online","none","exclude",1).html_safe %>
+<% else %>
+      <% @include = params[:include].to_i %>
+	       <% if @include == 0 %>
+	              <%= form_out_of_stock_links("online","inline","exclude",1).html_safe %>
+	       <% elsif @include == 1 %>
+	              <%= form_out_of_stock_links("online","inline","include",0).html_safe %>
+	       <% end %>
+<% end %>
+</div>
+<% end %>
+
+<div style="clear:both;padding-bottom:10px"></div>
+<table class="cf-specific-product-grid-table-online-inner" cellspacing=0 cellpadding=0>
+
+	<% if @online_grids_count == 0 %>
+
+		<tr class="wrong-tr">
+
+		<td>
+			<div class="cf-specific-product-grid-table-wronglogo">
+				<%= image_tag("/Images/CF_WrongLogoPng_v01.png") %>
+			</div>
+		</td>
+
+             	<td>
+             		<div class="cf-specific-product-grid-table-wrongtext">
+             			This product is currently not available in any of online shops
+             		</div>
+             	</td>
+
+		</tr>
+
+	<% else %>
+
+	<div id="online-grid-pagination-links">
+<%= will_paginate @online_grids , :params => {:product_id => @product_id,:sub_category_id => @sub_category_id, :type => "online", :include => @include }%>
+
+</div>
+
+   <tr>
+
+		<th id="th-seller">
+   			Seller
+		</th>
+
+		<th id="th-price">
+    			Price
+		</th>
+
+		<th id="th-shipping">
+    			Shipping time & Cost
+   		</th>
+
+		<th id="th-shop">
+			Option
+   		</th>
+
+ 		</tr>
+	<%end%>
+</table>
+
+<div id="final-online-grid" data-unique_ids_array="<%= @online_grids.map{|i| i.unique_id } %>" data-query="<%=@query%>">
+
+<table class="cf-specific-product-grid-table-online-details" border=0 cellpadding=0 cellspacing=0>
+
+<% @online_grids.each do |grid| %>
+
+		<tr class="cf-specific-product-grid-table-online-inner-tr-content">
+			<td id="td-seller"><%= image_tag(grid.vendor_logo.map {|h| h.vendor_logo}.join,:alt => grid.vendor_name, :title => grid.vendor_name) %></td>
+			<td id="td-price">
+
+			<% if grid.availability.gsub(/\s+/, "").downcase == "outofstock" %>
+				<%="N.A."%>
+			<% else %>				
+				<%= "Rs."+(grid.price.to_i).to_s %>
+			<% end %>
+
+			</td>
+			<td id="td-shipping">
+			<% if grid.availability.gsub(/\s+/, "").downcase == "outofstock" %>
+				<%="N.A."%>
+			<% else %>
+				<%= grid.shipping_time %>&nbsp;&&nbsp;<%=if (grid.shipping_cost.to_i <= 0) then grid.shipping_cost = "Free"; else ; grid.shipping_cost; end  %>
+			<% end %>
+			</td>
+			<td id="online-visit-shop" data-unique_id="<%= grid.unique_id %>" data-query="<%=@query%>"><%= link_to "Visit Shop", url_encode(grid.redirect_url) %></td>
+		</tr>
+
+<% end %>
+
+</table>
+</div>
+
+
+<div class="cf-specific-product-grid-table-online-inner-tr-header">
+
+</div>
+

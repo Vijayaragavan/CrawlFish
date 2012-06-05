@@ -1,0 +1,129 @@
+<% if @mobile_brands.count > 0 %>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Brands</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+
+  <%@mobile_brands.each do |mobile_brand| %>
+
+  <li>
+  <%= form_filter_url(mobile_brand,params[:mobile_brand_id],params[:order],"mobile_brand_name","mobile_brand_id","filters",@sub_category_flag) %>
+  </li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+
+<% if false %>
+
+<% if @mobile_colors.count > 0 %>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Colors</h2></div>
+
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+  <%@mobile_colors.each do |mobile_color| %>
+
+  <li>
+  <%= form_filter_url(mobile_color,params[:mobile_color_id],params[:order],"mobile_color_name","mobile_color_id","filters",@sub_category_flag) %>
+  </li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+
+<% end %>
+
+<% if @mobile_types.count > 0 %>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Types</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+  <%@mobile_types.each do |mobile_type| %>
+
+  <li>
+  <%= form_filter_url(mobile_type,params[:mobile_type_id],params[:order],"mobile_type_name","mobile_type_id","filters",@sub_category_flag) %>
+  </li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+
+<% if @mobile_designs.count > 0 %>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Designs</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+  <%@mobile_designs.each do |mobile_design| %>
+
+  <li>
+  <%= form_filter_url(mobile_design,params[:mobile_design_id],params[:order],"mobile_design_name","mobile_design_id","filters",@sub_category_flag) %>
+  </li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+
+<% if @mobile_os_version.count > 0 %>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Operating Systems</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+  <%@mobile_os_version.each do |mobile_os| %>
+
+  <li>
+  <%= form_filter_url(mobile_os,params[:mobile_os_version_id],params[:order],"mobile_os_version","mobile_os_version_id","filters",@sub_category_flag) %>
+  </li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+
+<% if @primary_cameras.count > 0 %>
+
+	<div class="cf-generic-left-sidebar-filter-heading"><h2>Primary Camera</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+  <%@primary_cameras.each do |primary_camera| %>
+
+  <li>
+  <%= form_filter_url(primary_camera,params[:primary_camera_id],params[:order],"primary_camera","primary_camera_id","filters",@sub_category_flag) %>
+  </li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+
+<% if @secondary_cameras.count > 0 %>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Secondary Camera</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+  <%@secondary_cameras.each do |secondary_camera| %>
+
+  <li>
+  <%= form_filter_url(secondary_camera,params[:secondary_camera_id],params[:order],"secondary_camera","secondary_camera_id","filters",@sub_category_flag) %>
+  </li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+
+<% if false %>
+
+<% if @assorteds.count > 0 %>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Miscellaneous</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+  <%@assorteds.each do |assorted| %>
+
+  <li>
+  <%= form_filter_url(assorted,params[:assorteds_id],params[:order],"assorteds_name","assorteds_id","filters",@sub_category_flag) %>
+  </li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+<% end %>
+

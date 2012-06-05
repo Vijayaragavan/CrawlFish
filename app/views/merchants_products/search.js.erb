@@ -1,0 +1,10 @@
+<% if @type == "online" %>
+
+  $("#live-search-results").html("<%= escape_javascript(render('merchants/online_products')) %>");
+
+<% elsif @type == "local" %>
+
+  $("#live-search-results").html("<%= escape_javascript(render('merchants/local_products')) %>");
+
+<% end %>
+

@@ -1,0 +1,33 @@
+CREATE PROCEDURE p_Insert_link_f10_books_lists(IN v1_books_list_id INT,
+                                                  IN v1_availability_id INT,
+                                                  IN v1_debugid VARCHAR(100))
+     BEGIN
+
+
+     DECLARE v_COUNT INT;
+
+
+
+     SELECT COUNT(*) INTO v_COUNT
+     FROM link_f10_books_lists
+     WHERE concat(books_list_id,availability_id) = concat(v1_books_list_id,v1_availability_id);
+
+     IF v_COUNT = 0 THEN
+
+     INSERT INTO link_f10_books_lists(books_list_id,availability_id)
+     values(v1_books_list_id,v1_availability_id);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A link for the availability_id ',v1_availability_id,' and books_list_id ',v1_books_list_id,
+      ' is created, about a nanosecond ago'));
+
+     ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,'No link is created in link_f10_books_lists');
+
+
+     END IF;
+
+    END;
+

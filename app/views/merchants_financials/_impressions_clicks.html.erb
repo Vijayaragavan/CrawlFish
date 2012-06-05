@@ -1,0 +1,38 @@
+<div id="i-c-product-listings">
+<%= will_paginate @impressions_clicks_product_listings %>
+
+<table cellspacing=0 cellpadding=0 class="cf-merchant-content-products-table" border=0>
+<tr>
+<td class="cf-merchant-content-products-table-tr"><b>Product Name</b></td>
+<td class="cf-merchant-content-products-table-tr"><b>Number Of Impressions</b></td>
+
+<td class="cf-merchant-content-products-table-tr"><b>Number Of Button Clicks</b></td>
+
+
+</tr>
+
+
+
+<% @impressions_clicks_product_listings.each do |variable_item| %>
+  <tr>
+
+	  <td class="td-product-name"><%= variable_item.product_name%></td>
+	  <td class="td-product-imp-clicks"><%= variable_item.impressions_count %></td>
+
+	  <td class="td-product-imp-clicks"><%= variable_item.clicks_count %></td>
+
+
+  </tr>
+
+<% end %>
+
+<tr class="tr-purchase-total">
+	<td class="td-product-name"></td>
+	<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Impressions Count:</b> <%= @impressions_clicks_product_listings.collect(&:impressions_count).sum.to_i %></span></td>
+	<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Clicks Count:</b> <%= @impressions_clicks_product_listings.collect(&:clicks_count).sum.to_i %></span> </td>
+</tr>
+
+</table>
+
+</div>
+

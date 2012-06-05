@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="Images/favicon.ico">
+<link href="./Stylesheets/genericsearchpage.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+<!--
+function setFocus()
+{
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-local-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+    }
+}
+//-->
+</script>
+<link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="setFocus()">
+
+<div class="cf-generic-content">
+
+<div class="cf-generic-header">
+
+<div class="cf-generic-header-logo">
+			<img id="imgLogo" src="./Images/CF_logoOnlyTextWoChartPng_v14.png" alt="CrawlFish Logo"/>
+	 <!-- end cf-generic-header-logo --></div>
+
+    <div class="cf-generic-header-search-form">
+     <%= form_tag ('index'), :method => 'get' %>
+        	<table cellpadding="10px">
+ 				<tr>
+    				<th scope="col"><input name="cf_home_search_form_searchText" id="cf_home_search_form_searchText" type="text" title="Enter your search query here to Find, compare and decide" placeholder="Enter Search Key"/></th>
+      				<th scope="col"><input name="Search" type="button" id="cf-generic-header-search-form-searchCompare" title="Click here to search"/></th>
+ 				</tr>
+			</table>
+      <% end %>
+      <!-- end cf-generic-header-search-form --></div>
+
+<div class="cf-generic-header-links">
+    	<ul class="cf-generic-header-links-ul">
+        	<li><a id="cf-a-virtualmall" href="virtualmall.html">Virtual Mall</a></li>
+            <li><a id="cf-a-bargain" href="bargain.html">Bargain</a></li>
+            <li><a id="cf-a-top5" href="top5.html">Top 5</a></li>
+        </ul>
+	  <!-- end cf-generic-header-links --></div>
+<!-- end cf-generic-header --></div>
+
+<div class="cf-generic-content-wrapper">
+	<div class="cf-generic-left-sidebar">
+    	<div class="cf-generic-left-sidebar-category">
+        <h2>Categories</h2>
+    	<ul class="cf-generic-left-sidebar-links-ul">
+        	<li><a href="virtualmall.html">Books[50]</a></li>
+            <li><a href="bargain.html">Mobiles[50]</a></li>
+        </ul>
+       <!--end cf-generic-left-sidebar-category--> </div>
+       <div class="cf-generic-left-sidebar-filter">
+       		<h2>Filter1</h2>
+    		<ul class="cf-generic-left-sidebar-links-ul">
+        		<li><a href="virtualmall.html">Filter1 Value - 1</a></li>
+            	<li><a href="bargain.html">Filter1 Value -2</a></li>
+                <li><a href="bargain.html">Filter1 Value -3</a></li>
+                <li><a href="bargain.html">Filter1 Value -4</a></li>
+       		</ul>
+       </div>
+       <div class="cf-generic-left-sidebar-filter">
+       		<h2>Filter2</h2>
+    		<ul class="cf-generic-left-sidebar-links-ul">
+        		<li><a href="virtualmall.html">Filter2 Value - 1</a></li>
+            	<li><a href="bargain.html">Filter2 Value -2</a></li>
+                <li><a href="bargain.html">Filter2 Value -3</a></li>
+                <li><a href="bargain.html">Filter2 Value -4</a></li>
+       		</ul>
+       </div>
+    <!--end cf-generic-left-sidebar--></div>
+	<div class="cf-generic-main-content">
+   	 	<div class="cf-generic-main-content-header">
+    		<h2>Displaying search results for <%= @searchkey %> in Books category</h2>
+   	 	<!-- end cf-generic-main-content-header --></div>
+
+   	  	<div class="cf-generic-main-content-details">
+			<table cellspacing="20px">
+
+                   <tr>
+         <th scope="col">Image</th>
+         <th scope="col" width="100%">Name</th>
+         <th scope="col"  width="25%">Features</th>
+         <th scope="col" width="200%">Go</th>
+
+       </tr>
+       <% @books.each do |book| %>
+
+       <tr>
+
+         <td align="center"><br/><%= image_tag(book.book_image_url, :height => "75", :width => "100") %><br/></td>
+         <td align="center"><%= book.book_name %></td>
+         <td align="center"><%= book.book_features.gsub("#",",") %></td>
+         <td align="center"><%= link_to("Go", {:action => 'startSpecificSearch', :id => book.books_list_id}, :class => 'back-link') %></a></td>
+       </tr>
+       <% end %>
+            </table>
+       	<!-- end cf-generic-main-content-details --></div>
+    <!-- end cf-generic-main-content --></div>
+
+<div class="cf-generic-right-sidebar">
+
+        <div class="cf-generic-right-sidebar-videoad">
+			<img src="Images/amazon.gif" alt="amazon ad gif"/>
+		<!-- end cf-specific-right-sidebar-videoad --></div>
+
+        <div class="cf-generic-right-sidebar-deal">
+                    <h2>Deal of the Day</h2>
+                    	<div id="dealImage">
+                        	<img src="Images/stevejobs.jpg"  alt="Steve jobs"/>
+                        </div>
+                        <div id="dealDetails" align="center">
+                    		<a href="">Steve Jobs: The Exclusive Biography: A Biography (Hardcover)</a>
+                      </div>
+                         <div id="dealPrice">
+                         	<table>
+                              <tr><td rowspan="4"><span class="logoDiscount"><span class="yousaveper">30</span><span style="font-size:12px;">%</span></span></td></tr>
+                            	<tr><td style="text-decoration:line-through;color:#666">List Price: Rs.799</td></tr>
+								<tr><td style="font-weight:bold; color:#000" >Our Price: Rs.599</td></tr>
+                                <tr><td style="color:#063;font-weight:bold">You Save: Rs.200</td></tr>
+                           </table>
+                         </div>
+     	<!--cf-generic-right-sidebar-deal--> </div>
+
+
+   	 	<div class="cf-generic-right-sidebar-bannerad">
+			<img src="Images/amazon.gif" alt="amazon ad gif"/>
+		<!-- end cf-generic-right-sidebar-bannerad --></div>
+
+    <!-- end cf-generic-right-sidebar --> </div>
+
+ <!-- end cf-generic-content-wrapper --></div>
+
+<div class="cf-generic-footer">
+	<div class="cf-generic-footer-content">
+        	<a href="home.html">About Us</a>
+            &nbsp;|&nbsp;
+            <a href="bargain.html">FAQ</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Merchant Login</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Advertise</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Privacy Statement</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Speak to Us</a>
+     <!-- end cf-generic-footer-content --></div>
+ <!-- end cf-generic-footer --></div>
+
+ <!-- end cf-generic-content --></div>
+
+</body>
+</html>
+

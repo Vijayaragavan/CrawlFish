@@ -1,0 +1,49 @@
+<div class="cf-lsmc-hds-wrapper">
+
+<div class="cf-local-shop-main-content-hds-sms-header"><span>SEND SMS</span></div>
+
+<div class="cf-local-shop-main-content-hds-sms-intro"><span>You can also express interest in this product by sending SMS to <%= @vendor_name.titlecase %>. <b><%= @vendor_name.titlecase %></b> will contact you shortly.</span></div>
+
+<div style="padding-top:5px"></div>
+
+<div class="cf-local-shop-main-content-hds-sms-form">
+<%= form_tag url_for(:controller => 'local_shop', :action => 'send_sms'),:id => "send_sms_form"  do %>
+ 
+ <div class="cf-local-shop-main-content-hds-sms-form-radio">
+    <% [ 'mobile','landline' ].each do |type| %>
+      <%= radio_button_tag 'type', type, @type == type %>
+      <%= type.humanize %>
+    <% end %>
+ </div>
+
+  <div style="padding-top:5px"></div>
+
+  <div class="cf-local-shop-main-content-hds-sms-form-send">
+
+  <div id="send-sms-text-button" style="display:none">
+
+    <%= text_field_tag "phone-number" %>
+
+    <%= hidden_field_tag 'product_id', @product_id , {:id => "send_sms_product_id"}%>
+
+    <%= hidden_field_tag 'sub_category_id', @sub_category_id, {:id => "send_sms_sub_category_id"} %>
+
+    <%= hidden_field_tag 'vendor_id', @vendor_id, {:id => "send_sms_vendor_id"} %>
+   <div style="padding-top:10px"></div>
+   <%= submit_tag "Send SMS",{:id => "send-sms-button" , :title => "Click here to send SMS" ,:name => ""}%>
+    <%= link_to "Cancel" %>
+   <div style="clear:both"></div>
+    <div style="padding-top:10px"></div>
+  </div>
+</div>
+<% end %>
+
+<div id="send-sms-success-message" style="display:none">
+<span class="sms-send-thanks">Thank you! Your request to send sms has been taken! <%= @vendor_name.titlecase %> will contact you shortly.</span>
+<%= link_to "Dismiss" %>
+</div>
+
+
+
+</div>
+</div>

@@ -1,0 +1,33 @@
+####################### 16 - MAY ##########################################
+
+20120308134134_create_procedure_insert_vendor_data_priorities.rb - The table names are properly created by converting the strings to lowercase
+
+20120310091520_create_procedure_insert_update_delete_online_grid_dertails.rb - Checked one more condition that delete flags should be 0 inorder to execute insert and update statements (DB sync issue - already fixed in the previous db release)
+
+20120310091620_create_procedure_insert_update_delete_local_grid_dertails.rb - Checked one more condition that delete flags should be 0 inorder to execute insert and update statements (DB sync issue - already fixed in the previous db release)
+
+20120312172980_create_procedure_insert_into_link_products_lists_vendors.rb - Checked one more condition that delete flags should be 0 inorder to execute insert and update statements (DB sync issue - already fixed in the previous db release)
+
+20120308134137_create_procedure_check_priority_table.rb - new procedure created to update the priority_errors table on every part2 data insert
+
+20111217100056_create_trigger_insert_on_books_lists.rb - Updated with the new procedure created above
+
+20120305201144_create_trigger_insert_on_mobiles_lists.rb - Updated with the new procedure created above
+
+20120308134140_create_procedure_to_delete_products_from_part1.rb - Modified to delete all the data, which has found a place in priority_errors table, from <<vendor>>_products table
+
+20111211103286_create_trigger_on_vendors_lists.rb - called the function to remove temporary table (DB sync issue - already fixed in the previous db release)
+
+Complete work around to check all "def down" functionality in all the migrations and models
+
+Removed "IF EXISTS" condition in all the "def down" statements
+
+#################################################################################################################################################
+
+########################## 17 - MAY #######################################
+
+20111211124928_create_books_f7_publishers.rb - Added a new column "publisher_alias"
+
+vendor.rake - Load task modified to accomodate multiple load migrations
+
+20111211103570_create_procedure_to_insert_update_delete_vendor_pays_table.rb - Added update statements to set history_flag to 1 for the delete scenarios

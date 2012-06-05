@@ -1,0 +1,36 @@
+<table class="cf-right-sidebar-similar-table">
+<% @similar_product.each do |i| %>
+<tr>
+<td>
+
+<div class="cf-right-sidebar-similar-table-img">
+
+
+
+<%= link_to image_tag(i.mobile_image_url, :alt => i.mobile_name, :title => i.mobile_name) ,{:controller => 'specific',:action => 'specific_search', :specific_product_id => i.mobiles_list_id, :sub_category_id => 1}%>
+
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+<div class="cf-right-sidebar-similar-table-details">
+
+<%= link_to i.mobile_name ,{:controller => 'specific',:action => 'specific_search', :specific_product_id => i.mobiles_list_id, :sub_category_id => 2} %>
+
+The Color of this mobile is <%= i.mobile_color %>
+The brand of this mobile is <%= i.mobile_brand %>
+
+
+</div>
+
+
+</td>
+</tr>
+
+<% end %>
+</table>
+

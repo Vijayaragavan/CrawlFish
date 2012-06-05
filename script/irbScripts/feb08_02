@@ -1,0 +1,6 @@
+final =Array.new
+b=a.flatten(1).inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+(b.values.max).downto(1)  { |i|
+  final << b.select {|k,v| v == i}.keys
+}
+

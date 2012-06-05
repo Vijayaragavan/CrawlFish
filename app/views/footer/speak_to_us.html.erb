@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - About Us</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/speaktous.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-speaktous-content">
+
+	<div class="cf-speaktous-header">
+		<div class="cf-speaktous-header-logo">
+			<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+			<%= link_to image_tag("/Images/CF_logoTagLinePng_v2.png") ,{:controller => 'main',:action => 'index'},:class => 'imgTag'%>
+		</div>	
+    	 <!-- end .cf-speaktous-header --></div>
+	
+	<div class="cf-speaktous-content-wrapper">
+		<div class="cf-speaktous-main-content">
+			<div class="cf-speaktous-overview">
+            			<h2>Speak to CrawlFish</h2>
+            		</div>
+ 			<%= render 'footer/speaktous_form' %>
+		</div>
+		<div class="cf-speaktous-right-sidebar">
+			<%= render 'footer/speaktous_sidebar' %>	
+		</div>
+		<div class="clear"></div>
+	</div>	
+
+        <div class="cf-speaktous-footer">
+    		<div class="cf-speaktous-footer-content">
+ 		<%= render 'shared/footer' %>    
+        	</div>
+     <!-- end .cf-speaktous-footer --></div>
+ <!-- end .cf-speaktous-content --></div>
+</body>
+</html>
+

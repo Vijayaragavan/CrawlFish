@@ -1,0 +1,43 @@
+<div id="TabbedPanels3" class="TabbedPanels">
+	<ul class="TabbedPanelsTabGroup">
+		<li class="TabbedPanelsTab" tabindex="0" >
+
+			<img class="cf-specific-product-grid-table-img" src="/Images/version1/CF_online_v1.png" alt="" align="left" />
+			<div class="cf-specific-product-grid-table-span-typename">&nbsp;Online Shops</div>
+
+		</li>
+
+		<li class="TabbedPanelsTab" tabindex="0">
+			
+			<img class="cf-specific-product-grid-table-img" src="/Images/version1/CF_LocalShops_v1.png" alt="" align="left" />
+			<div class="cf-specific-product-grid-table-span-typename">&nbsp;Local Shops</div>
+		
+		</li>
+
+	</ul>
+
+	<div class="TabbedPanelsContentGroup">
+		<div class="TabbedPanelsContent">
+	
+			<div class="cf-specific-deal-table-online">
+		
+					<%= render 'online_deal' %>
+                
+                	<!-- end cf-specific-deal-table-online--></div>
+           	
+           	<!-- end TabbedPanelsContent--></div>
+           
+    	    	<div class="TabbedPanelsContent">
+    	    		
+    	    		            
+            		<div class="cf-specific-deal-table-online" data-product_id="<%= @product_id %>" data-sub_category_id="<%= @sub_category_id %>">
+     		
+     				<%= render 'local_deal' %>
+			
+			<!-- end cf-specific-deal-table-online--></div>
+     		
+     		<!-- end TabbedPanelsContent--></div>
+     		
+  	   <!-- end TabbedPanelsContentGroup--></div>
+  	   
+<!-- end TabbedPanels--></div>

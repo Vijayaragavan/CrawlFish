@@ -1,0 +1,33 @@
+<table class="cf-right-sidebar-similar-table">
+<% @similar_product.each do |i| %>
+<tr>
+<td>
+
+<div class="cf-right-sidebar-similar-table-img">
+
+
+
+<%= link_to image_tag(i.book_image_url, :alt => i.book_name, :title => i.book_name) ,{:controller => 'specific',:action => 'specific_search', :specific_product_id => i.books_list_id, :sub_category_id => 1}%>
+
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+<div class="cf-right-sidebar-similar-table-details">
+
+<%= link_to i.book_name ,{:controller => 'specific',:action => 'specific_search', :specific_product_id => i.books_list_id, :sub_category_id => 1} %>
+
+
+</div>
+
+
+</td>
+</tr>
+
+<% end %>
+</table>
+

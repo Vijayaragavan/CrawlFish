@@ -1,0 +1,31 @@
+$("#delete-dialog").dialog({
+  autoOpen: true,
+  width: 400,
+  modal: true,
+  draggable:false,
+  resizable:false,
+  title: 'Delete Product',
+  buttons: [
+        {
+            text: "Delete",
+            className: 'edit-button-class',
+            click: function() {
+                $("#product-delete-form").submit()
+            }
+        },
+        {
+            text: "Close",
+            className: 'close-button-class',
+            click: function() {
+                $(this).dialog("close")
+            }
+        }
+    ],
+  open: function() {
+    $("#delete-dialog").html("<%= escape_javascript(render('delete')) %>");
+ var x = $(this).position().center + $(this).outerWidth();
+    var y = $(this).position().center - $(document).scrollTop();
+    $("#delete-dialog").dialog('option', 'position', [x,y]);
+    },
+});
+

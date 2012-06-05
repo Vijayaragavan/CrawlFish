@@ -1,0 +1,23 @@
+def decide_categories_order(sub_category_id)
+
+    if !(@master_hash[sub_category_id].nil?)
+
+      if (@master_hash[sub_category_id].flatten.empty?)
+        	   count = 0.to_s
+        	 else
+        	   count = @master_hash[sub_category_id][0].count.to_s
+        	 end
+
+        	 if !(count == "0")
+        	     link_to ((Subcategories.what_is_my_name(sub_category_id).flatten.join.capitalize+"["+count+"]"), {:controller => 'category', :action => 'switch',:sub_category_id => sub_category_id  } )
+        	 end
+      end
+
+      if flag == 0
+         @sub_category_flag ||= sub_category_id
+      end
+
+          flag = 1
+
+    end
+

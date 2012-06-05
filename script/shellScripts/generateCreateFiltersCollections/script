@@ -1,0 +1,8 @@
+
+for i in {zero,one,two,three,four,five,six,seven,eight,nine}
+do
+alpha=$i
+beta="FiltersCollections"
+echo $alpha$beta 
+rails g model $alpha$beta filter_key:text filter_id:integer filter_table_name:string sub_category_id:integer
+done

@@ -1,0 +1,34 @@
+<div id="purchase-product-listings">
+
+<%= will_paginate @purchase_product_listings %>
+
+
+<table cellspacing=0 cellpadding=0 class="cf-merchant-content-products-table" border=0>
+<tr>
+<td class="cf-merchant-content-products-table-tr"><b>&nbsp;Product Name&nbsp;</b></td>
+<td class="cf-merchant-content-products-table-tr"><b>&nbsp;Product Purchase Count&nbsp;</b></td>
+<td class="cf-merchant-content-products-table-tr"><b>&nbsp;Product Purchase Amount in Rs.&nbsp;</b></td>
+
+
+</tr>
+
+
+<% @purchase_product_listings.each do |purchase_item| %>
+  <tr>
+	  <td class="td-product-name"><%= purchase_item.product_name%></td>
+	  <td class="td-product-imp-clicks"><%= purchase_item.purchase_count %></td>
+	  <td class="td-product-imp-clicks"><%= purchase_item.purchase_amount %></td>
+  </tr>
+
+<% end %>
+
+<tr class="tr-purchase-total">
+	<td class="td-product-name"></td>
+	<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Total:</b> <%= @purchase_product_listings.collect(&:purchase_count).sum.to_i %></span> </td>
+	<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Total:</b> Rs.<%= @purchase_product_listings.collect(&:purchase_amount).sum.to_f %></span> </td>
+</tr>
+
+</table>
+
+</div>
+

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/merchantdashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="cf-merchant-content">
+	<div class="cf-merchant-header">
+		<%=render 'merchants/header'%>
+	<!-- end cf-merchant-header --></div>
+
+<div class="cf-merchant-content-wrapper">
+		<%=render 'merchants/vendor_header_details'%>
+
+		<div class="clear"></div>
+
+<div class="cf-merchant-content-complete">
+			<div class="cf-merchant-content-divider"></div>
+			<%= render ("merchants/buttons") %>
+			<div style="padding-top:28px"></div>
+<div class="cf-merchant-content-center">
+<div class="cf-merchant-create-product">
+<div class="cf-merchant-create-product-header">You are here to create a new product.Please enter the following details!</div>
+<div class="cf-merchant-create-product-fieldset-section">
+<fieldset class="cf-merchant-create-product-fieldset">
+
+<%= form_for @merchants_product, :url => {:controller => 'merchants_products', :action => 'create'},:html=> {:id => "product-create-form"},:validate => true  do |f| %>
+
+
+
+<table class="cf-merchant-create-product-table" cellpadding=5 cellspacing=0 border=0>
+	<tr>
+		<td class="td-create-product-label"><%= f.label :product_name,"Name" %></td>
+		<td><%= f.text_field :product_name,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_image_url,"Image" %></td>
+		<td><%= f.text_field :product_image_url,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_category,"Category"%></td>
+		<td><%= f.text_field :product_category,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_sub_category,"Sub Category"%></td>
+		<td><%= f.text_field :product_sub_category,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_identifier1,"Identifier 1"%></td>
+		<td><%= f.text_field :product_identifier1,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_identifier2,"Identifier 2"%></td>
+		<td><%= f.text_field :product_identifier2,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_price,"Price" %></td>
+		<td><%= f.text_field :product_price,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_availability,"Availability" %></td>
+		<td><%= f.text_field :product_availability,:class=>"td-create-product-text" %></td>
+	</tr>
+
+	<% if @type == "local" %>
+
+	<tr>
+		<td><%= f.label :product_delivery,"Delivery" %></td>
+		<td><%= f.text_field :product_delivery,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_delivery_time,"Delivery Time" %></td>
+		<td><%= f.text_field :product_delivery_time,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+    		<td><%= f.label :product_delivery_cost,"Delivery Cost" %></td>
+		<td><%= f.text_field :product_delivery_cost,:class=>"td-create-product-text" %></td>
+	</tr>
+
+	<% elsif @type == "online" %>
+
+	<tr>
+		<td><%= f.label :product_shipping_cost,"Shipping Cost" %></td>
+		<td><%= f.text_field :product_shipping_cost,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_shipping_time,"Shipping Time" %></td>
+		<td><%= f.text_field :product_shipping_time,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_redirect_url,"Redirect URL" %></td>
+		<td><%= f.text_field :product_redirect_url,:class=>"td-create-product-text" %></td>
+	</tr>
+
+	<% end %>
+	<tr>
+		<td><%= f.label :product_special_offers,"Special Offers" %></td>
+		<td><%= f.text_field :product_special_offers,:class=>"td-create-product-text" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :product_warranty,"Warranty" %></td>
+		<td><%= f.text_field :product_warranty,:class=>"td-create-product-text" %></td>
+	</tr>
+
+	<%= hidden_field_tag 'merchant_action', 'create' %>
+
+	<tr>
+		<td colspan=2 class="td-add-button-section"><%= f.submit "Add this product",:class=>"td-create-product-add-button" %></td>
+	</tr>
+
+</table>
+<% if @merchants_product.errors.any? %>
+<span class="add-product-error">Error!</span>
+      <ul>
+        <% for message in @merchants_product.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+</span>
+<% end %>
+   <% end %>
+
+</fieldset>
+</div>
+</div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear-footer"></div>
+<div class="cf-merchant-footer">
+    		<div class="cf-merchant-footer-content">
+			<%= render 'shared/footer' %>
+        	</div>
+     	<!-- end cf-merchant-footer --></div>
+</div>
+</body>
+</html>
+

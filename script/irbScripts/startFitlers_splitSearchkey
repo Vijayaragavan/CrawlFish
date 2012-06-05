@@ -1,0 +1,82 @@
+def abc(i)
+ if i==9
+  return true
+  else
+  return false
+  end
+  end
+
+for i in 0..10
+  if abc(i)
+    print "if"
+  end
+end
+def splitSearchKey(searchkey)
+
+
+    totalCombination = [ ]
+    keys = [ ]
+
+    keys = searchkey.gsub(/\-/i, ",").gsub(/ /i,",").gsub(/\+/,",").split(",").map(&:strip).reject(&:empty?)
+
+    if !(keys.size == 1)
+# a little change is needed, because if there are 5 keywords, and if you fail searching for specific/generice #step-1 for 5 keywords and going to filters, why search again with 5 keys if you can search with 4 keys
+      (keys.length-1).downto(0) { |i|
+
+      totalCombination << keys.slice(0..keys.length-1).slice(0..i).join(" ")
+
+      }
+
+    startFilters(totalCombination,keys)
+
+    else
+
+      totalCombination = keys
+
+    startFilters(totalCombination,keys)
+
+
+    end
+    end
+
+
+
+    def startFilters(v1_totalCombination,keys)
+
+
+       for i in (0..v1_totalCombination.length-1)
+
+         firstletter = v1_totalCombination[i][0]
+         currentCombination = v1_totalCombination[i]
+
+         if i == (v1_totalCombination.length - 1)
+           finishflag = 1
+         end
+
+         if findbooks(firstletter,currentCombination,keys,finishflag)
+
+           puts "successful if"
+           break;
+
+         end
+
+      end
+
+  end
+
+
+
+for i in (0..totalCombination.length-1)
+
+         firstletter = totalCombination[i][0]
+         currentCombination = totalCombination[i]
+
+         if findbooks(firstletter,currentCombination,keys)
+
+           puts "true"
+           break;
+
+         end
+
+      end
+

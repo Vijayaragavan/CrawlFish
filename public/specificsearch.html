@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Sepcific search results page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="Stylesheets/specificsearch.css" rel="stylesheet" type="text/css">
+<script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+function setFocus()
+{
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf_specific_search_form_searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+    }
+}
+//-->
+</script>
+<link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="setFocus()">
+<div class="cf-specific-content">
+
+<div class="cf-specific-header">
+
+	<div class="cf-specific-header-logo">
+			<img id="imgLogo" src="/Images/CF_logoOnlyTextWoChartPng_v14.png" alt="CrawlFish Logo"/>
+	 <!-- end cf-specific-header-logo --></div>
+
+     <div class="cf-specific-search-form">
+     <%= form_tag ('index'), :method => 'get' %>
+        	<table>
+ 				<tr>
+    				<th scope="col"><input id="cf_specific_search_form_searchText" type="text" title="Enter your search query here to Find, compare and decide" placeholder="Enter Search Key"/></th>
+      				<th scope="col"><input name="Search" type="button" id="cf-specific-search-form-searchCompare" title="Click here to search"/></th>
+ 				</tr>
+			</table>
+      </form>
+      <!-- end cf-specific-search-form --></div>
+
+	  <div class="cf-specific-header-links">
+    	<ul class="cf-specific-header-links-ul">
+        	<li><a id="cf-a-virtualmall" href="virtualmall.html">Virtual Mall</a></li>
+            <li><a id="cf-a-bargain" href="bargain.html">Bargain</a></li>
+            <li><a id="cf-a-top5" href="top5.html">Top 5</a></li>
+        </ul>
+	  <!-- end cf-specific-header-links --></div>
+
+<!-- end cf-specific-header --></div>
+
+<div class="cf-specific-content-wrapper">
+		<div class="cf-specifc-left-sidebar">
+		<% @book.each do |book| %>
+
+            <div class="cf-specific-left-sidebar-image">
+				<%= image_tag(book.book_image_url, :height => "75%", :width => "85%") %>
+            <!-- end cf-specific-left-sidebar-image --></div>
+
+            <div class="cf-specific-left-sidebar-image-btns">
+                        <a href="virtualmall.html">
+								<img id="facebook" src="/Images/btnSearch.png" alt="Facebook Review page" title="Facebook">
+						</a>
+                            <a href="virtualmall.html">
+								<img id="twitter" src="/Images/btnSearch.png" alt="Twitter Review page" title="Twitter">
+						</a>
+                         <a href="virtualmall.html">
+								<img id="google" src="/Images/btnSearch.png" alt="Google Plus Review page" title="Google+">
+						</a>
+			   <!-- end cf-specific-left-sidebar-image-btns --></div>
+
+               <div class="cf-specific-left-sidebar-image-socialnetworking">
+                        <a href="virtualmall.html">
+								<img id="facebook" src="/Images/facebook.jpg" alt="Facebook Review page" title="Facebook">
+						</a>
+                            <a href="virtualmall.html">
+								<img id="twitter" src="/Images/twitter.jpg" alt="Twitter Review page" title="Twitter">
+						</a>
+                         <a href="virtualmall.html">
+								<img id="google" src="/Images/g.jpg" alt="Google Plus Review page" title="Google+">
+						</a>
+			   <!-- end cf-specific-left-sidebar-image-socialnetworking --></div>
+
+<!-- end cf-specifc-left-sidebar --></div>
+
+<div class="cf-specifc-main-content">
+	<div class="cf-specific-product-header">
+	 	<h1><%= book.book_name %></h1>
+	<!-- end cf-specific-product-header --></div>
+
+    <div class="cf-specific-product-compare-text">
+		<h2>Compare prices and deals from Online and Local shops</h2>
+	<!-- end cf-specific-product-compare-text --></div>
+
+    <div class="cf-specific-product-grid-table">
+    	<div id="TabbedPanels1" class="TabbedPanels">
+    	  <ul class="TabbedPanelsTabGroup">
+    	    <li class="TabbedPanelsTab" tabindex="0">Online Shops</li>
+    	    <li class="TabbedPanelsTab" tabindex="0">Local Shops</li>
+  	    </ul>
+    	  <div class="TabbedPanelsContentGroup">
+    	    <div class="TabbedPanelsContent">
+            	<div class="cf-specific-product-grid-table-online">
+                    	<table width="300" border="0" cellspacing="0" cellpadding="0">
+ 						 <tr style="font-weight:bold">
+   							 <th id="seller">&nbsp;Seller</th>
+    						 <th id="price">&nbsp;Price</th>
+    						 <th id="price">&nbsp;Shipping Price & Time</th>
+    						 <th id="storeBtn">&nbsp;</th>
+ 						</tr>
+                        <tr>
+                        	 <td id="seller"><img src="/Images/flipkart.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.14040</th>
+    						 <td id="price">&nbsp;Free & 3 days</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="buyNow"  value="Buy Now"  title="Click here to buy" />					</th>
+                        </tr>
+                         <tr>
+                        	 <td id="seller"><img src="/Images/adexmart.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.13475</th>
+    						 <td id="price">&nbsp;Free & 2 days</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="buyNow"  value="Buy Now"  title="Click here to buy" /></th>
+                        </tr>
+                         <tr>
+                        	 <td id="seller"><img src="/Images/homeshop18.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.13849</th>
+    						 <td id="price">&nbsp;Free and 5 days</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="buyNow"  value="Buy Now"  title="Click here to buy" /></th>
+                        </tr>
+                         <tr>
+                        	 <td id="seller"><img src="/Images/themobilestore.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.14040</th>
+    						 <td id="price">&nbsp;Free and 3 days</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="buyNow"  value="Buy Now" title="Click here to buy" /></th>
+                        </tr>
+                         <tr>
+                        	 <td id="seller"><img src="/Images/infibeam.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.12643</th>
+    						 <td id="price">&nbsp;Free & 2 days</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="buyNow"  value="Buy Now"  title="Click here to buy" /></th>
+                        </tr>
+</table>
+
+                   	 <!-- end TabbedPanelsContent--></div>
+           <!-- end TabbedPanelsContent--></div>
+    	    <div class="TabbedPanelsContent">
+            		<div class="cf-specific-product-grid-table-local">
+                    	<table width="300" border="0" cellspacing="0" cellpadding="0">
+ 						 <tr style="font-weight:bold">
+   							 <th id="seller">&nbsp;Seller</th>
+    						 <th id="price">&nbsp;Price</th>
+    						 <th id="price">&nbsp;Deal</th>
+    						 <th id="storeBtn">&nbsp;</th>
+ 						</tr>
+                        <tr>
+                        	 <td id="seller"><img src="/Images/flipkart.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.10040</th>
+    						 <td id="price">&nbsp;N.A</th>
+    						 <td id="storeBtn">&nbsp;<a href="LocalShopPage.html" style="text-decoration:none"><input name="Search" type="button" id="visitShop"  value="Visit Shop"  title="Click here to visit the page of shop" /></a></th>
+                        </tr>
+                         <tr>
+                        	 <td id="seller"><img src="/Images/adexmart.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.10475</th>
+    						 <td id="price">&nbsp;N.A</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="visitShop"  value="Visit Shop"  title="Click here to visit the page of shop" /></th>
+                        </tr>
+
+                         <tr>
+                        	 <td id="seller"><img src="/Images/homeshop18.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.11649</th>
+    						 <td id="price">&nbsp;N.A</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="visitShop"  value="Visit Shop"  title="Click here to visit the page of shop" /></th>
+                        </tr>
+                         <tr>
+                        	 <td id="seller"><img src="/Images/themobilestore.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.15040</th>
+    						 <td id="price">&nbsp;N.A</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="visitShop"  value="Visit Shop" title="Click here to visit the page of shop" /></th>
+                        </tr>
+                         <tr>
+                        	 <td id="seller"><img src="/Images/infibeam.jpg" /></th>
+    						 <td id="price">&nbsp;Rs.12453</th>
+    						 <td id="price">&nbsp;N.A</th>
+    						 <td id="storeBtn">&nbsp;<input name="Search" type="button" id="visitShop"  value="Visit Shop"  title="Click here to visit the page of shop" /></th>
+                        </tr>
+</table>
+			<!-- end TabbedPanelsContent--></div>
+             <!-- end TabbedPanelsContent--></div>
+  	   <!-- end TabbedPanelsContentGroup--></div>
+  	  <!-- end TabbedPanels--></div>
+	<!-- end cf-specific-product-grid-table --></div>
+
+    <div class="cf-specific-product-details">
+
+        <div class="cf-specific-product-details-header">
+       	  <h2>Details about the product</h2>
+          <!-- end cf-specific-product-details-header --> </div>
+
+		<div class="cf-specific-product-details-tab">
+          	 <div id="TabbedPanels2" class="TabbedPanels">
+            	<ul class="TabbedPanelsTabGroup">
+            		<li class="TabbedPanelsTab" tabindex="0">Specification</li>
+					<li class="TabbedPanelsTab" tabindex="0">Reviews</li>
+					<li class="TabbedPanelsTab" tabindex="0">Accessories</li>
+            	</ul>
+            <div class="TabbedPanelsContentGroup">
+              	<div class="TabbedPanelsContent">
+              		<table id="tblSpec">
+							<tr> <td style="font-weight:bold">author name:</td>
+								<td><%=  @featureArray[0] %></td></tr>
+							<tr><td style="font-weight:bold">genre:</td>
+								<td><%=  @featureArray[1] %></td> </tr>
+							<tr><td style="font-weight:bold">&nbsp;Connectivity</td>
+								<td>GPRS, EDGE, 3G, Wifi, A-GPS, Bluetooth</td> </tr>
+							<tr><td style="font-weight:bold">&nbsp;Hardware</td>
+								<td>800 MHz ARM 11 Processor; Adreno 200 GPU</td>	</tr>
+							<tr><td style="font-weight:bold">&nbsp;OS</td>
+								<td>Android 2.2 (Froyo)</td> </tr>
+							<tr><td style="font-weight:bold">&nbsp;Others</td>
+								<td>GSM Phone, FM Radio, 3.5 mm Audio jack, 1350 mAh Battery</td></tr>
+						   </table>
+                           <p id="detailedSpecPara">For detailed specifications, click here: <a href="http://www.gsmarena.com/samsung_galaxy_ace_s5830-3724.php#ttl" target="_blank" rel="nofollow">GSM Arena</a>
+              <!-- end TabbedPanelsContent --> </div>
+
+              <div class="TabbedPanelsContent">
+              	<p id="detailedSpecPara">For detailed reviews, click here:  <a href="http://www.techtree.com/India/Reviews/Review_Samsung_Galaxy_Ace/551-115451-614.html" target="_blank" rel="nofollow">Techtree</a></p>
+             <!-- end TabbedPanelsContent -->  </div>
+
+             <div class="TabbedPanelsContent">
+					<div id="cf-specific-product-acccessories">
+              				<table>
+                    		<tr>
+                          	<td width="55px" rowspan="2"><img src="http://img13.flixcart.com//image/mobile/k/n/q/htc-wildfire-s-40x40-imad2fkpcnhkhkaw.jpeg" /></td>
+                            <th style="font-weight:bold"><a href="">&nbsp;Amzer Soft Glossy Skin Case</a></th>
+                            </tr>
+                            <tr><td>&nbsp;Rs.436</td>
+                            </tr>
+                            <tr>
+                          	<td width="55px" rowspan="2"><img src="http://img2.flixcart.com//image/mobile/y/g/z/sony-ericsson-xperia-mini-st15i-40x40-imadf8ywfjjfnfag.jpeg" /></td>
+                            <td style="font-weight:bold"><a href="">&nbsp;iSoft Soft Case</a></td></tr>
+                            <tr><td>&nbsp;Rs.290</td>
+                            </tr>
+                            <tr>
+                          	<td width="55px" rowspan="2"><img src="http://img14.flixcart.com//image/mobile/h/5/c/samsung-galaxy-s-lcd-i9003-40x40-imad22tqxzzdfssg.jpeg" /></td>
+                            <td style="font-weight:bold"><a href="">&nbsp;Screen Gaurd</a></td></tr>
+                            <tr><td>&nbsp;Rs.140</td>
+                            </tr>
+                            <tr>
+                          	<td width="55px" rowspan="2"><img src="http://img1.flixcart.com//image/mobile/4/4/4/samsung-galaxy-y-s5360-40x40-imad2pzjx3uq8paz.jpeg" /></td>
+                            <td style="font-weight:bold"><a href="">&nbsp;Memory Card - 4GB</a></td></tr>
+                            <tr><td>&nbsp;Rs.340</td>
+                            </tr>
+						</table>
+                   <!-- end cf-specific-product-acccessories --></div>
+             <!-- end TabbedPanelsContent -->  </div>
+            <!-- end TabbedPanelsContentGroup --> </div>
+          <!-- end cf-specific-product-details-tab --> </div>
+          <!-- end TabbedPanels --> </div>
+    <!-- end cf-specific-product-details --></div>
+
+<!-- end cf-specifc-main-content --></div>
+
+<div class="cf-specifc-right-sidebar">
+	<div class="cf-specific-right-sidebar-videoad">
+			<img src="/Images/amazon.gif" alt="amazon ad gif"/>
+	<!-- end cf-specific-right-sidebar-videoad --></div>
+
+    <div class="cf-specific-right-sidebar-recommendations">
+                    	<h2>You would be interested in these &nbsp; products too!</h2>
+                    	<table>
+                    		<tr>
+                          	<td width="15px" rowspan="2"><img src="http://img13.flixcart.com//image/mobile/k/n/q/htc-wildfire-s-40x40-imad2fkpcnhkhkaw.jpeg" /></td>
+                            <th style="font-weight:bold"><a href="">&nbsp;HTC Wildfire S</a></th>
+                            </tr>
+                            <tr><td>&nbsp;Rs.13000</td>
+                            </tr>
+                            <tr>
+                          	<td width="15px" rowspan="2"><img src="http://img2.flixcart.com//image/mobile/y/g/z/sony-ericsson-xperia-mini-st15i-40x40-imadf8ywfjjfnfag.jpeg" /></td>
+                            <td style="font-weight:bold"><a href="">&nbsp;Sony Ericsson Xperia Mini</a></td></tr>
+                            <tr><td>&nbsp;Rs.13500</td>
+                            </tr>
+                            <tr>
+                          	<td width="15px" rowspan="2"><img src="http://img14.flixcart.com//image/mobile/h/5/c/samsung-galaxy-s-lcd-i9003-40x40-imad22tqxzzdfssg.jpeg" /></td>
+                            <td style="font-weight:bold"><a href="">&nbsp;Samsung Galaxy S LCD</a></td></tr>
+                            <tr><td>&nbsp;Rs.18440</td>
+                            </tr>
+                            <tr>
+                          	<td width="15px" rowspan="2"><img src="http://img1.flixcart.com//image/mobile/4/4/4/samsung-galaxy-y-s5360-40x40-imad2pzjx3uq8paz.jpeg" /></td>
+                            <td style="font-weight:bold"><a href="">&nbsp;Samsung Galaxy Y S5360</a></td></tr>
+                            <tr><td>&nbsp;Rs.7490</td>
+                            </tr>
+						</table>
+     <!-- end cf-specific-right-sidebar-recommendations--></div>
+
+    <div class="cf-specific-right-sidebar-deal">
+                    <h2>Deal of the Day</h2>
+                    	<div id="dealImage">
+                        	<img src="/Images/stevejobs.jpg"  alt="Steve jobs"/>
+                        </div>
+                        <div id="dealDetails" align="center">
+                    		<a href="">Steve Jobs: The Exclusive Biography: A Biography (Hardcover)</a>
+                      </div>
+                         <div id="dealPrice">
+                         	<table>
+                              <tr><td rowspan="4"><span class="logoDiscount"><span class="yousaveper">30</span><span style="font-size:12px;">%</span></span></td></tr>
+                            	<tr><td style="text-decoration:line-through;color:#666">List Price: Rs.799</td></tr>
+								<tr><td style="font-weight:bold; color:#000" >Our Price: Rs.599</td></tr>
+                                <tr><td style="color:#063;font-weight:bold">You Save: Rs.200</td></tr>
+                           </table>
+                         </div>
+     <!--cf-specific-right-sidebar-deal--> </div>
+
+
+    <div class="cf-specific-right-sidebar-bannerad">
+			<img src="/Images/amazon.gif" alt="amazon ad gif"/>
+	<!-- end cf-specific-right-sidebar-bannerad --></div>
+
+<!-- end cf-specifc-right-sidebar --></div>
+
+<!-- end cf-specific-content-wrapper --></div>
+
+<div class="cf-specific-footer">
+	<div class="cf-specific-footer-content">
+        	<a href="home.html">About Us</a>
+            &nbsp;|&nbsp;
+            <a href="bargain.html">FAQ</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Merchant Login</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Advertise</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Privacy Statement</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Speak to Us</a>
+     <!-- end cf-specific-footer-content --></div>
+<!-- end cf-specific-footer --></div>
+
+<!-- end cf-specific-content --></div>
+<script type="text/javascript">
+var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+var TabbedPanels2 = new Spry.Widget.TabbedPanels("TabbedPanels2");
+</script>
+</body>
+</html>
+

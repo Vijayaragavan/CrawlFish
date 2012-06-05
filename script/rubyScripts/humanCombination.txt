@@ -1,0 +1,7 @@
+searchkey = "google andriod motorola-zoom phone".gsub(/\-/,",").gsub(/ or /i, ",").gsub(/ /i,",").gsub(/\+/,",").split(",").map(&:strip).reject(&:empty?)
+(0 ... 1).map do |i|
+     (i ... searchkey.length).map do |j|
+       searchkey[i..j]
+    end
+end
+

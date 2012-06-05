@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/merchantdashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-merchant-content">
+	<div class="cf-merchant-header">
+		<%=render 'merchants/header'%>
+	<!-- end cf-merchant-header --></div>
+<div class="cf-merchant-content-wrapper">
+	<%=render 'merchants/vendor_header_details'%>
+
+		<div class="clear"></div>
+<div class="cf-merchant-content-complete">
+			<div class="cf-merchant-content-divider"></div>
+			<%= render ("merchants/buttons") %>
+			<div style="padding-top:28px"></div>
+<div class="cf-merchant-content-center">
+	<div class="cf-variable-pay-section">
+
+		<div class="cf-variable-pay-header">You can review your financial details in this section. In financials tab, you can view number of impressions and button clicks and their total cost per product in each category listed in CrawlFish by you. Also, you can view number of purchases and purchase commission per product in each category.</div>
+
+		<div class="cf-variable-pay-common-wrapper">
+			<div class="cf-variable-pay-common-header">
+				<div class="cf-variable-pay-common-header-label">Financial Type :</div>
+				<div class="cf-variable-pay-common-header-type"><%= @monetization_type.titlecase %> </div>
+				<div style="clear:both;padding-bottom:5px;"></div>
+			</div>
+			<div style="padding-top:10px"></div>
+			<div class="cf-variable-pay-common-content">
+				<div class="cf-variable-pay-common-cutoff-period">
+					<% if @no_cut_off_period == 1 %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Cut-Off Period&nbsp;:</b><i>&nbsp;<%= @message %></i></span>
+					<% else %>
+						<span class="cf-variable-pay-common-cutoff-period-value"><b>Cut-Off Period&nbsp;:</b>&nbsp;<%= @cut_off_period %></span>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">Cut-off Period is the number of days within which you have to pay the cut-off amount after you have recevied billing emailer from us.</div>
+				</div>
+
+				<div class="cf-variable-pay-common-cutoff-amount">
+					<% if @no_cut_off_amount == 1 %>
+						<span class="cf-variable-pay-common-cutoff-amount-message"><b>Cut-off Amount&nbsp;</b><i>&nbsp;<%= @message %></i></span>
+					<% else %>
+						<span class="cf-variable-pay-common-cutoff-amount-value"><b>Cut-Off Amount&nbsp;:</b>&nbsp;Rs. <%= @cut_off_amount %></span>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">Cut-off Amount is the cash limit. If your total transaction exceeds this limit, only then you have to pay us and you will receive billing emailer regarding the same from us. Your payment cycle is defined by this limit. </div>
+				</div>
+			<!-- end cf-variable-pay-common-content--></div>
+		<!--end cf-variable-pay-common-wrapper --></div>
+
+		<div class="cf-variable-pay-prd-listing-imp-clicks-wrapper">
+
+			<div class="cf-variable-pay-common-header">
+				<div class="cf-variable-pay-common-header-label">Product Listing - Impressions and Clicks</div>
+				<div class="common_table_categorize-select">
+					<%= select("variable_table_categorize", "id",options_for_select(@options).titlecase) %>
+				</div>
+				<div id="loading-bar-dashboard-var" style="display:none;" class="cf-dashboard-loading">
+				    <%= image_tag "/Images/156.gif", :size => "20x20" %>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+
+			<div style="padding-top:10px"></div>
+
+			<div class="cf-variable-pay-common-content">
+				<div class="cf-variable-pay-common-cutoff-period">
+					<% if @no_impression_rate == 1 %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Cost per impression&nbsp;:</b><i>&nbsp;<%= @message %></i></span>
+					<% else %>
+						<span class="cf-variable-pay-common-cutoff-period-value"><b>Cost per impression&nbsp;:</b>&nbsp;Rs.<%= @impression_rate %> </span>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">Cost per impression is the cost per each page impression. When user searches for a product and we display product details as well as its price information. If that product is listed by you with us and your price is displayed as part of search result, then that is counted as a page impression.</div>
+				</div>
+
+				<div class="cf-variable-pay-common-cutoff-amount">
+					<% if @no_button_click_rate == 1 %>
+						<span class="cf-variable-pay-common-cutoff-amount-message"><b>Cost per click&nbsp;</b><i>&nbsp;<%= @message %></i></span>
+					<% else %>
+						<span class="cf-variable-pay-common-cutoff-amount-value"><b>Cost per click&nbsp;:</b>&nbsp;Rs.<%= @button_click_rate %></span>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">Cost per click is the cost per click of Visit Shop button. When user clicks "Visit Shop" button and visits your shops page, then it is counted as a button click. </div>
+				</div>
+			<!-- end cf-variable-pay-common-content--></div>
+
+				<div class="cf-variable-pay-imp-clicks-table">
+					<div class="cf-variable-pay-imp-clicks-header">Find here the product listing along with its cost details of impressions and clicks</div>
+					
+					<div id="variable-sub-category-id"></div>
+						<%= render ("merchants_financials/variable_table") %>
+				</div>
+
+		<!--end  cf-variable-pay-prd-listing-imp-clicks-wrapper--></div>
+
+		<div class="cf-variable-pay-prd-listing-purchase-wrapper">
+
+			<div class="cf-variable-pay-common-header">
+				<div class="cf-variable-pay-common-header-label">Product Listing - Purchase</div>
+				<div class="common_table_categorize-select">
+					<%= select("purchase_table_categorize", "id",options_for_select(@options).titlecase) %>
+				</div>
+				<div id="loading-bar-dashboard-pur" style="display:none;" class="cf-dashboard-loading">
+					    <%= image_tag "/Images/156.gif", :size => "20x20" %>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+
+			<div style="padding-top:10px"></div>
+
+			<div class="cf-variable-pay-common-content">
+				<div class="cf-variable-pay-common-cutoff-period">
+					<% if @no_sub_category_id_commission == 1 %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Purchase Commission&nbsp;:</b><i>&nbsp;<%= @message %></i></span>
+					<% else %>
+						<% @sub_category_id_commission.each do |i| %>
+
+						<span class="cf-variable-pay-common-cutoff-period-value">
+							<b>Category&nbsp;:</b>&nbsp;<%= Subcategories.what_is_my_category(i["sub_category_id"]).join.capitalize %>
+							<br/>
+							<br/><b>Purchase Commission percentage&nbsp;:</b>&nbsp;<%= i["commission"] %>
+						 </span>
+						<% end %>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">Purchase commission percentage is the percentage that you have agreed to pay us as a commission after every successful purchase of a product. Product purchase commission is the amount calculated by applying Purchase commission percentage on Product purchase amount of a product </div>
+				</div>
+
+			<!-- end cf-variable-pay-common-content--></div>
+
+				<div class="cf-variable-pay-purchase-table">
+					<div class="cf-variable-pay-imp-clicks-header">Find here the product listing along with its product purchase commission details</div>
+					
+					<div id="purchase-sub-category-id"></div>
+					
+					<%= render ("merchants_financials/purchase_table") %>
+				</div>
+
+
+		<!--end  cf-variable-pay-prd-listing-purchase-wrapper--></div>
+
+
+<!--end cf-variable-pay-section--></div>
+
+</div>
+</div>
+</div>
+<div class="clear-footer"></div>
+	<div class="cf-merchant-footer">
+    		<div class="cf-merchant-footer-content">
+			<%= render 'shared/footer' %>
+        	</div>
+     	<!-- end cf-merchant-footer --></div>
+</div>
+</body>
+</html>
+

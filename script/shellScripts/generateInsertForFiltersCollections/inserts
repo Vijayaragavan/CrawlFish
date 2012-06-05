@@ -1,0 +1,17 @@
+IF v_firstLetter = 'xxx' THEN
+  SELECT COUNT(*) INTO v_count FROM yyy_filters_collections
+  WHERE f_stripstring(filter_key) = f_stripstring(v1_filter_key);
+    IF v_count = 0 THEN
+      INSERT INTO yyy_filters_collections(filter_key,filter_id,filter_table_name,sub_category_id,created_at)
+      VALUES(v1_filter_key,v1_filter_id,v1_filter_table_name,v1_sub_category_id,CURRENT_TIMESTAMP);
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is inserted into filters_collections'));
+    ELSE
+
+      /* Insert a record in debug table for tracking the events */
+      call debug.debug_insert(v1_debugid,concat('A filter_key - ',v1_filter_key,', alphabet - ',v_firstLetter,' is NOT inserted into filters_collections'));
+    END IF;
+
+END IF;
+

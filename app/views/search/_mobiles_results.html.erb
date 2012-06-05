@@ -1,0 +1,93 @@
+<%= will_paginate @mobiles ,:params => { :from_pagination => 1 } %>
+	<table class="list" cellpadding="10px" cellspacing="0px">
+	     <% @mobiles.each do |mobile| %>
+	      <tr class="list_tr">
+			<td class="image_record">
+				<%= image_tag(mobile.mobile_image_url) %>
+			</td>
+
+        		<td class="product_table_data">
+				<% features = mobile.mobile_features.split("#") %>
+			         	<table class="product_table" cellpadding="3px" cellspacing="0px" border="0px">
+
+
+					<tr>
+			         	<td class="product_name"colspan="2">
+					         <%= (mobile.mobile_name) %>
+         				</td>
+         				</tr>
+
+         				<tr>
+         				<td class="feature1">
+         					<% if !(features[1].chomp.downcase.gsub(".","")== "na") %>
+         						<b>Color : </b> <%=features[1].capitalize %>
+						<%else%>       
+							<b>Color : </b> N.A.				
+						<%end%>
+         				</td>
+					<td class="feature2">
+         					<% if !(features[2].chomp.downcase.gsub(".","")== "na")%>
+         						<b>Type : </b> <%=features[2].capitalize%>
+						<%else%>
+							<b>Type : </b> N.A.		       			
+						<%end%>	
+					</td>
+         				</tr>
+
+
+          				<tr>
+					<td class="feature3">
+          					<% if !(features[3].chomp.downcase.gsub(".","")== "na") %>
+          						<b>Form factor : </b> <%=features[3].capitalize%>
+						<%else%>
+							<b>Form factor : </b> N.A.
+      						<%end%>
+          				</td>
+          				<td class="feature4">
+						<% arr_generic_os = features[4].split("$") %>
+						<% if arr_generic_os.count > 1 %>
+							<% if arr_generic_os[0].chomp.downcase.gsub(".","")=="na" && arr_generic_os[1].chomp.downcase.gsub(".","")=="na" %>
+								<b>OS : </b> N.A.
+							<% elsif arr_generic_os[0].chomp.downcase.gsub(".","")!="na" && arr_generic_os[1].chomp.downcase.gsub(".","")=="na" %>
+								<b>OS : </b> <%= arr_generic_os[0].titlecase %>
+							<% elsif arr_generic_os[0].chomp.downcase.gsub(".","")=="na" && arr_generic_os[1].chomp.downcase.gsub(".","")!="na" %>
+								<b>OS : </b> N.A.
+							<% elsif arr_generic_os[0].chomp.downcase.gsub(".","")!="na" && arr_generic_os[1].chomp.downcase.gsub(".","")!="na" %>
+								<b>OS : </b><%= arr_generic_os[0].titlecase %>, <%= arr_generic_os[1].titlecase %>
+							<%end%>
+						<% else %>
+								<b>OS : </b> N.A.
+						<% end %>							
+		
+          				</td>
+          				</tr>
+
+					<tr>
+					 <% @available_from_final_mobiles = @available_from_final[@sub_category_flag].map{|i|  p i[1] if i[0] == mobile.mobiles_list_id }.join %>
+	          				<td class="list-price-range">
+	          					<span class="list-price-range-details">
+	          						Available from <span style="font-weight:bold;color:#06C;font-size:14px;">Rs.<%= @available_from_final_mobiles %></span>
+	          					</span>
+	          				</td>
+
+          				</tr>
+					<tr>
+						<td class="compare" colspan="2">
+						<%= form_tag url_for(:controller => 'specific', :action => 'specific_search', :sub_category_id => @sub_category_flag, :starts_at => @available_from_final_mobiles )  do  %>
+						<%= select("product", "id",options_for_select(MobilesLists.get_colors(mobile.mobile_name))) %>
+
+						<%= submit_tag "COMPARE" %>
+
+
+         						 <% end %>
+						</td>
+					</tr>
+
+         				</table>
+         		</td>
+       		</tr>
+       		<% end %>
+
+      </table>
+<%= will_paginate @mobiles ,:params => { :from_pagination => 1 } %>
+

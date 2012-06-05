@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Home Page</title>
+<link rel="shortcut icon" type="image/x-icon" href="Images/favicon.ico">
+<link href="./Stylesheets/homepage.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+<!--
+function setFocus()
+{
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-home-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+		txtBox.style.border='1px solid #06C';
+
+    }
+}
+
+function setNoFocus()
+{
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-home-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+		txtBox.style.border='1px solid #CCC';
+
+    }
+}
+//-->
+</script>
+</head>
+
+<body onLoad="setFocus()">
+<div class="cf-home-wrapper">
+	<div class="cf-home-header">
+    	<ul class="cf-home-header-links">
+        	<li><a id="cf-a-virtualmall" href="virtualmall.html">Virtual Mall</a></li>
+           <!-- <li><a id="cf-a-bargain" href="bargain.html">Bargain</a></li>
+            <li><a id="cf-a-top5" href="top5.html">Top 5</a></li>-->
+        </ul>
+	 <!-- end .cf-home-header --></div>
+    <div class="cf-home-search">
+    	<div class="cf-home-logo">
+                <img id="imgLogo" src="Images/CF_logoFishermanBlackPng_v11.png" alt="CRAWLFISH LOGO"/>
+        <!-- end .cf-home-logo --></div>
+
+        <div class="cf-home-search-form">
+        	<%= render ('shared/form') %>
+        <!-- end .cf-home-search-form --></div>
+
+        <div class="cf-home-tagline-logo">
+        	<img id="imgTagLine" src="Images/CF_logoTagLinePng_v1.png" alt="CRAWLFISH TAGLINE" />
+        <!-- end .cf-home-tagline-logo --></div>
+         <div class="cf-home-interactive-text">
+            <div STYLE="word-wrap: break-word" id="flash_notice" class="messages_notice">
+			             <%= flash[:notice] %>
+			             </div>
+
+			             <% if @no_books_flag == 1 && @no_mobiles_flag == 1%>
+
+			             <h1> No Results Fetched, try again! </h1>
+
+			             <% end %>
+        </div>
+    <!-- end .cf-home-search --> </div>
+    <div class="cf-home-footer">
+    	<div class="cf-home-footer-content">
+        	<a href="home.html">About Us</a>
+
+            <a href="bargain.html">FAQ</a>
+
+            <a href="top5.html">Merchant Login</a>
+
+            <a href="top5.html">Advertise</a>
+
+            <a href="top5.html">Privacy Statement</a>
+
+            <a href="top5.html">Speak to Us</a>
+        </div>
+     <!-- end .cf-home-footer --></div>
+ <!-- end .cf-home-wrapper --></div>
+</body>
+</html>

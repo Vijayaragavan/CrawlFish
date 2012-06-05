@@ -1,0 +1,51 @@
+<div class="cf-merchant-content-register-wrapper">
+<div class="cf-register-fieldset-header">You are a Online shop, please fill the below details to complete sign up.</div>
+<div class="cf-register-fieldset">
+
+<%= form_for @merchants_list, :url => {:controller => 'merchants_lists', :action => 'create'},:html => {:id => "merchants_details_form",:multipart => true},:validate => true  do |f| %>
+   <%= hidden_field_tag 'type' , @type %>
+<table class="cf-register-fieldset-table" cellspacing=0 cellpadding=8 border=0>
+<tr>
+    <td class="lbl-sn"><%= f.label :merchant_name,'Name',:class=>'fieldset-label' %></td>
+    <td><%= f.text_field :merchant_name,:class=>'fieldset-table-txt-field' %></td>
+</tr>
+<tr>
+    <td class="lbl-sn"><%= f.label :merchant_email,'Email',:class=>'fieldset-label' %></td>
+    <td><%= f.text_field :merchant_email,:class=>'fieldset-table-txt-field' %></td>
+</tr>
+<tr>
+    <td class="lbl-sn"><%= f.label :merchant_phone,'Phone',:class=>'fieldset-label' %></td>
+    <td><%= f.text_field :merchant_phone,:class=>'fieldset-table-txt-field' %></td>
+</tr>
+<tr>
+    <td class="lbl-sn-txt"><%= f.label :merchant_address,'Address',:class=>'fieldset-label' %></td>
+    <td><%= f.text_area :merchant_address, :cols => 29 , :rows => 3,:class=>'fieldset-txt-area' %></td>
+</tr>
+<tr>
+	<td class="lbl-sn"><%= f.label :merchant_fax,'Fax',:class=>'fieldset-label' %></td>
+	<td><%= f.text_field :merchant_fax,:value => "",:class=>'fieldset-table-txt-field' %></td>
+</tr>
+<tr>
+    <td class="lbl-sn"><%= f.label :merchant_website,'Website URL',:class=>'fieldset-label' %></td>
+    <td><%= f.text_field :merchant_website,:class=>'fieldset-table-txt-field'  %></td>
+</tr>
+<tr>
+<td class="lbl-sn"><%= f.label :merchant_logo,:class=>'fieldset-label' %></td>
+<td><%= file_field 'upload', 'datafile',:class=>'fieldset-table-upload-login' %> </td>
+
+</tr>
+<tr>
+<td colspan=2 class="fieldset-button-td">
+<div class="fieldset-button"><%= f.submit "Sign up",:class=>'fieldset-table-submit-button'%></div>
+<div class="signup-cancel"><%= link_to "Cancel", {:action => "home", :controller => "merchants"}%></div>
+</td>
+</tr>
+</table>
+<div class="cf-messages">
+<%= render ('merchants_lists/error_messages') %>
+</div>
+   <% end %>
+
+
+</div>
+

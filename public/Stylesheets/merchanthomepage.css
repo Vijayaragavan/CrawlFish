@@ -1,0 +1,462 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body{
+	margin:0;
+	padding:0;
+	background:none repeat scroll 0 0 #FFF;
+	font-size:12px;
+	font-family:arial,tahoma,verdana,sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-weight:normal;
+	color:#000;
+	border:none;
+	height:100%;
+}
+
+table,tr,td,span,a,div,h2,th,ul,li,p,ol,select,input,textarea{
+	font-family: arial,tahoma,verdana,sans-serif;
+}
+
+img{
+	border:0;
+	outline:none;
+}
+
+a,:focus{
+	outline:none;
+}
+
+.cf-merchant-content{
+	width: 100%;
+	margin:0 auto;
+	height:auto!important;
+	min-height:100%;
+	position:relative;
+}
+
+.cf-merchant-header{
+	height:50px;	
+	background: none repeat scroll 0 0 #F4F5F6;
+   	border-bottom: 0px solid #CCC;
+}
+
+.cf-merchant-header-logo{
+	width: 960px;
+	margin:0 auto;
+}
+
+.imgLogo img{
+	width:160px;
+	height:40px;
+	padding-left:15px;
+	padding-right:15px;
+	margin-top:5px;
+	border-right:1px solid #CCC;
+}
+
+.imgTag img{
+	width:200px;
+	height:23px;
+	padding-left:5px;
+}
+
+.cf-merchant-content-wrapper{
+	width: 960px;
+	margin:0 auto;
+	padding-top:20px;
+	padding-bottom:10px;
+	border:0px solid #CCC;
+}
+
+.cf-merchant-content-header{
+	font-size:14px;
+	color:#000;
+	line-height:30px;
+	padding-bottom:25px;
+}
+
+.cf-merchant-content-signup{
+	float:left;
+	width:400px;
+}
+
+.cf-merchant-content-signup-header{
+	font-size:14px;
+	color:#333;
+	padding-bottom:15px;
+}
+
+.cf-merchant-content-signup-wrapper{
+	border:1px solid #999;
+}
+
+.cf-merchant-content-signup-form-header{
+	background:none repeat scroll 0 0 #EEE;
+	border-left:5px solid #C42525;
+	border-bottom:1px thin #DDD;
+	height:30px;
+	font-size:13px;
+	font-weight:bold;
+	padding-left:5px;
+	padding-top:8px;
+}
+
+.cf-merchant-content-signup-form{
+	width:380px;
+	margin-left:24px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+.cf-merchant-content-signup-form-inner{
+	background:none repeat scroll 0 0 #F5F5F5;
+	border:1px solid #CCC;
+	width:340px;
+	padding-top:10px;
+
+}
+
+.cf-label{
+	font-size:13px;
+	padding-right:25px;
+	padding-left:20px;
+}
+
+.cf-label-select{
+	width:150px;
+	font-size:12px;
+	border:1px solid #CCC;
+	outline:none;
+}
+
+.signup-proceed{
+	width:100px;
+	height:30px;
+	font-weight:bold;
+	font-size:13px;
+	background:none repeat scroll 0 0 #C42525;
+	border:none;
+	font-family:arial;
+	color:#FFF;
+}
+
+.cf-label-city{
+	font-size:13px;
+	padding-right:84px;
+	padding-left:20px;
+}
+
+.cf-label-area{
+	font-size:13px;
+	padding-right:79px;
+	padding-left:20px;
+}
+
+.cf-pad{
+	padding-top:10px;
+}
+
+.proceed-button{
+	padding-left:130px;
+	padding-bottom:10px;
+}
+
+.cf-merchant-error-message-wrapper{
+	padding-top:70px;
+}
+
+.cf-merchant-error-message{
+	border:1px solid #DDD;
+}
+
+.cf-merchant-error-message-content{
+	padding-top:10px;
+	padding-left:5px;
+	padding-bottom:10px;
+	font-size:13px;
+}
+
+.cf-merchant-error-header{
+	font-size:14px;
+	font-weight:bold;
+	height:30px;
+	background:none repeat scroll 0 0 #EEE;
+}
+
+.cf-merchant-error-header-text{
+	padding-top:5px;
+	padding-left:10px;
+	color:#C42525;
+}
+
+.cf-merchant-content-register-wrapper{
+	float:right;
+	width:500px;
+	padding-top:5px;
+	padding-bottom:25px;
+}
+
+.cf-register-fieldset{
+	outline:none;
+	border:1px solid #999;
+	padding-left:25px;
+	padding-top:25px;
+	padding-bottom:25px;
+}
+
+.cf-register-fieldset-header{
+	font-size:14px;
+	color:#333;
+	padding-bottom:10px;
+}
+
+.cf-register-fieldset-table{
+	width:450px;
+	background:none repeat scroll 0 0 #F5F5F5;
+	border:1px solid #CCC;
+	text-align:left;
+}
+
+.fieldset-table-txt-field{
+	width:300px;
+	font-size:12px;
+	outline:none;
+	border:1px solid #CCC;
+	height:20px;
+}
+
+.fieldset-label{
+	font-size:13px;
+}
+
+.fieldset-txt-area{
+	width:300px;
+	font-size:12px;
+	outline:none;
+	border:1px solid #CCC;
+	resize:none;
+}
+
+.fieldset-button-td{
+	text-align:center;
+}
+
+.fieldset-button{
+	width:100px;
+	height:30px;
+	float:right;
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.fieldset-table-submit-button{
+	font-weight:bold;
+	font-size:13px;
+	width:100px;
+	height:30px;
+	display:block;
+	cursor:pointer;
+	background:none repeat scroll 0 0 #C42525;
+	border:none;
+	font-family:arial;
+	color:#FFF;
+}
+
+.cf-messages-error-div{
+	font-size:13px;
+	color:#C42525;
+	font-weight:bold;
+	padding-top:10px;
+}
+
+.cf-messages-li{
+	line-height:20px;
+	font-size:12px;
+}
+
+.cf-merchant-content-signin{
+	float:right;
+	width:450px;
+}
+
+.cf-merchant-content-signin-header{
+	font-size:14px;
+	color:#333;
+	padding-bottom:15px;
+}
+
+.cf-merchant-content-signin-wrapper{
+	border:1px solid #999;
+}
+
+.cf-merchant-content-signin-form-header{
+	background:none repeat scroll 0 0 #EEE;
+	border-left:5px solid #C42525;
+	border-bottom:1px thin #DDD;
+	height:30px;
+	font-size:13px;
+	font-weight:bold;
+	padding-left:5px;
+	padding-top:8px;
+}
+
+.cf-merchant-content-signin-form{
+	width:400px;
+	margin-left:24px;
+	padding-top:20px;
+	padding-bottom:10px;
+}
+
+.cf-merchant-content-signin-form-table{
+	width:400px;
+	text-align:left;
+	background:none repeat scroll 0 0 #F5F5F5;
+	padding-top:20px;
+	padding-bottom:10px;
+	border:1px solid #CCC;
+}
+
+.signin-td{
+	font-size:13px;
+	color:#000;
+	text-align:right;
+	width:90px;
+	font-family:Arial;
+}
+
+.signin-other{
+	text-align:left;
+	width:300px;
+}
+
+.signin-txtfield{
+	width:270px;
+	height:20px;
+	border:1px solid #CCC;
+}
+
+.signin-button{
+	text-align:right;
+}
+
+.login{
+	width:100px;
+	height:30px;
+	font-weight:bold;
+	font-size:13px;
+	background:none repeat scroll 0 0 #C42525;
+	font-family:arial;
+	border:none;
+	color:#FFF;
+}
+
+.cf-signin-form-error{
+	padding-left:25px;
+}
+
+.cf-signin-form-error-message{
+	font-size:13px;
+	color:#C42525;
+	padding-bottom:10px;
+	font-weight:bold;
+}
+
+.clear{
+	clear:both;
+	padding-top:20px;	
+}
+
+.fieldset-table-upload-login{
+	border:1px solid #CCC;
+	outline:none;
+}
+
+.cf-merchant-footer{
+	border-top:1px solid #CCC;
+	position:absolute;
+	width:100%;
+	left:0;
+	bottom:0;
+	height:30px;
+	background: none repeat scroll 0 0 #F2F2FF;
+   	border-top:2px solid #DADADA;
+}
+
+.cf-merchant-footer-content{
+	text-align:center;
+	padding-top:5px;
+	color:#000;
+}
+
+.cf-merchant-footer-content a{
+	text-decoration:none;
+	text-align:center;
+	font-weight:normal;
+	height:30px;
+	margin-right:2px;
+	margin-left:3px;
+	color:#06C;
+	font-size:13px;
+	padding-left:10px;
+}
+
+.cf-merchant-footer-content a:visited{
+	color:#06C;
+}
+
+.cf-merchant-footer-content a:hover{
+	color:#06C;
+	background: none;
+	text-decoration:underline;
+}
+
+.signup-cancel{
+	float:right;
+padding-right:10px;
+}
+
+.signup-cancel a{
+	color:#FFF;
+	text-decoration:none;
+	padding-top:8px;
+	width:100px;
+	height:22px;
+	display:block;
+	cursor:pointer;
+	font-size:13px;
+	font-weight:bold;
+
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.signup-cancel a:visited{
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.signup-cancel a:hover{
+	background:none repeat scroll 0 0 #C42525;
+}
+
+.forgot-password-link{
+	padding-right:40px;
+	text-decoration:underline;
+	color:#06C;
+	font-size:13px;
+}
+
+.forgot-password-link:hover{
+	background:none;
+	color:#06C;
+}
+
+.forgot-password-link:visited{
+	color:#06C;
+}
+
+.lbl-sn{
+	height:55px;
+}
+
+.lbl-sn-txt{
+	height:75px;
+}

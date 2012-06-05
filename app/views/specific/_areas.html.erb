@@ -1,0 +1,3 @@
+<!--options_from_collection_for_select(@areas,'area_id','name')-->
+<%= select("area", "id", @areas.collect {|p| [ p.branch_name.titlecase, p.branch_id ] },  { :prompt => "Select Area"}) %>
+

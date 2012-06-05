@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="images/favicon.ico" >
+<link rel="icon" type="image/jpg" href="images/images/favicon.ico" >
+<title>CrawlFish</title>
+<style type="text/css">
+<!--
+body,td,th{
+	font-family: "Arial";
+	font-size: 12x;
+	font-style: normal;
+	color:#000;
+	font-weight: bold;
+	font-size: small;
+}
+body {
+	background-image: url(images/cont-tail.png);
+	background-repeat: repeat-y;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #FFFFFF;
+	background-attachment: fixed;
+	background-position: center top;
+}
+ @media screen {
+        div.divHeader {
+            position: fixed;
+            top: 0;
+			width:100%;
+  			height:35;
+        }
+		div.divFooter {
+            position: fixed;
+            bottom: 1;
+			width:100%;
+  			height:35;
+        }
+    }
+a:link
+{
+	color::#06F;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+a:visited
+{
+	color:blue;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+-->
+</style>
+</head>
+
+<body>
+<div class="divHeader">
+  <table height="37" border="0" align="right" cellpadding="5" cellspacing="5" >
+    <tr>
+      <td scope="col"><a href="Home.html">Virtual Mall</a></td>
+
+       <td scope="col"><a href="Home.html">TOP5</a></td>
+
+      <td scope="col"><a href="Home.html">Negotiate</a></td>
+    </tr>
+   </table>
+ </div>
+<%= form_tag "search/index", :method => 'get' do %>
+<div align="center">
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+<table height="71" width="200" border="0" align="center" bgcolor="#FFFFFF">
+  <tr>
+    <td colspan="2"><div align="center"><img src="/images/CF_Logo_GLevel1.png" alt="Logo" width="300" height="150"/></div></td>
+   </tr>
+  </table>
+  <table width="200" border="0" align="center" bgcolor="#FFFFFF">
+    <td><label for="txtSeachKey"></label>
+      <input name="searchkey" type="text" id="searchkey" style="width:400px; height:23px; font-size:14px; font-family:'Arial'" accesskey="1" tabindex="1" dir="ltr" lang="en"/></td>
+    <td><input name="btnSearch" type="image" id="btnSearch" src="/images/btnSearch.png" alt="Compare" /></td>
+  </tr>
+ 	<tr>
+    <td></td>
+    </tr>
+   <tr>
+  <td align="center" height="45" bordercolorlight="#FFFFFF" bgcolor="#333">
+  <div id= "flash_notice" >
+  <label style="color:#FFF"><%= flash[:notice] %></label>
+  </div>
+  </td>
+  </tr>
+</table>
+</div>
+<% end %>
+<div class="divFooter">
+ <blockquote>
+    <blockquote>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+<p>&nbsp;</p>
+      <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </blockquote>
+  </blockquote>
+  <table border="0" align="center" cellpadding="5" cellspacing="5">
+    <tr>
+      <th scope="col"><a href="Home.html">About Us</a></th>
+      <th scope="col"><a href="Home.html">FAQ</a></th>
+      <th scope="col"><a href="Home.html">Merchant Login</a></th>
+      <th scope="col"><a href="Home.html">Advertise</a></th>
+       <th scope="col"><a href="Home.html">Privacy Statement</a></th>
+      <th scope="col"><a href="Home.html">Speak to Us</a></th>
+    </tr>
+  </table>
+</div>
+</body>
+
+
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - FAQ</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/faq.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-faq-content">
+
+	<div class="cf-faq-header">
+		<div class="cf-faq-header-logo">
+			<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+			<%= link_to image_tag("/Images/CF_logoTagLinePng_v2.png") ,{:controller => 'main',:action => 'index'},:class => 'imgTag'%>
+		</div>
+    	 <!-- end .cf-faq-header --></div>
+
+	<div class="cf-faq-content-wrapper">
+		<div class="cf-faq-left-sidebar">
+			<ul class="cf-faq-left-sidebar-ul">
+			<li id="cf-c101"><%= link_to "CrawlFish 101"%></li>
+			<li id="cf-faq"><%= link_to "FAQ"%></li>
+			</ul>
+		</div>
+        
+		<div class="cf-faq-main-content" id="cf-faq-main-content-id">
+			<%= render 'footer/faq_c101' %>  
+		</div>
+               
+		<div class="clear"></div>
+        
+	</div>
+
+        <div class="cf-faq-footer">
+    		<div class="cf-faq-footer-content">
+
+			<%= render 'shared/footer' %>    	
+
+        	</div>
+     <!-- end .cf-faq-footer --></div>
+ <!-- end .cf-faq-content --></div>
+</body>
+</html>
+

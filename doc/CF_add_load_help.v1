@@ -1,0 +1,53 @@
+rake vendor:addonline APP_PATH=/home/think/CrawlFish VENDOR_NAME=Flipkart VENDOR_LOGO="http://blog.flipkart.com/wp-content/uploads/2011/02/blog-logo-unit.png" VENDOR_WEBSITE=www.flipkart.com EMAIL=sayar-mobiles@gmail.com PHONE=1287426509 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=purchase SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=454738382 ADDRESS="tnagar, chennai-24" LATITUDE=na LONGITUDE=na CITY_NAME=na BRANCH_NAME=na DESCRIPTION="Good online shop" WORKING_TIME=na MISCELLANEOUS="Online wallet, COD, 30 days replacement guarentee, EMI"
+
+
+rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME="SayarMobiles" VENDOR_LOGO=na VENDOR_WEBSITE=na EMAIL=sayar-mobiles@gmail.com PHONE=128787509 SUB_CATEGORIES="mobiles_lists" MONETIZATION_TYPE=fixed SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=457633344 ADDRESS="mambalam, chennai-24" LATITUDE=128.083 LONGITUDE=56.098 CITY_NAME=chennai BRANCH_NAME=mambalam DESCRIPTION="Good mobile shop" WORKING_TIME="9AM to 8.30PM" MISCELLANEOUS=na
+
+rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME="Fevicol" VENDOR_LOGO=na VENDOR_WEBSITE=na EMAIL=mobiles@gmail.com PHONE=134312 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=variable SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=457633344 ADDRESS="mambalam, chennai-24" LATITUDE=128.083 LONGITUDE=56.098 CITY_NAME=chennai BRANCH_NAME=mambalam DESCRIPTION="Good mobile shop" WORKING_TIME="9AM to 8.30PM" MISCELLANEOUS=na
+
+rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME="SharkSeaPeople" VENDOR_LOGO=na VENDOR_WEBSITE=na EMAIL=sayar-mobiles@gmail.com PHONE=0978012128712 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=variable SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=457633344 ADDRESS="mambalam, chennai-24" LATITUDE=128.083 LONGITUDE=56.098 CITY_NAME=chennai BRANCH_NAME=tambaram DESCRIPTION="Good mobile shop" WORKING_TIME="9AM to 8.30PM" MISCELLANEOUS=na
+
+===================================
+
+rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME=fevicol VENDOR_LOGO=na VENDOR_WEBSITE=na EMAIL=sayar-mobiles@gmail.com PHONE=120941234 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=variable SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=457633344 ADDRESS="mambalam, chennai-24" LATITUDE=13.0846 N, LONGITUDE=80.2179 E CITY_NAME=chennai BRANCH_NAME=velachery DESCRIPTION="Good mobile shop" WORKING_TIME="9AM to 8.30PM" MISCELLANEOUS=na
+
+
+rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME="second" VENDOR_LOGO=na VENDOR_WEBSITE=na EMAIL=sayar-mobiles@gmail.com PHONE=23452345 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=variable SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=457633344 ADDRESS="mambalam, chennai-24" LATITUDE=13.0780 N, LONGITUDE=80.2590 E CITY_NAME=chennai BRANCH_NAME=mambalam DESCRIPTION="Good mobile shop" WORKING_TIME="9AM to 8.30PM" MISCELLANEOUS=na
+
+rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME="ThirdMan" VENDOR_LOGO=na VENDOR_WEBSITE=na EMAIL=sayar-mobiles@gmail.com PHONE=34563456 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=variable SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=457633344 ADDRESS="mambalam, chennai-24" LATITUDE=12.9202 N, LONGITUDE=79.1333 E CITY_NAME=chennai BRANCH_NAME=mambalam DESCRIPTION="Good mobile shop" WORKING_TIME="9AM to 8.30PM" MISCELLANEOUS=na
+
+rake vendor:addonline APP_PATH=/home/think/CrawlFish VENDOR_NAME=IndiaPlaza VENDOR_LOGO="http://blog.flipkart.com/wp-content/uploads/2011/02/blog-logo-unit.png" VENDOR_WEBSITE=www.flipkart.com EMAIL=sayar-mobiles@gmail.com PHONE=234509 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=purchase SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=454738382 ADDRESS="tnagar, chennai-24" LATITUDE=na LONGITUDE=na CITY_NAME=na BRANCH_NAME=na DESCRIPTION="Good online shop" WORKING_TIME=na MISCELLANEOUS="Online wallet, COD, 30 days replacement guarentee, EMI"
+
+rake vendor:addonline APP_PATH=/home/think/CrawlFish VENDOR_NAME=Bing VENDOR_LOGO="http://blog.flipkart.com/wp-content/uploads/2011/02/blog-logo-unit.png" VENDOR_WEBSITE=www.flipkart.com EMAIL=sayar-mobiles@gmail.com PHONE=1426509 SUB_CATEGORIES="books_lists,mobiles_lists" MONETIZATION_TYPE=purchase SUBSCRIBED_DATE=2012-05-14 VENDOR_FAX=454738382 ADDRESS="tnagar, chennai-24" LATITUDE=na LONGITUDE=na CITY_NAME=na BRANCH_NAME=na DESCRIPTION="Good online shop" WORKING_TIME=na MISCELLANEOUS="Online wallet, COD, 30 days replacement guarentee, EMI"
+
+=============================
+
+rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_BookAdda_books.dat CITY_NAME=chennai BRANCH_NAME=mambalam VENDOR_NAME=first
+
+rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_BookAdda_books.dat CITY_NAME=chennai BRANCH_NAME=mambalam VENDOR_NAME=second
+
+rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_BookAdda_books.dat CITY_NAME=chennai BRANCH_NAME=mambalam VENDOR_NAME=ThirdMan
+
+rake vendor:loadonline VENDOR_NAME=IndiaPlaza APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Online_Flipkart_books.dat
+
+rake vendor:loadonline VENDOR_NAME=Bing APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Online_Flipkart_books.dat
+
+
+===================================
+
+
+
+
+
+
+rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_BookAdda_books.dat CITY_NAME=chennai BRANCH_NAME=mambalam VENDOR_NAME=SharkSeaPeople
+
+rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_BookAdda_books.dat CITY_NAME=chennai BRANCH_NAME=velachery VENDOR_NAME=Blazers
+
+rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_Saholic_mobiles.dat CITY_NAME=chennai BRANCH_NAME=tambaram VENDOR_NAME=SharkSeaPeople
+
+rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_BookAdda_books.dat CITY_NAME=chennai BRANCH_NAME=tnagar VENDOR_NAME=xbooksandmobiles
+
+
+rake vendor:loadonline VENDOR_NAME=flipkart APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Online_Flipkart_books.dat
+

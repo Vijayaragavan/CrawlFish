@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Local shops landing page</title>
+<link rel="shortcut icon" type="image/x-icon" href="Images/favicon.ico">
+<link href="Stylesheets/localshopspage.css" rel="stylesheet" type="text/css">
+<script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+function setFocus()
+{
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-local-shop-header-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+    }
+}
+
+function displayData(selectedValue)
+{
+		var myVal = selectedValue;
+		var aAddr = [];
+		aAddr[0] = "13th Street\rGST Road\rChrompet\rChennai - 600044\r9962265010\r044-22238628\rconact@univercell.com";
+		aAddr[1] = "13th Street\rGST Road\rUrapakkam\rChennai - 600044\r9962265010\r044-22238628\rconact@univercell.com";
+		aAddr[2] = "13th Street\rGST Road\rVelachery\rChennai - 600044\r9962265010\r044-22238628\rconact@univercell.com";
+		aAddr[3] = "13th Street\rGST Road\rAdyar\rChennai - 600044\r9962265010\r044-22238628\rconact@univercell.com";
+		var addr = aAddr[myVal];
+		document.getElementById("cf-shopaddress").value = addr;
+}
+
+function displayLocationData(selectedValue)
+{
+		var myVal = selectedValue;
+		var aAddr = [];
+		aAddr[0] = "13th Street\rGST Road\rChrompet\rChennai - 600044";
+		aAddr[1] = "13th Street\rGST Road\rUrapakkam\rChennai - 600044";
+		aAddr[2] = "13th Street\rGST Road\rVelachery\rChennai - 600044";
+		aAddr[3] = "13th Street\rGST Road\rAdyar\rChennai - 600044";
+		var addr = aAddr[myVal];
+		document.getElementById("cf-location-shopaddress").value = addr;
+}
+//-->
+</script>
+<link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="setFocus()">
+
+<div class="cf-local-shop-content">
+
+<div class="cf-local-shop-header">
+
+<div class="cf-local-shop-header-logo">
+			<img id="imgLogo" src="Images/CF_logoOnlyTextWoChartPng_v14.png" alt="CrawlFish Logo"/>
+	 <!-- end cf-local-shop-header-logo --></div>
+
+    <div class="cf-local-shop-header-search-form">    
+     <form>
+        	<table>
+ 				<tr>
+    				<th scope="col"><input id="cf-local-shop-header-search-form-searchText" type="text" title="Enter your search query here to Find, compare and decide" placeholder="Enter Search Key"/></th>
+      				<th scope="col"><input name="Search" type="button" id="cf-local-shop-header-search-form-searchCompare" title="Click here to search"/></th>
+ 				</tr>
+			</table>
+      </form>
+      <!-- end cf-local-shop-header-search-form --></div>
+      
+<div class="cf-local-shop-header-links">
+    	<ul class="cf-local-shop-header-links-ul">
+        	<li><a id="cf-a-virtualmall" href="virtualmall.html">Virtual Mall</a></li>
+            <li><a id="cf-a-bargain" href="bargain.html">Bargain</a></li>
+            <li><a id="cf-a-top5" href="top5.html">Top 5</a></li>
+        </ul>
+	  <!-- end cf-local-shop-header-links --></div>
+<!-- end cf-local-shop-header --></div>
+
+<div class="cf-local-shop-content-wrapper">
+
+	<div class="cf-local-shop-main-content">
+   	 	<div class="cf-local-shop-main-content-header">
+    		<h2>You have selected to buy <a href="specificsearch.html"><h1>Samsung galaxy ace</h1></a> from <a href="virtualmall.html"><h1>Shop name</h1></a></h2>
+            <h2>To go back and compare it, <a href="specificsearch.html">click here</a></h2>
+             &nbsp;
+            <h2>Find below more details about the shop</h2>
+   	 	<!-- end cf-local-shop-main-content-header --></div>
+    
+   	  	<div class="cf-local-shop-main-content-details">
+			<div id="TabbedPanels1" class="TabbedPanels">
+    	  	<ul class="TabbedPanelsTabGroup">
+    	    	<li class="TabbedPanelsTab" tabindex="0">Shop Details</li>
+    	    	<li class="TabbedPanelsTab" tabindex="0">Shop Location</li>
+  	    	</ul>
+    	  	<div class="TabbedPanelsContentGroup">
+
+    	    	<div class="TabbedPanelsContent">
+                	<div class="cf-local-shop-main-content-details-table">
+                    <table>
+                    	<tr>
+                    		<td id="cf-shopLogo"><img id="shopLogo" src="Images/univercelllogo.gif" alt="Shop Logo"/></td>
+                       		<td id="cf-shopLocation">
+                        	 <form method="get" onChange="displayData(shoplocation.value)">
+		                    	<select name="shoplocation" class="cf-local-shop-main-content-details-table-select">
+									<option value="0">Chrompet</option>
+									<option value="1">Urapakkam</option>
+									<option value="2">Velachery</option>
+									<option value="3">Adyar</option>
+								</select>
+		                    </form>	
+                            </br>
+                           	<textarea id="cf-shopaddress" readonly></textarea>
+                        	</td>
+                        </tr>
+                        <tr><td colspan="2">
+                        	<p class="cf-local-shop-main-content-details-table-para">UniverCell having the first mover advantage has pioneered its way through the mobile industry.
+    The first mobile retailer to provide Bill & warranty on every purchase.
+    The first mobile retailer to implement 'Touch Feel' concept.
+    Exchange offers.
+    Knowledgeable staff-groomed in customer service and soft skills.
+    Best After Sales Servie.
+    One stop shop for mobile needs.
+    Mobilephone e-shop, www.univercell.in.
+    The first mobile retailer to implement accidental damage and theft insurance for your mobile.
+    Easy installments-0% intrest, on credit cards.
+    Original mobile contents (full songs,games, apps).
+    Short code service SMS 56070.
+    Door step delivery.</p></td>
+                        </tr>
+                    </table>
+                    <!--end cf-local-shop-main-content-details-table--></div>
+                <!-- end TabbedPanelsContent --></div>
+    	    	<div class="TabbedPanelsContent">
+                	<div class="cf-local-shop-main-content-location-table">
+                    	<form method="get" onChange="displayLocationData(shoplocation.value)">
+		                    	<select name="shoplocation" class="cf-local-shop-main-content-details-table-select">
+									<option value="0">Chrompet</option>
+									<option value="1">Urapakkam</option>
+									<option value="2">Velachery</option>
+									<option value="3">Adyar</option>
+								</select>
+		                    </form>	
+                    </div>
+                    <div class="cf-local-shop-main-content-location-table-map">
+                    	
+                    </div>
+                <!-- end TabbedPanelsContent --></div>
+  	     	<!-- end TabbedPanelsContentGroup --></div>
+  	   	<!-- end TabbedPanels --></div>
+       	<!-- end cf-local-shop-main-content-details --></div>
+        
+        <div class="cf-local-shop-deal-details">
+        	<h2>Deal details</h2>
+        	<div class="cf-local-shop-deal-details-section">
+            
+            </div>
+        <!-- end cf-local-shop-deal-details --></div>
+    <!-- end cf-local-shop-main-content --></div>
+     
+<div class="cf-local-shop-right-sidebar">
+    	
+        <div class="cf-local-shop-right-sidebar-videoad">
+			<img src="Images/amazon.gif" alt="amazon ad gif"/>
+		<!-- end cf-specific-right-sidebar-videoad --></div>
+        
+        <div class="cf-local-shop-right-sidebar-deal">
+                    <h2>Deal of the Day</h2>
+                    	<div id="dealImage">
+                        	<img src="Images/stevejobs.jpg"  alt="Steve jobs"/>
+                        </div>
+                        <div id="dealDetails" align="center">
+                    		<a href="">Steve Jobs: The Exclusive Biography: A Biography (Hardcover)</a>
+                      </div>
+                         <div id="dealPrice">
+                         	<table>
+                              <tr><td rowspan="4"><span class="logoDiscount"><span class="yousaveper">30</span><span style="font-size:12px;">%</span></span></td></tr>
+                            	<tr><td style="text-decoration:line-through;color:#666">List Price: Rs.799</td></tr>
+								<tr><td style="font-weight:bold; color:#000" >Our Price: Rs.599</td></tr>
+                                <tr><td style="color:#063;font-weight:bold">You Save: Rs.200</td></tr>
+                           </table>
+                         </div>
+     	<!--cf-local-shop-right-sidebar-deal--> </div>
+    
+    
+   	 	<div class="cf-local-shop-right-sidebar-bannerad">
+			<img src="Images/amazon.gif" alt="amazon ad gif"/>
+		<!-- end cf-local-shop-right-sidebar-bannerad --></div>
+    
+    <!-- end cf-local-shop-right-sidebar --> </div>
+
+ <!-- end cf-local-shop-content-wrapper --></div>
+
+<div class="cf-local-shop-footer">
+	<div class="cf-local-shop-footer-content">
+        	<a href="home.html">About Us</a>
+            &nbsp;|&nbsp;
+            <a href="bargain.html">FAQ</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Merchant Login</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Advertise</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Privacy Statement</a>
+            &nbsp;|&nbsp;
+            <a href="top5.html">Speak to Us</a>
+     <!-- end cf-local-shop-footer-content --></div>
+ <!-- end cf-local-shop-footer --></div>
+
+ <!-- end cf-local-shop-content --></div>
+<script type="text/javascript">
+var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+</script>
+</body>
+</html>

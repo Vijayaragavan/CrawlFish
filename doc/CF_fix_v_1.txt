@@ -1,0 +1,66 @@
+CrawlFish - Fixer Manual
+
++---------------------------------------------------------------+
+|Author  : Senthil
+|Version : One
+|Desc    : Run bug fixes on a app.
+|          NOTE: IF THE FIXES ARE DB RELATED, run "rake db:migrate" too.
++---------------------------------------------------------------+
+
+*****************************==Starting chapter 1 ==**************************
+
+------------
+Chapter - 1
+------------
+
+1. First assumption is you have a CrawlFish rails app installed in your ubuntu/windows computer.
+
+2. Change directory to your app_path, I do a, (watch your app_path)
+
+   $ cd /home/think/CrawlFish/
+
+3. Keep your fixed files* ready(usually ships with a "fix" - directory), to overwrite bugged files*.
+
++---------------------------------------------------------------+
+
+   Bugged files - meaning - A file that causes a particular bug in the application which when edited
+   in a way would produce the desired result.
+
+   Fixed files - meaning -  A bugged file which is edited in a way to give out the desired result.
+
++---------------------------------------------------------------+
+
+4. Change directory to fix, I do a,
+
+   $ cd /home/think/CrawlFish/fix
+
+5. Copy the fixed files that was shared/sent with/to you to this directory.
+
+   $ cp /home/think/Downloads/fix/* /home/think/CrawlFish/fix
+
+   (Most people use their GUI(not command line), to copy the fixed files to /home/think/CrawlFish/fix)
+
+6. Run the rake task to fix the app. Please note that is my APP_PATH, change it to yours.
+
+   $ rake app:fix APP_PATH=/home/think/CrawlFish
+
+   You will get a brief summary, verify it
+
+7. Navigate to app_path/log/fix and check out your complete log.
+
+   $ cd /home/think/CrawlFish/log/fix
+   $ ls
+   $ << vi *_FIX.log >>
+
+8. Navigate to app_path/fix/fix_bkp and check out the back up of the bugged file
+   (which is now replaced with the fixed file).
+
+   $ cd /home/think/CrawlFish/fix/fix_bkp
+   $ ls
+   $ << *.bkp >>
+
+
+   Thats it. You have fixed it.
+
+***********************************== END ==***************************************************************
+

@@ -1,0 +1,7 @@
+<table class="cf-lsmc-area-select-table" cellpadding=5 cellspacing=0 border=0>
+<tr>
+	<td><b>Branches :</b></td>
+	<td><%= select_tag("local_shop_area_id", options_for_select(@areas.map{|i| [i.branch_name.titlecase,i.vendor_id]},@current_branch)) %></td>
+	<td><%= button_to "View Map",{:controller => 'local_controller'},:id => "input-vendor-name",:vendor_name => @vendor_name, :form_class => "view-map-button" ,:class => "area-select-view-map-button"%></td>
+</tr>
+</table>

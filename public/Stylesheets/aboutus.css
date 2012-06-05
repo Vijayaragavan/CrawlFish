@@ -1,0 +1,216 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body{
+	margin:0;
+	padding:0;
+	background:none repeat scroll 0 0 #FFF;
+	font-size:12px;
+	font-family:arial,tahoma,verdana,sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-weight:normal;
+	color:#000;
+	border:none;
+	height:100%;
+}
+
+table,tr,td,span,a,div,h2,th,ul,li,p,ol,select{
+	font-family: arial,tahoma,verdana,sans-serif;
+}
+
+img{
+	border:0;
+	outline:none;
+}
+
+a,:focus{
+	outline:none;
+}
+
+.cf-aboutus-content{
+	width: 100%;
+	margin:0 auto;
+	height:auto!important;
+	min-height:100%;
+	position:relative;
+}
+
+.cf-aboutus-header{
+	height:50px;	
+	background: none repeat scroll 0 0 #F4F5F6;
+   	border-bottom: 0px solid #CCC;
+}
+
+.cf-aboutus-header-logo{
+	width: 960px;
+	margin:0 auto;
+}
+
+.imgLogo img{
+	width:160px;
+	height:40px;
+	padding-left:15px;
+	padding-right:15px;
+	margin-top:5px;
+	border-right:1px solid #CCC;
+}
+
+.imgTag img{
+	width:200px;
+	height:23px;
+	padding-left:5px;
+}
+
+.cf-aboutus-content-wrapper{
+	width: 960px;
+	margin:0 auto;
+	padding-top:30px;
+	padding-bottom:10px;
+}
+
+.cf-aboutus-left-sidebar{
+	float:left;
+	width:180px;
+	font-size:14px;
+	border:0px solid #CCC;
+	color:#000;
+}
+.cf-aboutus-left-sidebar-ul{
+	list-style:none;
+}
+
+ul.cf-aboutus-left-sidebar-ul a{
+	text-align:left;
+	display:block;
+	width:auto;
+	height:30px;
+	font-size:13px;
+	border-bottom: 1px solid #DDD;
+	padding-left:10px;
+	padding-top:8px;
+	text-decoration:none;
+}
+
+ul.cf-aboutus-left-sidebar-ul a:visited{
+	color:#06F;	
+}
+
+ul.cf-aboutus-left-sidebar-ul a:hover{
+	color:#06C;
+	background: none repeat scroll 0 0 #F5F5F5;
+	text-decoration:underline;
+}
+
+.cf-aboutus-main-content{
+	border:0px solid #CCC;
+	float:left;
+	width:550px;
+	padding-left:15px;
+	padding-top:5px;
+	padding-bottom:70px;
+}
+.cf-aboutus-overview h2{
+	font-size:15px;
+	font-weight:bold;
+	border-left:5px solid #C42525;
+	padding-top:7px;
+	padding-bottom:7px;
+	padding-left:2px;	
+	background:none repeat scroll 0 0 #F5F5F5;
+}
+
+.cf-aboutus-overview-details{
+	padding-top:0px;	
+	text-align:justify;
+	line-height:23px;
+	font-size:13px;	
+}
+
+.cf-aboutus-right-sidebar{
+	float:right;
+	width:180px;
+	padding-left:12px;	
+	padding-top:20px;
+}
+
+.cf-aboutus-right-sidebar-section{
+	background:none repeat scroll 0 0 #F5F5F5;
+	border-top:3px solid #999;
+	border-bottom:1px solid #999;	
+	height:60px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:10px;
+	line-height:27px;
+}
+
+.sidebar-number{
+	font-size:26px;	
+	color:#C42525;
+}
+
+.sidebar-type{
+	font-size:20px;	
+	padding-left:3px;
+}
+
+.sidebar-pad{
+	padding-top:10px;
+	padding-bottom:10px;	
+}
+
+.cf-aboutus-right-sidebar-section-place{
+	background:none repeat scroll 0 0 #F5F5F5;
+	border-top:3px solid #999;
+	border-bottom:1px solid #999;	
+	height:88px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:10px;
+	line-height:27px;	
+}
+
+.clear{
+	clear:both;
+	padding-top:20px;	
+}
+
+.cf-aboutus-footer{
+	border-top:1px solid #CCC;
+	position:absolute;
+	width:100%;
+	left:0;
+	bottom:0;
+	height:30px;
+	background: none repeat scroll 0 0 #F2F2FF;
+   	border-top:2px solid #DADADA;
+}
+
+.cf-aboutus-footer-content{
+	text-align:center;
+	padding-top:5px;
+	color:#000;
+}
+
+.cf-aboutus-footer-content a{
+	text-decoration:none;
+	text-align:center;
+	font-weight:normal;
+	height:30px;
+	margin-right:2px;
+	margin-left:3px;
+	color:#06C;
+	font-size:13px;
+	padding-left:10px;
+}
+
+.cf-aboutus-footer-content a:visited{
+	color:#06C;
+}
+
+.cf-aboutus-footer-content a:hover{
+	color:#06C;
+	background: none;
+	text-decoration:underline;
+}
+

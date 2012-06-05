@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/merchanthomepage.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="cf-merchant-content">
+
+	<div class="cf-merchant-header">
+		<div class="cf-merchant-header-logo">
+			<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+			<%= link_to image_tag("/Images/CF_logoTagLinePng_v2.png") ,{:controller => 'main',:action => 'index'},:class => 'imgTag'%>
+	 	<!-- end cf-merchant-header-logo --></div>
+	<!-- end cf-merchant-header --></div>
+
+	<div class="cf-merchant-content-wrapper">
+
+		<div class="cf-merchant-content-header">
+			<span><b>Welcome to CrawlFish!</b><br/>We offer a dashboard to merchants to view, update and submit their product catalog and to review their performance regularly.</span>
+		</div>
+
+		<div class="cf-merchant-content-signup">
+
+			<div class="cf-merchant-content-signup-header">
+				If you are a new user, please sign up!
+			</div>
+
+
+
+			<div class="cf-merchant-content-signup-wrapper">
+
+				<div class="cf-merchant-content-signup-form-header">
+					SIGN UP
+				<!-- end cf-merchant-content-signup-header --></div>
+
+				<div class="cf-merchant-content-signup-form">
+					<%= render ('merchants_lists/sign_up') %>
+				<!-- end cf-merchant-content-signup-form --></div>
+
+			<!-- end cf-merchant-content-signup-wrapper --></div>
+
+		<!-- end cf-merchant-content-signup --></div>
+
+
+		<% if @error_flag == 1 %>
+			<div id="cf-main">
+			<% if @type=="online" %>
+				<%= render ('merchants_lists/online_sign_up') %>
+			<%elsif @type=="local" %>
+				<%= render ('merchants_lists/local_sign_up') %>
+			<%end%>
+			</div>
+		<%else%>
+
+		<div id="cf-main">
+			<div class="cf-merchant-content-signin">
+
+				<div class="cf-merchant-content-signin-header">
+					If you are already a registered user, sign in!
+				</div>
+
+				<div class="cf-merchant-content-signin-wrapper">
+
+					<div class="cf-merchant-content-signin-form-header">
+						SIGN IN
+					</div>
+					<div id="login-form" style ="display:;" class="log_in"> <%= render ('merchants_sessions/login') %> </div>
+
+				<!-- end cf-merchant-content-signin-wrapper --></div>
+
+			<!-- end cf-merchant-content-signin --></div>
+		</div>
+		<%end%>
+
+
+
+		<div class="clear"></div>
+	<!-- end cf-merchant-content-wrapper --></div>
+
+	<div class="cf-merchant-footer">
+    		<div class="cf-merchant-footer-content">
+			<%= render 'shared/footer' %>
+        	</div>
+     	<!-- end cf-merchant-footer --></div>
+
+<!-- end cf-merchant-content --></div>
+
+</body>
+</html>
+

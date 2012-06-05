@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/merchantdashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-merchant-content">
+
+	<div class="cf-merchant-header">
+		<%=render 'merchants/header'%>
+	<!-- end cf-merchant-header --></div>
+
+	<div class="cf-merchant-content-wrapper"> 
+		
+		<%=render 'merchants/vendor_header_details'%>
+
+		<div class="clear"></div>
+		
+
+		<div class="cf-merchant-content-complete">
+			<div class="cf-merchant-content-divider"></div>	
+			<div class="complete-dashboard-div"><%= link_to "DASHBOARD",{:controller => "merchants_dashboard", :action => "index",:vendor_id => @vendor_id},:class=>'complete-dashboard-a' %></div>
+			<div class="complete-dashboard-div"><%= link_to "CATALOGUE",{:controller => "merchants_products", :action => "index",:vendor_id => @vendor_id},:class=>'complete-products-a' %></div>
+			<div class="complete-dashboard-div"><%= link_to "DATA FEEDS",{:controller => "merchants_datafeed", :action => "index",:vendor_id => @vendor_id},:class=>'complete-datafeeds-a' %></div>
+			<div class="complete-dashboard-div"><%= link_to "FINANCIALS",{:controller => "merchants_financials", :action => "index",:vendor_id => @vendor_id},:class=>'complete-financials-a' %></div>
+			<div style="padding-top:28px"></div>			
+			<div class="cf-merchant-content-center">
+				<div style="padding-top:20px"></div>
+				<div class="cf-dashboard-datafeed-wrapper">
+					<div class="datafeed-text">Upload Successful!</div>
+					<div class="datafeed-filename"><b>File Name:</b> <%= @fileName%></div>
+					<div class="datafeed-filesize"><b>File Size:</b> <%= @fileSize%> KB</div>
+					<div class="datafeed-final-text">Thanks for uploading your data feed with us. Your data will reflect in CrawlFish in 24 hours.In case of any queries,contact us @ business{@}thecrawlfish.com</div>
+				</div>
+			<div style="padding-bottom:20px"></div>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	<!-- end cf-merchant-content-wrapper --></div>
+	<div class="clear-footer"></div>
+	<div class="cf-merchant-footer">
+    		<div class="cf-merchant-footer-content">
+			<%= render 'shared/footer' %>    	   
+        	</div>
+     	<!-- end cf-merchant-footer --></div>
+
+<!-- end cf-merchant-content --></div>
+</body>
+</html>
+

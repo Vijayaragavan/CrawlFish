@@ -1,0 +1,16 @@
+<% if @merchants_list.errors.any? %>
+	<% flash[:notice] = "Please correct!" %>
+
+<div class="cf-messages-error-div">
+Error!
+</div>
+
+<div class="cf-messages-error-wrapper">
+<ul class="cf-messages-ul">
+	<% for message in @merchants_list.errors.full_messages %>
+		<li class="cf-messages-li"><%= message %></li>
+	<% end %>
+</ul>
+</div>
+<% end %>
+

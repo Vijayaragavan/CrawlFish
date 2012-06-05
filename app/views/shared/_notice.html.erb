@@ -1,0 +1,18 @@
+<div id="flashes">
+
+  <% if flash[:notice] %>
+
+    <div STYLE="word-wrap: break-word" id="flash_notice" class="messages notice">
+    <p>
+ 		<%= flash[:notice] %>
+    </p>
+    <%= javascript_tag "$('#flash_notice').hide().slideDown(500);" %>
+  <% end %>
+  <% if flash[:error] || flash[:errors] %>
+    <p id="flash_errors" class="messages errors"><%= flash[:error] || flash[:errors] %></p>
+    <%= javascript_tag "$('#flash_errors').effect('highlight',{},1000);" %>
+  <% end %>
+
+  <% flash[:error] = flash[:errors] = flash[:notice] = nil %>
+</div>
+

@@ -1,0 +1,3 @@
+development:
+  stopwords: /home/vijayaragavanv/rubyonrails/CrawlFish_Jun1/CrawlFish/db/sphinx/data/stopwords.txt
+  morphology: stem_en

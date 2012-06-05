@@ -1,0 +1,9 @@
+ruby-1.9.2-p290 :008 > arr = ["the", "cat", "sat", "on", "the", "mat"]
+ => ["the", "cat", "sat", "on", "the", "mat"]
+ruby-1.9.2-p290 :009 > (0 ... arr.length).map do |i|
+ruby-1.9.2-p290 :010 >       (i ... arr.length).map do |j|
+ruby-1.9.2-p290 :011 >           arr[i..j]
+ruby-1.9.2-p290 :012?>       end
+ruby-1.9.2-p290 :013?>   end.flatten(1)
+ => [["the"], ["the", "cat"], ["the", "cat", "sat"], ["the", "cat", "sat", "on"], ["the", "cat", "sat", "on", "the"], ["the", "cat", "sat", "on", "the", "mat"], ["cat"], ["cat", "sat"], ["cat", "sat", "on"], ["cat", "sat", "on", "the"], ["cat", "sat", "on", "the", "mat"], ["sat"], ["sat", "on"], ["sat", "on", "the"], ["sat", "on", "the", "mat"], ["on"], ["on", "the"], ["on", "the", "mat"], ["the"], ["the", "mat"], ["mat"]]
+

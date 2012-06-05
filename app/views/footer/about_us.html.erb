@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - About Us</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/aboutus.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-aboutus-content">
+
+	<div class="cf-aboutus-header">
+		<div class="cf-aboutus-header-logo">
+			<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+			<%= link_to image_tag("/Images/CF_logoTagLinePng_v2.png") ,{:controller => 'main',:action => 'index'},:class => 'imgTag'%>
+		</div>	
+    	 <!-- end .cf-aboutus-header --></div>
+	
+	<div class="cf-aboutus-content-wrapper">
+		<div class="cf-aboutus-left-sidebar">
+			<ul class="cf-aboutus-left-sidebar-ul">
+			<li id="cf-overview"><%= link_to "Overview"%></li>
+			<li id="cf-whatwedo"><%= link_to "What we do"%></li>
+			<li id="cf-whatwebelieve"><%= link_to "What we believe"%></li>
+			</ul>
+		<!-- end .cf-aboutus-left-sidebar--></div>
+		
+		<div class="cf-aboutus-main-content" id="cf-aboutus-main-content-center">
+			<%= render 'footer/about_us_overview' %>    	  
+		</div>
+		
+		<div class="cf-aboutus-right-sidebar">
+			<%= render 'footer/about_us_sidebar' %>    			
+		</div>
+		<div class="clear"></div>
+	</div>	
+
+        <div class="cf-aboutus-footer">
+    		<div class="cf-aboutus-footer-content">
+			<%= render 'shared/footer' %>    	   
+        	</div>
+     <!-- end .cf-aboutus-footer --></div>
+ <!-- end .cf-aboutus-content --></div>
+</body>
+</html>

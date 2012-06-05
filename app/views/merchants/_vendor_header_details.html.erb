@@ -1,0 +1,31 @@
+<div class="cf-merchant-content-vendor">
+		<% @vendor.each do |vendor| %>
+
+			<span class="span-vendor">Greetings, <span class="span-vendor-name"><%= vendor.vendor_name.titlecase %>!</span> </span>
+			<br/>
+			<span class="span-vendor">Welcome to CrawlFish. You are enlisted as a <%= vendor.business_type.titlecase%> shop.</span>
+			<br/>
+			<span class="span-vendor"><b>Location:&nbsp;</b>
+			<%if vendor.branch_name.gsub(".","")=="na" || vendor.city_name.gsub(".","")=="na"%>
+				N.A.
+			<%else%>
+				<%= vendor.branch_name.titlecase %>, <%= vendor.city_name.titlecase %>		
+			<%end%>
+			</span>
+			<br/>
+			<span class="span-vendor"><b>Type:&nbsp;</b><%= vendor.monetization_type.titlecase %></span>
+			<% @vendor_id = vendor.vendor_id %>
+
+		<% end %>
+		</div>
+
+<div id="user_nav" class="cf-merchant-content-logout">
+			<% if @current_merchant %>
+				<b><%= @current_merchant.login_name %></b>&nbsp;|
+				<%= link_to "Log out", log_out_path,:class=>'logout-a' %>
+			<% else %>
+				<%= link_to "Sign up", merchant_sign_up_form_path %> or
+				<%= link_to "log in", log_in_path %>
+			<% end %>
+</div>
+

@@ -1,0 +1,31 @@
+def fetchbooks
+
+        @id = [ ]
+        @table_name = [ ]
+        @column_name = [ ]
+        @filtersBookslistid = [ ]
+
+        for i in (0..@filterdetails.length-1)
+        @id << @filterdetails.flatten[i].filter_id
+        @table_name << @filterdetails.flatten[i].filter_table_name
+        @column_name << @filterdetails.flatten[i].filter_table_column
+
+        conditions = [[]]
+
+        conditions[0] << @column_name[i]
+        conditions[0] << ' IN  ('
+        conditions[0] << @id[i]
+        conditions[0] << ')'
+
+        conditions[0] = conditions[0].join
+
+        @filtersBookslistid << @table_name[i].constantize.find(:all, :select => 'books_list_id', :conditions => conditions[0])
+
+        end
+
+        joinSetBookslistsid(@filtersBookslistid)
+
+        @books =  BooksList.find(:all, :conditions => ["books_list_id IN (?)", @bookslistid.flatten.map { |v| v.books_list_id.to_i }] )
+
+    end
+

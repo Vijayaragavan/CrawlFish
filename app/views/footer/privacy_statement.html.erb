@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Privacy Statement</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/privacy.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-privacy-content">
+
+	<div class="cf-privacy-header">
+		<div class="cf-privacy-header-logo">
+			<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+			<%= link_to image_tag("/Images/CF_logoTagLinePng_v2.png") ,{:controller => 'main',:action => 'index'},:class => 'imgTag'%>
+		</div>
+    	 <!-- end .cf-privacy-header --></div>
+
+	<div class="cf-privacy-content-wrapper">
+		       
+		<div class="cf-privacy-main-content">
+			<%= render 'footer/privacy_stmnt_text' %>            	 
+		</div>
+               
+		<div class="clear"></div>
+        
+	</div>
+
+        <div class="cf-privacy-footer">
+    		<div class="cf-privacy-footer-content">
+
+			<%= render 'shared/footer' %>    
+
+        	</div>
+     <!-- end .cf-privacy-footer --></div>
+ <!-- end .cf-privacy-content --></div>
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+<% @arr_grid_more_genre = @feature_array[1].split("%") %>
+<% if(@arr_grid_more_genre.count>1) %>
+	<% if(@arr_grid_more_genre[0]=="books") %>
+		<% @more_genre=@arr_grid_more_genre[1].gsub(/\%/,",").titlecase %>
+	<% else %>
+		<% @more_genre=@feature_array[1].gsub(/\%/,",").titlecase %>
+	<% end %>
+<%else%>
+	<% @more_genre=@feature_array[1].gsub(/\%/,",").titlecase %>
+<% end %>
+
+<div class="more-f1"><span class="more"><%=  @feature_array[0].titlecase %></span> has penned few other books too!&nbsp;<br/><br/>
+<%= link_to "BROWSE", {:controller => 'search',:action => 'index',:query=>@feature_array[0].titlecase},:class=>'more-a'%>
+</div>
+<br/>
+<div class="more-f2">Browse through books in this genre - <span class="more"><%=  @more_genre %></span> &nbsp;<br/><br/>         <%= link_to "BROWSE", {:controller => 'search',:action => 'index',:query=>@more_genre},:class=>'more-a'%>
+</div>
+<br/>
+<div class="more-f3">Browse through books from this publisher - <span class="more"><%=  @feature_array[6].titlecase %></span>&nbsp;<br/><br/><%= link_to "BROWSE", {:controller => 'search',:action => 'index',:query=>@feature_array[6].titlecase},:class=>'more-a'%></div>
+<br/>

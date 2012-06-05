@@ -1,0 +1,37 @@
+<div id="fixed-product-listings">
+
+<%= will_paginate @fixed_product_listings %>
+
+<div id="loading-bar-dashboard" style="display:none;" class="cf-dashboard-loading">
+				   <img alt="156" height="20" src="/Images/156.gif" width="20" />
+</div>
+
+<table cellspacing=0 cellpadding=1 class="cf-merchant-content-products-table" border=0>
+<tr>
+<td class="cf-merchant-content-products-table-tr"><b>&nbsp;Product Name</b>&nbsp;</td>
+<td class="cf-merchant-content-products-table-tr"><b>&nbsp;Number Of Impressions</b>&nbsp;</td>
+<td class="cf-merchant-content-products-table-tr"><b>&nbsp;Number Of Button Clicks</b>&nbsp;</td>
+</tr>
+
+<% @fixed_product_listings.each do |log_item| %>
+
+  <tr>
+
+	  <td class="td-product-name"><%= log_item.product_name %></td>
+	  <td class="td-product-price"><%= log_item.impression_count %></td>
+	  <td class="td-product-avl"><%= log_item.click_count%></td>
+
+  </tr>
+
+<% end %>
+
+<tr class="tr-purchase-total">
+	 <td class="td-product-name"></td>
+	 <td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Total:</b> <%= @fixed_product_listings.collect(&:impression_count).sum.to_i %></span></td>
+	<td class="td-product-imp-clicks"><span style="color:#06C;font-size:13px"><b>Total:</b><%= @fixed_product_listings.collect(&:click_count).sum.to_i %></span></td>
+</tr>
+
+</table>
+
+</div>
+

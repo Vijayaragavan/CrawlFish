@@ -1,0 +1,123 @@
+<% @product_id ||=  params[:product_id] %>
+<% @sub_category_id ||= params[:sub_category_id] %>
+<% @area_id ||= params[:area_id] %>
+
+
+<div id="view-all-local" style="display:none">
+	<%= link_to "View all Local Shops",{:controller => 'specific',:product_id => @product_id , :sub_category_id => @sub_category_id,:type => "local",:include => 1 } %>
+				
+</div>
+
+<div class="in-out-of-stock-links">
+<% if params[:include].nil? %>
+      <% @include = 1 %>
+      <%= form_out_of_stock_links("local","inline","include",0).html_safe %>
+
+      <%= form_out_of_stock_links("local","none","exclude",1).html_safe %>
+<% else %>
+        <% @include = params[:include].to_i %>
+          <% if @include == 0 %>
+
+              <%= form_out_of_stock_links("local","inline","exclude",1).html_safe %>
+
+          <% elsif @include == 1 %>
+
+              <%= form_out_of_stock_links("local","inline","include",0).html_safe %>
+          <% end %>
+<% end %>
+</div>
+
+<div style="clear:both;padding-bottom:10px"></div>
+
+<div id="local-grid-pagination-links">
+		<%= will_paginate @local_grids, :params => {:product_id => @product_id,:sub_category_id => @sub_category_id, :area_id => @area_id, :type => "local", :include => @include } %>
+</div>
+
+<table class="cf-specific-product-grid-table-local-inner" id="tbl-local-inner" data-area="<%= @area %>">
+
+	<% if @local_grids_count == 0 %>
+
+		<tr class="wrong-tr">
+		<td>
+			<div class="cf-specific-product-grid-table-wronglogo">
+				<%= image_tag("/Images/CF_WrongLogoPng_v01.png") %>
+			</div>
+		</td>
+
+             	<td>
+             		<div class="cf-specific-product-grid-table-wrongtext">
+             			This product is currently not available in any of local shops
+             		</div>
+             	</td>
+
+		</tr>
+
+	<% else %>
+
+        <tr>
+  		<th id="th-seller">Seller</th>
+     		<th id="th-price">Price</th>
+		<th id="th-shipping">Delivery time & Cost</th>
+		<th id="th-shop">Option</th>
+   	</tr>
+	
+	<% end %>
+</table>
+
+<div id="loading-bar-grid" style="display:none">
+<table class="cf-specific-product-grid-table-online-details">
+	<tr class="cf-specific-product-grid-table-local-inner-tr-content">
+		<td style="text-align:center;width:630px;">
+				<div style="padding-top:10px;padding-bottom:10px">
+				<%= image_tag "/Images/131.gif", :size => "50x50" %>
+				</div>
+		</td>
+	</tr>
+</table>
+</div>
+
+<div id="final-local-grid" style="display:;" data-unique_ids_array="<%= @local_grids.map{|i| i.unique_id } %>" data-query="<%=@query%>">
+
+
+
+<table class="cf-specific-product-grid-table-online-details" border=0 cellpadding=0 cellspacing=0>
+
+<% @local_grids.each do |grid| %>
+		
+
+                 <tr class="cf-specific-product-grid-table-local-inner-tr-content">
+
+                 <td id="td-seller-local"><%= grid.vendor_name.titlecase %> (<%= grid.branch_name.titlecase%>) </td>
+		 <td id="td-price">
+
+		<% if grid.availability.gsub(/\s+/, "").downcase == "outofstock" %>
+			<%="N.A."%>
+		<% else %>
+			<%= "Rs."+(grid.price.to_i).to_s %>
+		<% end %>
+
+		</td>
+    		 <td id="td-shipping">
+		<% if grid.availability.gsub(/\s+/, "").downcase == "outofstock" %>
+			<%="N.A."%>
+		<% else %>
+	    		 <% if grid.delivery.downcase == "y" %>
+    				 <%= grid.delivery_time %>&nbsp;&&nbsp;<%=if (grid.delivery_cost.to_i <= 0) then grid.delivery_cost = "Free"; else ; grid.delivery_cost; end  %>
+    			 <% else %>
+    				 <%= p "N.A." %>
+    			 <% end %>
+		<%end%>
+
+    		 </td>
+    		 <td id="local-visit-shop" data-unique_id="<%= grid.unique_id %>" data-query="<%=@query%>"><%= link_to "Visit Shop",{:action => 'show_local_shop',:controller => 'local', :vendor_id => grid.vendor_id, :product_id => @product_id, :sub_category_id => @sub_category_id,:unique_id=>grid.unique_id,:deal=>0} %></td>
+    		</tr>
+
+<% end %>
+
+</table>
+</div>
+
+<div class="cf-specific-product-grid-table-online-inner-tr-header">
+
+</div>
+

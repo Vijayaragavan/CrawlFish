@@ -1,0 +1,109 @@
+Hi guys,
+
+Do follow the below steps to understand the design of Monetization and Advertisement DBs of CF.
+
+
+########################## MONETIZATION DB FLOWS ####################################
+
+Basically we have two types of monetization flow for CF 
+
+1) FIXED and 2) VARIABLE
+
+But, according to the recent real world scenarios, i have split VARIABLE into two types
+
+a) VARIABLE and b) PURCHASE
+
+1) FIXED - vendor pays a subscription amount for a specified interval. (e.g. Rs.500 for 3 months or Rs.200 for one month)
+2a) VARIABLE - cost per impression + cost per button click + product purchase commission
+2b) PURCHASE - product purchase commission
+
+Parent tables, with predefined values, in monetization db
+
+1) cut_off_amounts - defines the amounts, which when reached, the vendor has to make his payment as agreed
+2) cut_off_periods - defines the periods, within which, a vendor has to make his payment as agreed
+3) fixed_pays - defines the various subscription_cost and subscription_period combos
+4) button_click_rates - defines the various accepted button_click rates
+5) impression_rates - defines the various accepted impression rates
+6) product_purchase_commissions - defines the various commission rates
+
+crawlfishdevdb
+
+1) Vendor created in vendors_lists table. Enter value for "vendor_sub_categories" (e.g.: books_lists,mobiles_lists)
+
+2) "Monetization_type" and "subscribed_date" are entered for the vendor
+
+3) If the monetization_type = "fixed"
+
+	1) Record created for the vendor in fixed_pay_vendors table
+
+	2) Enter the "accepted_amount" and "cut_off_period" value in the fixed_pay_vendors table
+
+	3) Record created for the vendor in vendors_fixed_pays table (monetization DB)
+
+	4) Run the procedure "p_Insert_update_delete_vendor_financials()" at the end of every day, which will move the respective records (subscription_end_date - 		current_date <= 10) from vendors_fixed_pays table (monetization DB) to vendor_financials table(monetization DB).
+
+	5) Once the payment is made by the vendor, insert a record into vendor_transactions table(monetization DB), which then will update the respective 		records(paid_flag will be set to 1) in vendor_financials table(monetization DB) and a new record with the next subscription date will be created in the 
+	vendors_fixed_pays table (monetization DB).
+
+4) If the monetization_type = "variable"
+
+	1) Records created for the vendor in variable_pay_vendors and product_purchase_commission_vendors tables
+
+	2) Enter the commission rate for each subcategory in the product_purchase_commission_vendors table
+
+	3) Respective records will be created in the vendors_product_purchase_commissions table(monetization DB)
+
+	4) Enter the accepted button click and impression rates in the variable_pay_vendors table	
+
+	5) Respective record will be created in the vendors_variable_pays table(monetization DB)
+
+	6) Track the daily impression and button_click counts for each and every product of each subcategory of each vendor and feed the data 
+	to vendor_product_transactions_log table
+	
+	7) Respective records will be created in variable_pay_logs and cumulative_variable_pays tables(monetization DB)
+
+	8) Track the daily product purchases count for each and every product of each subcategory of each vendor and feed the data to vendor_product_purchases_log 		table
+
+	9) Respective records will be created in product_purchase_commission_logs and cumulative_variable_pays tables(monetization DB)
+
+	10) At the end of each entry in to cumulative_variable_pays table(monetization DB), the cumulative total is calculated and once it reaches the threshold of 		"cut_off_amount" limit that record will be moved to variable_pays table(monetization DB). Respective records in
+	cumulative_variable_pays table(monetization DB) will be updated with a history_flag of "1".
+
+	11) Run the procedure "p_Insert_update_delete_vendor_financials()" at the end of every day, which will move the respective records (financial_flag = 0)
+	from variable_pays table (monetization DB) to vendor_financials table(monetization DB).
+
+	12) Once the payment is made by the vendor, insert a record into vendor_transactions table(monetization DB), which then will update the respective 		records(paid_flag will be set to 1) in vendor_financials table(monetization DB).
+
+5) If the monetization_type = "purchase", similar to that of the purchase case in variable type.
+
+6) history_flag = 0 (active record), history_flag = 1 (history record)
+
+7) paid_flag = 0 (unpaid), paid_flag = 1 (paid)
+
+8) financial_flag = 0 (record not yet moved to vendor_financials table), financial_flag = 1 (record moved to vendor_financials table) 
+
+9) Irrespective of the monetization_type, we need to track the impression, button click and product purchase counts in the vendor_product_transactions_log and vendor_product_purchases_log tables every day.
+
+#################################### END ####################################################
+
+
+
+###################################### ADVERTISEMENT DB ################################################
+
+1) ad_banners table - predefined with the banner_height, banner_width, duration and banner_cost values
+
+2) advertisers_lists table - similar to the structure of vendors_lists table but with limited columns.
+
+3) Record, once created in advertisers_lists table will create a record in ad_lists table
+
+4) Update the ad_lists table with banner_height, banner_width and duration values.
+
+5) A record will be created in advertiser_financials table(monetization DB).
+
+6) Once the payment is made by the advertiser, insert a record into advertiser_transactions table(monetization DB), which then will update the respective 
+records (paid_flag will be set to 1) in advertiser_financials table(monetization DB) and a new record, set with next renewal date, will be created in 
+advertiser_financials table(monetization DB).
+
+####################################### END #############################################################
+
+##################################### THANKS ##############################################################

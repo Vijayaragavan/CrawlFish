@@ -1,0 +1,18 @@
+<% if (@clicked_category.nil?) %>
+
+  <% @category_order.each_with_index do |sub_category_id,index| %>
+
+    <div id="current_category"><%= decide_category_order(sub_category_id,index) %></div>
+
+  <% end %>
+
+<% else %>
+
+   <% @category_order.each do |sub_category_id| %>
+
+     <div id="current_category"><%= decide_category_order(sub_category_id,1,@sub_category_flag) %></div>
+
+   <% end %>
+
+<% end %>
+

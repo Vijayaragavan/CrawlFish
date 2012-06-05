@@ -1,0 +1,82 @@
+<div class="cf-partial-edit-form">
+<%= form_for @merchants_product, :url => {:controller => 'merchants_products', :action => 'update'},:html => {:id => "product-edit-form"},:validate => true  do |f| %>
+<table class="cf-partial-edit-form-table" border=0 cellspacing=0 cellpadding=5>
+
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_name,'Name' %></td>
+		<td><%= f.text_field :product_name,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+    	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_category,'Category' %></td>
+		<td><%= f.text_field :product_category,:class=>'partial-edit-td-txt',:readonly => true %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_identifier1,'Identifier 1' %></td>
+		<td><%= f.text_field :product_identifier1,:class=>'partial-edit-td-txt',:readonly => true %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_identifier2,'Identifier 2' %></td>
+		<td><%= f.text_field :product_identifier2,:class=>'partial-edit-td-txt',:readonly => true %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_price,'Price'%></td>
+		<td><%= f.text_field :product_price,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_availability,'Availability' %></td>
+		<td><%= f.text_field :product_availability,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+
+	<% if @type == "local" %>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_delivery,'Door Delivery'%></td>
+		<td><%= f.text_field :product_delivery,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_delivery_time,'Delivery Time' %></td>
+		<td><%= f.text_field :product_delivery_time,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_delivery_cost,'Delivery Cost' %></td>
+		<td><%= f.text_field :product_delivery_cost,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+
+   <% elsif @type == "online" %>
+
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_shipping_cost,'Shipping Cost' %></td>
+		<td><%= f.text_field :product_shipping_cost,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_shipping_time,'Shipping Time' %></td>
+		<td><%= f.text_field :product_shipping_time,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_redirect_url,'Redirect URL' %></td>
+		<td><%= f.text_field :product_redirect_url,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+
+   <% end %>
+
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_special_offers,'Special Offers' %></td>
+		<td><%= f.text_field :product_special_offers,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+	<tr>
+		<td class="partial-edit-td-label"><%= f.label :product_warranty,'Warranty'%></td>
+		<td><%= f.text_field :product_warranty,:class=>'partial-edit-td-txt' %></td>
+	</tr>
+	  <%= hidden_field_tag 'product_image_url', @merchants_product.product_image_url %>
+    <%= hidden_field_tag 'product_sub_category' , @merchants_product.product_sub_category %>
+    <%= hidden_field_tag 'reason' , @merchants_product.reason %>
+    <%= hidden_field_tag 'validity' , @merchants_product.validity %>
+    <%= hidden_field_tag 'configured_by' , @merchants_product.configured_by %>
+    <%= hidden_field_tag 'part1_product_id' , @merchants_product.part1_product_id %>
+    <%= hidden_field_tag 'vendor_id', @merchants_product.vendor_id %>
+    <%= hidden_field_tag 'vendor_table_name', @merchants_product.vendor_table_name %>
+    <%= hidden_field_tag 'merchant_action', @merchants_product.action  %>
+</table>
+<% end %>
+
+</div>
+

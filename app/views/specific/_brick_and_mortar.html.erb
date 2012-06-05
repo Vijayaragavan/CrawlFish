@@ -1,0 +1,53 @@
+<div class="cf-specific-right-sidebar-brick-header">
+	<span class="cf-specific-right-sidebar-brick-header-text">Locate a shop in your area</span>
+</div>
+
+<div class="cf-specific-right-sidebar-brick-table">
+
+<table>
+
+<tr>
+	<div class="cf-specific-right-sidebar-brick-table-tr">
+		To know price of this product near you,choose your area
+	</div>
+</tr>
+
+
+<tr>
+
+<div class="cf-specific-right-sidebar-brick-table-tr-city">
+	<td class="city">City:</td>
+	<td class="city">
+		<%= select("city", "id",options_for_select(Cities.all.collect {|p| [ p.city_name.titlecase, p.city_id ] }),{ :prompt => "Select City"}) %>
+	</td>
+	<td>
+		<div id="loading-bar-city" style="display:none">
+			<%= image_tag "/Images/156.gif", :size => "20x20" %>
+		</div>
+	</td>
+</div>
+
+</tr>
+
+
+<tr>
+<td class="area">
+	<div id="choose">
+		<span id="area">Area:</span>
+	</div>
+</td>
+
+<td class="area">
+	<div id="areas">
+		<%= render 'areas' %>
+	</div>
+</td>
+<td>
+		<div id="loading-bar-area" style="display:none;padding-top:7px;">
+			<%= image_tag "/Images/156.gif", :size => "20x20" %>
+		</div>
+</td>
+</tr>
+
+</table>
+</div>

@@ -1,0 +1,184 @@
+CrawlFish - Merchant Manual
+
++---------------------------------------------------------------+
+|Author  : Senthil
+|Version : One
+|Desc    : Add a merchant to crawlfish. End to end lifecycle. ONLY LOCAL IMPLEMENTED.
+|Warning : This process will not work for current vendors, since a little change in vendor.rake is made.
+|          Only, new vendors added using "rake vendor:addlocal" are eligible.
++---------------------------------------------------------------+
+
++---------------------------------------------------------------+
+|Version : Two
+|Desc    : Add a merchant to crawlfish. End to end lifecycle. BOTH ONLINE AND LOCAL IMPLEMENTED.
+|Warning : This process will not work for current vendors, since a little change in vendor.rake is made.
+|          Only, new vendors added using "rake vendor:addlocal, rake vendor:addonline" are eligible.
++---------------------------------------------------------------+
+
+IMPORTANT CHANGE IN VERSION-2:
+
+$ rake merchant:approve ========> $ rake merchant:approve_online["merchant_name"]
+                                  $ rake merchant:approve_local["merchant_name","city_name","branch_name"]
+
+*****************************==Starting chapter 1 ==**************************
+
+rake merchant:approve_online["Flipkart"]
+
+------------
+Chapter - 1
+------------
+
+1. Cd to doc, open the latest help document and install crawlfish in your comp.
+
+2. From home click "Merchant Login" link.
+
+3. You will land on a page, now "Sign up", pick your choices. LOCAL AND ONLINE IMPLEMENTED. So add
+any vendor.
+
+4. After picking your choices from the drop down boxes, please Click on "proceed".
+
+5. You will get another form which ask for more details about the merchant. Please Fill the form with correct details.
+(Now dont mind the html, the log in form would have gone south. V will take care of it.)
+
+6. If you enter wrong details and click "sign up" then the error messages will be displayed below,
+please scroll below. Now again HTML is bad, V should take care of it.
+
+7. After filling the right details in the form, click sign up which should take you to a seperate
+page, that says , "Your request to become a vendor at CrawlFish has been taken, we will revert in 23 hours! "
+
+8. Now, goto phpmyadmin or whereever and check your "merchants_lists" table, there will be an entry for your
+details and check the "priority_requests" table. There should be an entry, too. Check all the details in the 2 tables for its correctness.
+
+I did as follows,
+
+mysql> select * from merchants_lists;
+
+
+
+mysql> select merchants_list_id,merchant_name,branch_name,city_name,merchant_id from merchants_lists;
++-------------------+---------------+-------------+-----------+-------------+
+| merchants_list_id | merchant_name | branch_name | city_name | merchant_id |
++-------------------+---------------+-------------+-----------+-------------+
+|                17 | afrah         | tambaram    | chennai   |        NULL |
++-------------------+---------------+-------------+-----------+-------------+
+1 row in set (0.00 sec)
+
+
+mysql> select request,request_type,merchants_list_id, served from priority_requests;
++--------------------------------------------------------+--------------+-------------------+--------+
+| request                                                | request_type | merchants_list_id | served |
++--------------------------------------------------------+--------------+-------------------+--------+
+| A new merchant has requested to sign up with CrawlFish | add_vendor   |                17 |      0 |
++--------------------------------------------------------+--------------+-------------------+--------+
+1 row in set (0.00 sec)
+
+
+9. Goto command line and use our usual rake task to add this vendor..(According to us, we will BG this details and then rake vendor:addlocal)
+
+I did this,
+
+        $ rake vendor:addlocal APP_PATH=/home/think/CrawlFish VENDOR_NAME=AFRAH CITY_NAME=Chennai BRANCH_NAME=tambaram EMAIL=dsa@dfv.com PHONE=490509 ADDRESS=myaddress
+
+10. Now confirm you ran the lastest rake task by checking the directory $APP_PATH/db/migrate for the
+file "<<timestamp>>_create_<<Vendor_details>>.rb and $APP_PATH/app/models for a model named with your newly added vendor details.
+
+
+I did this,
+
+        $ ls /home/think/CrawlFish/db/migrate/20120510001140_create_local_chennai_tambaram_afrah_products.rb | wc -l
+        and I got the output as 1.
+
+        $ ls /home/think/CrawlFish/app/models/local_chennai_tambaram_afrah_products.rb | wc -l
+
+        and got the output as 1.
+
+11. Now you have, promised the new merchant 23 hours, BG verified the new merchant and added him as a vendor in
+crawlfishdb. You need approve this merchant in order for him to convert as a vendor.
+
+***************************************************************
+PLEASE REPEAT THE STEPS 9,10 and 11 FOR ONLINE VENDORS TOO...
+***************************************************************
+
+12. To approve a LOCAL merchant, run the following rake task with the merchants name,city,branch as parameters.
+
+I did this,
+
+        $ rake merchant:approve_local[afrah,chennai,tambaram]
+
+    To approve an ONLINE merchant,
+
+        $ rake merchant:approve_online[flipkart]
+
+This will generate the following login name and password and prompt for your reply. If you want to approve the merchant, key in "y", else "n"..
+============================================================================================
+-
+-
+-
+This task will start approving a merchant and make him a vendor in CrawlFish db...
+-
+-
+-
+The vendor - afrah is present in vendors_lists
+The merchant - afrah is present in merchants_lists
+-
+-
+-
+=============LOGIN DETAILS FOR AFRAH=========================
+A merchant-Afrah has been added to CrawlFish db and enlisted in CrawlFish part-1 db
+The following login details has been created for this vendor,
++--------------------------------------------
+|Login Name : cfactx16
+|Password   : 4dj5ljr6
++--------------------------------------------
+====================================================================
+Do you want to go ahead and approve this vendor? (y/n)
+(Im keying in y)y
+-
+-
+-
+Inserting the merchant id in merchants_lists...
+-
+-
+-
+The merchant_id - 2 for the merchant - afrah is inserted into the table merchants_lists
+-
+-
+-
+MERCHANT AFRAH IS APPROVED!!
+-
+-
+-
+============================================================================================
+
+13. Please note down the login_name and password from the previous step.
+
+14. Visit the crawlfish home, click "merchant login" link and use the login_name and password generated to login.
+
+15. You should land on the index page of a merchant. Now,
+"oops!!!!!!!!!!!"..There is no data displayed in the index page of the merchant,
+but its tells you , who you are and where you are from..
+
+It told me this,
+
+"Hi, afrah. Welcome to CrawlFish. You are enlisted as a local shop.
+Location: tambaram, chennai "
+
+16. You have not loaded any data into the new vendors table. Lets do it now,
+
+     $ rake vendor:loadlocal APP_PATH=/home/think/CrawlFish DATA_FILE_PATH=/home/think/data/2012may02/Offline_BookAdda_books.dat CITY_NAME=chennai BRANCH_NAME=tambaram VENDOR_NAME=afrah
+
+********************************************************************************
+SAME PROCEDURE TO LOAD DATA INTO ONLINE VENDORS
+********************************************************************************
+
+17. Now that my newly added vendors table is populated with data, I went to that browser and
+clicked "refresh", I asked me to "resend" params, I clicked "resend".
+
+18. Cool, It should display that records you just loaded in to that table. This is shown in a frame
+and that is the products content of merchant login.
+
+19. Thats it for today, Click log out and its should take you to the merchants_home page.
+
+
+***********************************== END ==***************************************************************
+

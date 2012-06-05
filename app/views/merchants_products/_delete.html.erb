@@ -1,0 +1,9 @@
+<%= form_for @merchants_product, :url => {:controller => 'merchants_products', :action => 'destroy'},:html => {:id => "product-delete-form"} do |f| %>
+
+    <%= hidden_field_tag 'part1_product_id' , params[:part1_product_id] %>
+    <%= hidden_field_tag 'merchant_action', params[:merchant_action] %>
+
+<% end %>
+
+<span class="delete-text"><%= "Do you want to place a request to delete this product?" %></span>
+

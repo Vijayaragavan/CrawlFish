@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/merchantdashboard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="cf-merchant-content">
+
+	<div class="cf-merchant-header">
+		<%=render 'merchants/header'%>
+	<!-- end cf-merchant-header --></div>
+
+ 	<div class="cf-merchant-content-wrapper">
+		<%=render 'merchants/vendor_header_details'%>
+
+		<div class="clear"></div>
+<div class="cf-merchant-content-complete">
+			<div class="cf-merchant-content-divider"></div>
+			<%= render ("merchants/buttons") %>
+			<div style="padding-top:28px"></div>
+<div class="cf-merchant-content-center">
+
+	<div class="cf-fixed-pay-section">
+		<div class="cf-variable-pay-header">You can review your financial details in this section. In financials tab, you can view number of impressions and button clicks per product in each category listed in CrawlFish by you.</div>
+
+		<div class="cf-fixed-pay-common-wrapper">
+			<div class="cf-variable-pay-common-header">
+				<div class="cf-variable-pay-common-header-label">Financial Type :</div>
+				<div class="cf-variable-pay-common-header-type"><%= @monetization_type.titlecase %> </div>
+				<div style="clear:both;padding-bottom:5px;"></div>
+			</div>
+			<div style="padding-top:10px"></div>
+
+			<div class="cf-fixed-pay-common-content">
+				<div class="cf-variable-pay-common-cutoff-period">
+					<% if @no_subscribe_flag == 1 %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Subscription Details&nbsp;:</b>&nbsp;<i><%= @message %></i></span>
+					<% else %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Subscription Cost&nbsp;:</b>&nbsp;<%= @subscription_cost %></span><br/>
+						<span class="cf-variable-pay-common-cutoff-period-value"><b>Subscription Period&nbsp;</b>:&nbsp;<%= @subscription_period %></span><br/>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">Subscription cost is the fixed amount that is to be paid as subscription for a fixed period of time known as Subscription Period.</div>
+				</div>
+				<div style="border-bottom:1px solid #999;padding:3px"></div>
+				<div class="cf-variable-pay-common-cutoff-amount">
+					<% if @no_pay_flag == 1 %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Last Payment Details&nbsp;:</b>&nbsp;<i><%= @message %></i></span>
+					<% else %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Last Paid Amount&nbsp;:</b>&nbsp;Rs.<%= @last_paid_amount %></span><br/>
+						<span class="cf-variable-pay-common-cutoff-period-value"><b>Last Paid Date&nbsp;</b>:&nbsp;<%= @last_paid_date %></span><br/>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">This shows your previous payment details available with us</div>
+				</div>
+				<div style="border-bottom:1px solid #999;padding:3px"></div>
+				<div class="cf-variable-pay-common-cutoff-amount">
+					<% if @no_next_pay_flag == 1 %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Next Payment Details&nbsp;:</b>&nbsp;<i><%= @message %></i></span>
+					<% else %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Next Payment Amount&nbsp;:</b>&nbsp;Rs.<%= @next_payment_amount %></span><br/>
+						<span class="cf-variable-pay-common-cutoff-period-value"><b>Next Payment Date&nbsp;:</b>&nbsp;<%= @next_payment_date %></span><br/>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">This is your next payment details available with us. If you have already made payment, please wait until 24 hours for your payment to reflect</div>
+				</div>
+				<div style="border-bottom:1px solid #999;padding:3px"></div>
+				<div class="cf-variable-pay-common-cutoff-amount">
+					<% if @no_cut_off_period == 1 %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Cut-Off Period&nbsp;:</b>&nbsp;<i><%= @message %></i></span>
+					<% else %>
+						<span class="cf-variable-pay-common-cutoff-period-message"><b>Cut-Off Period&nbsp;:</b>&nbsp;<%= @cut_off_period %></span>
+					<% end %>
+					<div class="cf-variable-pay-common-cutoff-text">Cut-off Period is the number of days within which you have to pay the cut-off amount after you have recevied billing emailer from us.</div>
+				</div>
+			<!--end cf-fixed-pay-common-content--></div>
+<!--end cf-fixed-pay-common-wrapper--></div>
+
+			<div class="cf-fixed-pay-prd-listing-wrapper">
+				<div class="cf-variable-pay-common-header">
+					<div class="cf-variable-pay-common-header-label">Product Listing - Impressions and Clicks</div>
+					<div class="common_table_categorize-select">
+						<%= select("fixed_table_categorize", "id",options_for_select(@options).titlecase) %>
+					</div>
+					<div id="loading-bar-dashboard-var" style="display:none;" class="cf-dashboard-loading">
+				    		<%= image_tag "/Images/156.gif", :size => "20x20" %>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+				<div class="cf-variable-pay-imp-clicks-header">Find here the product listing along with its number of impressions and clicks</div>
+				<div id="fixed-sub-category-id"></div>
+				<div class="cf-fixed-pay-imp-clicks-table"><%= render ("merchants_financials/fixed_table") %></div>
+			<!--end cf-fixed-pay-prd-listing-wrapper--></div>
+
+
+<!--end cf-fixed-pay-section--></div>
+</div>
+</div>
+</div>
+<div class="clear-footer"></div>
+<div class="cf-merchant-footer">
+    		<div class="cf-merchant-footer-content">
+			<%= render 'shared/footer' %>
+        	</div>
+     	<!-- end cf-merchant-footer --></div>
+</div>
+</body>
+</html>
+

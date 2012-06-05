@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  configured_by: MyString
+  reason: MyString
+  validity: MyString
+  product_id: 1
+  vendor_id: 1
+
+two:
+  configured_by: MyString
+  reason: MyString
+  validity: MyString
+  product_id: 1
+  vendor_id: 1

@@ -1,0 +1,12 @@
+<div class="cf-tree-view-section">
+<% extended_params = parse_params(params) %>
+
+    <% if  !(@sub_category_flag.nil?) %>
+      <%= create_sub_category_box(@sub_category_flag).html_safe %>
+    <% end %>
+
+    <% extended_params.each do |i| %>
+      <%= create_tree_box(i[:id],i[:filter_id],params).html_safe %>
+    <% end %>
+
+</div>

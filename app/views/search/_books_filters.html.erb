@@ -1,0 +1,50 @@
+
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Genres</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+
+  <%@genres.each do |genre| %>
+
+  <li>
+  <%= form_filter_url(genre,params[:genre_id],params[:order],"genre_name","genre_id","filters",@sub_category_flag) %>
+  </li>
+
+  <% end %>
+  </ul>
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Bindings</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+
+  <%@bindings.each do |binding| %>
+
+  <li>
+  <%= form_filter_url(binding,params[:binding_id],params[:order],"binding_name","binding_id","filters",@sub_category_flag) %>
+  </li>
+
+  <% end %>
+  </ul>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Publishers</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+
+  <%@publishers.each do |publisher| %>
+
+  <li>
+  <%= form_filter_url(publisher,params[:publisher_id],params[:order],"publisher","publisher_id","filters",@sub_category_flag) %>
+  </li>
+
+  <% end %>
+  </ul>
+
+<div class="cf-generic-left-sidebar-filter-heading"><h2>Languages</h2></div>
+  <ul class="cf-generic-left-sidebar-filter-links-ul">
+
+  <%@languages.each do |language| %>
+
+  <li>
+  <%= form_filter_url(language,params[:language_id],params[:order],"language_name","language_id","filters",@sub_category_flag) %>
+  </li>
+
+
+  <% end %>
+  </ul>
+

@@ -1,0 +1,257 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body{
+	margin:0;
+	padding:0;
+	background:none repeat scroll 0 0 #FFF;
+	font-size:12px;
+	font-family:arial,tahoma,verdana,sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-weight:normal;
+	color:#000;
+	border:none;
+	height:100%;
+}
+
+table,tr,td,span,a,div,h2,th,ul,li,p,ol,select,textarea{
+	font-family: arial,tahoma,verdana,sans-serif;
+}
+
+img{
+	border:0;
+	outline:none;
+}
+
+a,:focus{
+	outline:none;
+}
+
+.cf-speaktous-content{
+	width: 100%;
+	margin:0 auto;
+	height:auto!important;
+	min-height:100%;
+	position:relative;
+}
+
+.cf-speaktous-header{
+	height:50px;	
+	background: none repeat scroll 0 0 #F4F5F6;
+   	border-bottom: 0px solid #CCC;
+}
+
+.cf-speaktous-header-logo{
+	width: 960px;
+	margin:0 auto;
+}
+
+.imgLogo img{
+	width:160px;
+	height:40px;
+	padding-left:15px;
+	padding-right:15px;
+	margin-top:5px;
+	border-right:1px solid #CCC;
+}
+
+.imgTag img{
+	width:200px;
+	height:23px;
+	padding-left:5px;
+}
+
+.cf-speaktous-content-wrapper{
+	width: 960px;
+	margin:0 auto;
+	padding-top:30px;
+	padding-bottom:10px;
+}
+
+.cf-speaktous-main-content{
+	border:0px solid #CCC;
+	float:left;
+	width:700px;
+	padding-left:15px;
+	padding-top:5px;
+	padding-bottom:70px;
+}
+.cf-speaktous-overview h2{
+	font-size:15px;
+	font-weight:bold;
+	border-left:5px solid #C42525;
+	padding-top:7px;
+	padding-bottom:7px;
+	padding-left:2px;	
+	background:none repeat scroll 0 0 #F5F5F5;
+}
+
+.cf-speaktous-section{
+	width:580px;
+}
+
+.cf-speaktous-table{
+	width:500px;
+	padding-left:50px;
+}
+
+.header{
+	font-weight:bold;
+	font-size:13px;
+	text-align:left;
+}
+
+.details{
+	font-size:12px;
+	text-align:left;
+}
+
+.details-name,.details-number,.details-email{
+	font-size:12px;
+	width:300px;
+	border:1px solid #CCC;
+	height:20px;
+}
+
+.details-select{
+	font-size:12px;
+	width:302px;
+	border:1px solid #CCC;
+}
+
+.message-textarea{
+	resize:none;
+	font-size:12px;
+	width:300px;
+	border:1px solid #CCC;
+}
+
+.details-submit{
+	font-size:13px;
+	font-weight:bold;
+	border:1px solid #CCC;
+	font-family:arial,tahoma,verdana,sans-serif;
+	width:80px;
+	height:25px;
+	color:#FFF;
+	background:none repeat scroll 0 0 #C42525;
+	cursor:pointer;
+}
+
+.details img{
+	width:305px;
+	height:100px;	
+}
+
+.cf-speaktous-right-sidebar{
+	float:right;
+	width:180px;
+	padding-left:5px;	
+	padding-top:70px;
+}
+
+.cf-speaktous-right-sidebar-section{
+	background:none repeat scroll 0 0 #F5F5F5;
+	border-top:3px solid #999;
+	border-bottom:1px solid #999;	
+	height:60px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:3px;
+	line-height:27px;
+}
+
+.sidebar-number{
+	font-size:16px;	
+	color:#C42525;
+}
+
+.sidebar-type{
+	font-size:13px;	
+}
+
+.sidebar-pad{
+	padding-top:10px;
+	padding-bottom:10px;	
+}
+
+.cf-speaktous-right-sidebar-section-place{
+	background:none repeat scroll 0 0 #F5F5F5;
+	border-top:3px solid #999;
+	border-bottom:1px solid #999;	
+	height:88px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:10px;
+	line-height:27px;	
+}
+
+.clear{
+	clear:both;
+	padding-top:20px;	
+}
+
+.cf-speaktous-footer{
+	border-top:1px solid #CCC;
+	position:absolute;
+	width:100%;
+	left:0;
+	bottom:0;
+	height:30px;
+	background: none repeat scroll 0 0 #F2F2FF;
+   	border-top:2px solid #DADADA;
+}
+
+.cf-speaktous-footer-content{
+	text-align:center;
+	padding-top:5px;
+	color:#000;
+}
+
+.cf-speaktous-footer-content a{
+	text-decoration:none;
+	text-align:center;
+	font-weight:normal;
+	height:30px;
+	margin-right:2px;
+	margin-left:3px;
+	color:#06C;
+	font-size:13px;
+	padding-left:10px;
+}
+
+.cf-speaktous-footer-content a:visited{
+	color:#06C;
+}
+
+.cf-speaktous-footer-content a:hover{
+	color:#06C;
+	background: none;
+	text-decoration:underline;
+}
+
+.gritter-title {
+        font-size:15px;
+	color:#FFF;
+        font-weight:bold;
+        padding:0 0 7px 0;
+}
+
+.gritter-item{
+	color: #FFF;
+	font-size: 12px;
+	font-family:arial;
+}
+
+ 
+.gritter-close {
+        position:absolute;
+        top:5px;
+        right:3px;
+        background:url(../images/gritter-close.png);
+        cursor:pointer;
+        width:30px;
+        height:30px;
+}
+
+

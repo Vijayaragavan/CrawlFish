@@ -1,0 +1,10 @@
+a = Hash.new{|hash, key| hash[key] = Array.new}
+
+
+   (keys.length).downto(1) { |hashIndex|
+
+   (hashIndex-1).downto(0){|arrayIndex|
+   a[hashIndex] << keys.slice(keys.length-hashIndex..keys.length).slice(0..arrayIndex).join(" ")
+   }
+   }
+
