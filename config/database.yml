@@ -33,21 +33,18 @@ test:
 
 production:
   adapter: mysql2
-  encoding: utf8
-  reconnect: false
   database: crawlfishdevdb
-  pool: 8
-  username: sector1
-  password: sector1
-  socket: /var/run/mysqld/mysqld.sock
+  username: 'deploy'
+  password: '4PGqNP3YXn'
+  host:      'ec2-23-21-174-217.compute-1.amazonaws.com'
+  reconnect: true
 
 monetization_dev:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+  reconnect: true
   database: monetization
   pool: 8
-  username: sector1
-  password: sector1
-  socket: /var/run/mysqld/mysqld.sock
-
+  username: 'deploy'
+  password: '4PGqNP3YXn'
+  host:      'ec2-23-21-174-217.compute-1.amazonaws.com'
