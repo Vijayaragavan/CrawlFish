@@ -444,6 +444,38 @@ $(function() {
     });
 });
 
+$(function() {
+  $("#cf-price-search-form-searchText").live("focus",function() {
+	var pricesearch=$("#price-search-notification").css("display");
+
+	$.extend($.gritter.options, {
+		    class_name: 'gritter-light',
+		    position: 'top-right',
+                    fade_in_speed: 800, // how fast notifications fade in (string or int)
+		    fade_out_speed: 800, // how fast the notices fade out
+		    time: 8000 // hang on the screen for...
+	});
+	if(pricesearch=="inline")
+	{
+	 $.gritter.add({
+				title: 'CrawlFish Price Search',
+				text: 'Enter a price to search for products close to the price range. <i>Eg. 5000</i>. You can also search by selecting a particular category',
+				image: '/Images/CF_logoChart_v1.png',
+				sticky: false,
+
+			});
+		return false;
+	}
+	$("#price-search-notification").css('display','none');
+    });
+});
+
+$(function() {
+  $("#cf-price-search-form-searchText").live("blur",function() {
+	$("#price-search-notification").css('display','none');
+    });
+});
+
 $(function(){
 	var deletesuccess=$("#delete-notification").css("display");
 	var deleteclose=$("#delete-close-notification").css("display");

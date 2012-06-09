@@ -51,7 +51,12 @@ class Search < ActiveRecord::Base
 
     puts "this is generic_view_name..#{generic_view_name}..end.."
 
-        puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    puts "this is @sql .. #{@sql}"
+
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+
+
+
 
     sql = "Create View "+generic_view_name+" AS "+@sql
 

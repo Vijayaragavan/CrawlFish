@@ -13,6 +13,8 @@ class CategoryController < ApplicationController
 
     set_page(params[:from_pagination].to_i,params[:page].to_i)# called from application_controller, this is set the @page variable which handles pagination navigations.
 
+    set_search_case#this method is called from application_controller, it sets the instance variable @search_type from params.
+
     puts "View #{@view_name} ALREADY EXIST..."
 
     set_master_hash_from_generic_view# The master_hash which was created in the create_instance_variables method will be set from the generic_view based on the data present in the view_name procured from the url parameter as params[:view_name]
@@ -43,6 +45,8 @@ class CategoryController < ApplicationController
     @sub_category_flag = params[:sub_category_id].to_i# Setting the @sub_category_flag which really important and this keeps the whole filtering process informed about the current sub_category_id.
 
     @view_name = params[:view_name]# @view_name is set.
+
+    @available_from_final = Hash.new
 
   end
 

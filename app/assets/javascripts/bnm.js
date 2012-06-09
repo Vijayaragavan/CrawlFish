@@ -38,9 +38,10 @@ $(function() {
 
     var product_id = $('#local-grid').data('product_id')
     var sub_category_id = $('#local-grid').data('sub_category_id')
+    var search_case = $('#local-grid').data('search_case')
     var area = $("#area_id").val();
     if(area == "") area="0";
-    $.get('/bnm/show_local_shops/area_id=' + area + '/product_id=' + product_id + '/sub_category_id=' + sub_category_id, function(data){
+    $.get('/bnm/show_local_shops/area_id=' + area + '/product_id=' + product_id + '/sub_category_id=' + sub_category_id + '/search_case=' + search_case, function(data){
         $("#local-grid").html(data);
         var TabbedPanels1= new Spry.Widget.TabbedPanels("TabbedPanels1", { defaultTab: 1});
         $('#view-all-local').css('display','')
@@ -52,6 +53,8 @@ $(function() {
         $("#loading-bar-area").css('display','none');
 	$("#loading-bar-grid").css('display','none');
 	$("#final-local-grid").css('display','');
+	$("#local-include-out-of-stock").css('display','none');
+	$("#local-exclude-out-of-stock").css('display','none');
 	$.gritter.add({
 				title: 'Shops in ' +area_name+ ',Chennai',
 				text: 'Displaying price information from all local shops in ' + area_name + ',Chennai',
@@ -262,7 +265,15 @@ function out_of_stock(clicked_div_id,div_id_to_show,grid_div_id,href_attr) {
         var area_id = 0;
   }
 
-  $.get('/specific/include_exclude_view_all_local/product_id=' + product_id + '/sub_category_id=' + sub_category_id + '/include=' + include + '/type=' + type +'/area_id=' + area_id + '/page=' + page , function(data){
+  if (href_attr.match(/search_case=([a-z]+)/) != null){
+        var search_case = href_attr.match(/search_case=([a-z]+)/)[1];
+  }
+  else
+  {
+        var search_case = "products";
+  }
+
+  $.get('/specific/include_exclude_view_all_local/product_id=' + product_id + '/sub_category_id=' + sub_category_id + '/include=' + include + '/type=' + type +'/area_id=' + area_id + '/page=' + page + '/search_case=' + search_case, function(data){
         $(grid_div_id).html(data);
 
         $(clicked_div_id).css('display','none');
@@ -299,13 +310,13 @@ function impressions_logger(current_div_id) {
 function clicks_logger(current_div_id,link,type) {
 
   var unique_id = $(current_div_id).data('unique_id');
- 
+
     if (unique_id.length != 0){
 
         $.post('/clicks/' + "clicks" + "/" + unique_id ,function(data) {
 
           if (type == "online"){
-            window.location = "http://"+link
+            window.location = link
           }
           else if (type == "local"){
             window.location = link

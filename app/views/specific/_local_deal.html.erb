@@ -1,3 +1,4 @@
+<% if !@local_deal.empty? %>
 <% @local_deal.each do |i| %>
 
 <% @local_deal_product_details.each do |j| %>
@@ -39,4 +40,9 @@
 </tr>
 
 </table>
+<% end %>
+<% else %>
+	<div style="color:#C42525;text-align:center;font-size:13px">
+		There are no deals available from any local shops!
+	</div>
 <% end %>

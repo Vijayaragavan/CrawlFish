@@ -40,6 +40,20 @@ class LinkProductsListsVendors < ActiveRecord::Base
 
   end
 
+  def self.get_products_list_id_sub_category_id_from_unique_id(unique_id,sub_category_id = 0)
+
+    if sub_category_id == 0
+
+      where(:unique_id  => unique_id).select("DISTINCT(products_list_id) AS products_list_id,sub_category_id")
+
+    else
+
+      where(:unique_id  => unique_id,:sub_category_id => sub_category_id).select("DISTINCT(products_list_id) AS products_list_id,sub_category_id")
+
+    end
+
+  end
+
 
 
 

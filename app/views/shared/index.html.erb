@@ -48,9 +48,9 @@ function setNoFocus()
 <div class="cf-home-wrapper">
 	<div class="cf-home-header">
     	<ul class="cf-home-header-links">
-        	<li><%= link_to "CrawlFish 101",{:controller => 'footer',:action => 'faq'},:id=>'cf-a-virtualmall'%></li>
-           <!-- <li><a id="cf-a-bargain" href="bargain.html">Bargain</a></li>
-            <li><a id="cf-a-top5" href="top5.html">Top 5</a></li>-->
+		<li><%= link_to "Home",{:controller => 'main',:action => 'index'},:id=>'cf-a-crawlfish-home'%></li>
+        	<li><%= link_to "What to buy?",{:controller => 'price_search',:action => 'index'},:id=>'cf-a-general'%></li>
+	       	<li><%= link_to "CrawlFish 101",{:controller => 'footer',:action => 'faq'},:id=>'cf-a-general'%></li>
         </ul>
 	 <!-- end .cf-home-header --></div>
     <div class="cf-home-search">
@@ -59,8 +59,6 @@ function setNoFocus()
         <!-- end .cf-home-logo --></div>
 
         <div class="cf-home-search-form">
-
-
                 	<%= render ('shared/form') %>
         <!-- end .cf-home-search-form --></div>
 
@@ -69,12 +67,10 @@ function setNoFocus()
         <!-- end .cf-home-tagline-logo --></div>
 
          <div class="cf-home-interactive-text">
-	        <div STYLE="word-wrap: break-word" id="flash_notice" class="messages_notice">
+	        <div id="flash_notice" class="messages_notice">
 		          <%= flash[:notice] %>
 		</div>
-	        <% if @no_books_flag == 1 && @no_mobiles_flag == 1%>
-	             <h1> No Results Fetched, try again! </h1>
-	        <% end %>
+
         </div>
     <!-- end .cf-home-search --> </div>
 <div class="clear"></div>

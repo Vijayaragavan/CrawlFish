@@ -1,12 +1,72 @@
-<h2> 404</h2>
-<div>
-  <h3> We're sorry</h3>
-  <p>
-    The content that you requested could not be found.
-  
-    You tried to access <% @not_found_path %>, which is not a valid page.
- 
-    Want to
-    go back to our home page
-    and try again?
-</p>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/genericsearchpage.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="cf-generic-content">
+
+<div class="cf-generic-header">
+
+	<div class="cf-generic-header-logo">
+		<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+	 <!-- end cf-generic-header-logo --></div>
+
+    	<div class="cf-generic-header-search-form">
+    		<%= render ('shared/form') %>
+    	<!-- end cf-generic-header-search-form --></div>
+
+<!-- end cf-generic-header --></div>
+
+
+<div class="cf-generic-content-wrapper">
+	<div class="cf-generic-no-results-main-content">
+		<div class="cf-generic-no-results">
+			<div class="cf-generic-no-results-header">
+				<span style="color:#C42525">Error - 404 - File Not Found</span>
+			</div>
+			<div class="cf-generic-no-results-content">
+				<div style="padding-bottom:10px"></div>	
+				<span style="font-size:13px">Sorry! We could not get the page that you requested.</span>
+				<div style="padding-bottom:10px"></div>				
+				<div class="cf-generic-no-results-points">
+					<div class="cf-generic-no-results-points-header">
+						<span style="color:#C42525">Suggestions!</span>
+					</div>
+					<ul style="font-size:13px">
+						<li>
+						<%if !@not_found_path.nil? %>
+							You tried to access <%=@not_found_path%>, which is not a valid page.
+						<%else%>
+							You tried to access a page which is not a valid page.
+						<%end%>
+						Do you want to go back to our home page and start over? <%= link_to "Click here",{:controller => 'main',:action => 'index'}%></li>
+						</ul>
+				</div>
+				<div style="padding-top:20px"></div>	
+				<div class="cf-generic-no-results-link">
+					<%= link_to "BACK", :back %>
+				</div>
+				
+			</div>
+			
+			
+		</div>		
+	<!-- end cf-generic-no-results-main-content --></div>
+
+	<div class="clear"></div>
+	<div class="cf-generic-footer">
+ 		<div class="cf-generic-footer-details">
+			<div class="cf-generic-footer-content">
+			<%= render 'shared/footer' %>
+			<!-- end cf-generic-footer-content --></div>
+		</div>
+	<!-- end cf-generic-footer --></div>
+<!-- end cf-generic-content-wrapper --></div>
+<!-- end cf-generic-content --></div>
+

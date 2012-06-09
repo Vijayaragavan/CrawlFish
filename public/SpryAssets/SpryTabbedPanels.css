@@ -107,8 +107,8 @@
  * content panel so that it looks like the tab is part of the content panel.
  */
 .TabbedPanelsTabSelected {
-	background-color: #FFF;
-	border-bottom: 1px solid #FFF;
+	background-color: #DDD;
+	border-bottom: 1px solid #EEE;
 }
 
 /* This selector is an example of how to make a link inside of a tab button
@@ -159,6 +159,7 @@
  * is activated/deactivated.
  */
 .TabbedPanelsContentVisible {
+
 }
 
 /* Vertical Tabbed Panels

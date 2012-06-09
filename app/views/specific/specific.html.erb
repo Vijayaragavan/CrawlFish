@@ -25,6 +25,20 @@ function setFocus()
         txtBox.focus();
         txtBox.style.border='1px solid #06C';
     }
+
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-price-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+		txtBox.style.border='1px solid #06C';
+
+    }
 }
 function setNoFocus()
 {
@@ -39,6 +53,20 @@ function setNoFocus()
     {
         txtBox.focus();
 	txtBox.style.border='1px solid #CCC';
+
+    }
+
+if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-price-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+		txtBox.style.border='1px solid #CCC';
 
     }
 }
@@ -61,13 +89,23 @@ function setNoFocus()
 
     	<div class="cf-specific-header-search-form">
 
-    		<%= render ('search/form') %>
+    		<%= decide_search_form %>
 
     	<!-- end cf-specfic-header-search-form --></div>
 
-	<!--<div class="cf-specific-header-links">-->
-		<!--<a href="home.html">Virtual Mall</a>-->
-	<!-- end cf-specific-header-links --><!--</div>-->
+	<div class="cf-specific-header-links">
+		<ul class="cf-general-header-links-ul">
+			<% if !@search_case.nil? %>
+			<% if @search_case == "products" %>
+        			<li><%= link_to "What to buy?",{:controller => 'price_search',:action => 'index'},:id=>'cf-a-general-buy'%></li>
+				<li><%= link_to "Home",{:controller => 'main',:action => 'index'},:id=>'cf-a-special-home'%></li>
+			<% elsif @search_case == "price" %>
+				<li><%= link_to "What to buy?",{:controller => 'price_search',:action => 'index'},:id=>'cf-a-special-buy'%></li>
+				<li><%= link_to "Home",{:controller => 'main',:action => 'index'},:id=>'cf-a-general-home'%></li>
+			<% end %>
+			<% end %>
+        	</ul>
+	<!-- end cf-specific-header-links --></div>
 
 <!-- end cf-specific-header --></div>
 
@@ -147,28 +185,27 @@ function setNoFocus()
 
 			<div class="cf-specifc-right-sidebar-similar">
 
-				<div class="cf-specifc-right-sidebar-similar-wrapper">
-
-				<div class="cf-specifc-right-sidebar-similar-product">
-
-					Similar Product
-				</div>
-
-				<div class="cf-specifc-right-sidebar-similar-details">
-
 				<% if @sub_category_name == "books_lists" %>
+	
+				<div class="cf-specifc-right-sidebar-similar-wrapper">
+	
+					<div class="cf-specifc-right-sidebar-similar-product">
 
-				  <%= render('similar_book')%>
+						Similar Product
+					</div>
+	
+					<div class="cf-specifc-right-sidebar-similar-details">
+	
+						  <%= render('similar_book')%>
+					</div>
+				</div>
 
 				<% elsif @sub_category_name == "mobiles_lists" %>
 
-  				<%= render('similar_mobile')%>
+
 
 				<% end %>
-
-
-				</div>
-				</div>
+				
 			</div>
 
 

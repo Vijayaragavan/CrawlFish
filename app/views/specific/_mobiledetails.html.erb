@@ -10,7 +10,7 @@
 
 <td class="cf-specific-product-header-table-details">
 
-	<div class="cf-specific-product-header-table-details-text"><%= @product_name %></div>
+	<div class="cf-specific-product-header-table-details-text"><%= @product_name.titlecase %></div>
 
 	<div class="cf-specific-product-header-table-details-avl">
 
@@ -20,7 +20,7 @@
 
 	</div>
 
-	<div class="cf-specific-product-header-table-details-startsat"><span>Starts at <span class="rs-green">Rs.<%=@starts_at%></span></span></div>
+	<div class="cf-specific-product-header-table-details-startsat"><span>Starts at <span class="rs-green">Rs.<%=(@starts_at.to_i).to_s%></span></span></div>
 	<div class="cf-specific-product-header-table-details-atodetails"><a href="#details">MOBILE DETAILS</a></div>
 
 	<div class="cf-specific-product-header-table-details-atodeal"><a href="#deal">DEAL OF THE DAY</a></div>

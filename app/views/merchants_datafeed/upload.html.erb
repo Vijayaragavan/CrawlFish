@@ -14,26 +14,23 @@
 		<%=render 'merchants/header'%>
 	<!-- end cf-merchant-header --></div>
 
-	<div class="cf-merchant-content-wrapper"> 
-		
+	<div class="cf-merchant-content-wrapper">
+
 		<%=render 'merchants/vendor_header_details'%>
 
 		<div class="clear"></div>
-		
+
 
 		<div class="cf-merchant-content-complete">
-			<div class="cf-merchant-content-divider"></div>	
-			<div class="complete-dashboard-div"><%= link_to "DASHBOARD",{:controller => "merchants_dashboard", :action => "index",:vendor_id => @vendor_id},:class=>'complete-dashboard-a' %></div>
-			<div class="complete-dashboard-div"><%= link_to "CATALOGUE",{:controller => "merchants_products", :action => "index",:vendor_id => @vendor_id},:class=>'complete-products-a' %></div>
-			<div class="complete-dashboard-div"><%= link_to "DATA FEEDS",{:controller => "merchants_datafeed", :action => "index",:vendor_id => @vendor_id},:class=>'complete-datafeeds-a' %></div>
-			<div class="complete-dashboard-div"><%= link_to "FINANCIALS",{:controller => "merchants_financials", :action => "index",:vendor_id => @vendor_id},:class=>'complete-financials-a' %></div>
-			<div style="padding-top:28px"></div>			
+			<div class="cf-merchant-content-divider"></div>
+			<%= render ("merchants/buttons") %>
+			<div style="padding-top:28px"></div>
 			<div class="cf-merchant-content-center">
 				<div style="padding-top:20px"></div>
 				<div class="cf-dashboard-datafeed-wrapper">
 				<div class="cf-datafeed-content">
 					Upload your data feed file here
-				</div>				
+				</div>
 
 				<%= form_tag url_for(:action => 'upload',:controller => "merchants_datafeed"),:multipart => true do %>
 				<table class="cf-dashboard-datafeed-table" border=0 cellspacing=0 cellpadding=5>
@@ -56,7 +53,7 @@
 	<div class="clear-footer"></div>
 	<div class="cf-merchant-footer">
     		<div class="cf-merchant-footer-content">
-			<%= render 'shared/footer' %>    	   
+			<%= render 'shared/footer' %>
         	</div>
      	<!-- end cf-merchant-footer --></div>
 

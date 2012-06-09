@@ -39,18 +39,14 @@ a,:focus{
 	left:0;
 	top:0;
 	height:50px;
-	/*background: none repeat scroll 0 0 #F3F2F3;*/
 	background: none repeat scroll 0 0 #F4F5F6;
-	/*background-image:url(../Images/texture.jpg);
-	background-color: transparent;
-	background-repeat: repeat;*/
    	border-bottom: 1px solid #CCC;
 }
 
 .cf-generic-header-logo {
 	float:left;
 	height:45px;
-	width:30%;
+	width:28%;
 }
 
 .imgLogo img{
@@ -71,53 +67,148 @@ a,:focus{
 
 #cf-home-search-form-searchText{
 	border: 1px solid #06C;
-    font-size: 13px;
-    height: 20px;
-    padding: 4px 20px 4px 8px;
-    width: 400px;
+	font-size: 13px;
+	height: 20px;
+	padding: 4px 20px 4px 8px;
+	width: 400px;
 	outline:none;
 }
 
 #cf-home-search-form-searchCompare {
-    border: 0px solid #999;
-    cursor: pointer;
-    height: 30px;
-    width:85px;
-    background-image:url(../Images/CF_SearchButtonPng_v04.png);
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
+	border: 0px solid #999;
+	cursor: pointer;
+	height: 30px;
+	width:85px;
+	background-image:url(../Images/CF_SearchButtonPng_v04.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
 }
 
 .cf-generic-header-search-form table{
 	padding:0px;
 }
 
-.cf-generic-header-links{
-	clear:both;
+.price-search-category-select{
+	height: 30px;
+	border: 1px solid #CCC;
+	font-size: 13px;
+	outline:none;
+	font-family:arial,tahoma,verdana,sans-serif;
+	color:#000; 
+	background:transparent;
+	font-weight:normal; 
+	width:110px;
+	-webkit-appearance: none;
+}
+
+#psc-select-id{
+	overflow:hidden; 
+	width:110px;
+	background: url(../Images/down_arrow_select.jpg) no-repeat scroll 76px 0px #FFF; 
+}
+
+@-moz-document url-prefix(){
+#psc-select-id{
+	overflow:hidden; 
+	width:110px;
+	background:none repeat scroll 66px 0px #FFF;
+}
+}
+
+#cf-price-search-form-searchText{
+	border: 1px solid #CCC;
+	font-size: 13px;
+	height: 20px;
+	padding: 4px 20px 4px 8px;
+	width: 300px;
+	outline:none;
+	font-family:arial,tahoma,verdana,sans-serif;
+}
+
+#cf-price-search-form-searchCompare{
+	border: 0px solid #999;
+	cursor: pointer;
+	height: 30px;
+	width:85px;
+	background-image:url(../Images/CF_SearchButtonPng_v04.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+}
+
+.cf-general-header-links-ul{
+	margin-top:-12px;
+	margin-right:0px;
+	list-style:none;
+}
+
+.cf-general-header-links-ul li{
 	float:right;
-	right:0;	
-	top:0;
-	position:absolute;
-	padding-top:16px;
-	padding-right:20px;
-	text-align:center;
+	padding-top:15px;	
 }
 
-.cf-generic-header-links a{
+.cf-general-header-links-ul a{	
 	text-decoration:none;
-	color:#06C;
-	font-size:15px;	
+	text-align:center;
 	font-weight:bold;
+	margin-right:10px;
+	color:#06C;
+	font-size:13px;	
+	padding-top:5px;
 }
 
-.cf-generic-header-links a:visited{
-	color:#000;
+.cf-general-header-links-ul a:visited{
+	color:#06C;
 }
 
-.cf-generic-header-links a:hover{
+.cf-general-header-links-ul a:hover{
+	color:#06F;
 	text-decoration:underline;
-	background:none;
+}
+
+.cf-general-header-links-ul a#cf-a-general-buy{
+	width:100px;
+}
+
+.cf-general-header-links-ul a#cf-a-general-home{
+	width:60px;
+}
+
+.cf-general-header-links-ul a#cf-a-special-home{
+	width:60px;
+}
+
+.cf-general-header-links-ul a#cf-a-special-buy{
+	width:100px;
+}
+
+#cf-a-special-home{
+	color:#C42525;
+}
+
+#cf-a-special-home:visited{
+	color:#C42525;
+}
+
+#cf-a-special-home:hover{
+	color:#D42525;
+	background: none;
+	text-decoration:underline;
+}
+
+#cf-a-special-buy{
+	color:#C42525;
+}
+
+#cf-a-special-buy:visited{
+	color:#C42525;
+}
+
+#cf-a-special-buy:hover{
+	color:#D42525;
+	background: none;
+	text-decoration:underline;
 }
 
 .cf-generic-content-wrapper{
@@ -418,9 +509,6 @@ table.product_table td.feature1,table.product_table td.feature2,table.product_ta
 .cf-generic-main-content-details table.product_table td.compare a{
 	text-decoration:underline;
 	color:#008000;
-
-
-
 	font-size:14px;	
 	font-weight:normal;
 }
@@ -556,7 +644,7 @@ ul.cf-right-sidebar-matched-filter-results-ul a:visited{
 }
 
 ul.cf-right-sidebar-matched-filter-results-ul a:hover{
-	color:#000;
+	color:#06C;
 	background: none repeat scroll 0 0 #EEE;
 	border-left:4px solid #333;
 	text-decoration:none
@@ -583,16 +671,12 @@ ul.cf-right-sidebar-matched-filter-results-ul a:hover{
 .cf-generic-footer{
 	border-top:1px solid #CCC;
 	position:absolute;
-	width:100%;
 	left:0;
 	bottom:0;
 	height:30px;
 	background: none repeat scroll 0 0 #F2F2FF;
-	/*background-image:url(../Images/texture.jpg);
-	background-color: transparent;
-	background-repeat: repeat;
-	background-attachment:scroll;*/
 	border-top:2px solid #DADADA;
+	width:100%;
 }
 
 .cf-generic-footer-content{

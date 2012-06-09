@@ -1,5 +1,21 @@
 module SearchHelper
 
+  def decide_search_form
+
+    if @search_case == "products"
+
+      html = render ('shared/form')
+
+  elsif @search_case == "price"
+
+      html = render ('price_search/form')
+
+    end
+
+    html
+
+  end
+
   def get_counts
 
     self.set_book_mobile_count

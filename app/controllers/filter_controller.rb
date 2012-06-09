@@ -17,6 +17,8 @@ class FilterController < ApplicationController
 
     set_page(params[:from_pagination].to_i,params[:page].to_i)# called from application_controller, this is set the @page variable which handles pagination navigations.
 
+    set_search_case#this method is called from application_controller, it sets the instance variable @search_type from params.
+
     puts "++++++++++++++--FilterController--+++++++++++++++"
 
     puts "BEFORE set_master_hash_from_generic_view, master_hash is...#{@master_hash}.."
@@ -87,6 +89,8 @@ class FilterController < ApplicationController
     create_master_hash# create the @master_hash which is very important for search and it holds books_list_id and mobiles_list_id of part-2 after searching in 4 places, :join, :filter, :title, :final for all the subcategories.
 
     set_page(params[:from_pagination].to_i,params[:page].to_i)# called from application_controller, this is set the @page variable which handles pagination navigations.
+
+    set_search_case#this method is called from application_controller, it sets the instance variable @search_type from params.
 
     form_products_list_id_hash# Called from application_controller,set products_list_id_hash retrieved from link_products_lists_vendors, this is because, the table link_products_lists_vendors has the products_list_ids present in part-1, crawlfish currently does a part-1 search.
 
@@ -164,6 +168,8 @@ class FilterController < ApplicationController
 
     @view_name = params[:view_name]# @view_name is set.
 
+    @available_from_final = Hash.new
+
   end
 
   def create_instance_variables_for_suggestions
@@ -181,6 +187,8 @@ class FilterController < ApplicationController
     @matched_filter_keys = Hash.new{|hash, key| hash[key] = Array.new}
 
     @products_list_id_hash = Hash.new{|hash, key| hash[key] = Array.new}
+
+    @available_from_final = Hash.new
 
   end
 

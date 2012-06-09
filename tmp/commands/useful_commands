@@ -1,0 +1,11 @@
+rails g model link_f1_books_lists books_list_id:integer author_id:integer
+rails g model link_f2_books_lists books_list_id:integer genre_id:integer
+rails g model link_f3_books_lists books_list_id:integer isbn_id:integer
+rails g model link_f4_books_lists books_list_id:integer isbn13_id:integer
+rails g model link_f5_books_lists books_list_id:integer binding_id:integer
+rails g model link_f6_books_lists books_list_id:integer publishing_date_id:integer
+rails g model link_f7_books_lists books_list_id:integer publisher_id:integer
+rails g model link_f8_books_lists books_list_id:integer edition_id:integer
+rails g model link_f9_books_lists books_list_id:integer language_id:integer
+rails g model link_f10_books_lists books_list_id:integer availability_id:integer
+

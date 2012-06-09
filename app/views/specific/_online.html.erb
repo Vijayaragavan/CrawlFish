@@ -77,7 +77,7 @@
 
 			<% if grid.availability.gsub(/\s+/, "").downcase == "outofstock" %>
 				<%="N.A."%>
-			<% else %>				
+			<% else %>
 				<%= "Rs."+(grid.price.to_i).to_s %>
 			<% end %>
 
@@ -86,10 +86,10 @@
 			<% if grid.availability.gsub(/\s+/, "").downcase == "outofstock" %>
 				<%="N.A."%>
 			<% else %>
-				<%= grid.shipping_time %>&nbsp;&&nbsp;<%=if (grid.shipping_cost.to_i <= 0) then grid.shipping_cost = "Free"; else ; grid.shipping_cost; end  %>
+				<%= grid.shipping_time %>&nbsp;&&nbsp;<%=if (grid.shipping_cost.to_i <= 0) then grid.shipping_cost = "Free"; else ; "Rs." + (grid.shipping_cost.to_i).to_s; end  %>
 			<% end %>
 			</td>
-			<td id="online-visit-shop" data-unique_id="<%= grid.unique_id %>" data-query="<%=@query%>"><%= link_to "Visit Shop", url_encode(grid.redirect_url) %></td>
+			<td id="online-visit-shop" data-unique_id="<%= grid.unique_id %>" data-query="<%=@query%>"><%= link_to "Visit Shop", /^http/.match(grid.redirect_url) ? grid.redirect_url : "http://#{grid.redirect_url}" %></td>
 		</tr>
 
 <% end %>

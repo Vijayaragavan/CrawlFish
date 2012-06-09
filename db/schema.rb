@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113194639) do
+ActiveRecord::Schema.define(:version => 20121113194656) do
 
   create_table "ad_banners", :primary_key => "banner_id", :force => true do |t|
     t.integer  "banner_height", :null => false
@@ -548,6 +548,90 @@ ActiveRecord::Schema.define(:version => 20121113194639) do
 
   add_index "link_vendors_lists_sub_categories", ["sub_category_id"], :name => "fk_link_vendors_lists_subcategories_sub_categories"
   add_index "link_vendors_lists_sub_categories", ["vendor_id", "sub_category_id"], :name => "vendor_id", :unique => true
+
+  create_table "local_chennai_mambalam_sayarmobiles_products", :primary_key => "product_id", :force => true do |t|
+    t.string   "product_name",                                         :null => false
+    t.text     "product_image_url"
+    t.string   "product_category",                                     :null => false
+    t.string   "product_sub_category",                                 :null => false
+    t.string   "product_identifier1",                                  :null => false
+    t.string   "product_identifier2",                                  :null => false
+    t.float    "product_price",                                        :null => false
+    t.string   "product_availability",                                 :null => false
+    t.string   "product_delivery",       :limit => 1,                  :null => false
+    t.string   "product_delivery_time"
+    t.float    "product_delivery_cost",               :default => 0.0
+    t.text     "product_special_offers"
+    t.text     "product_warranty"
+    t.string   "reason",                                               :null => false
+    t.string   "validity",                                             :null => false
+    t.string   "configured_by",                                        :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at"
+  end
+
+  create_table "local_chennai_mambalam_sharkseapeople_products", :primary_key => "product_id", :force => true do |t|
+    t.string   "product_name",                                         :null => false
+    t.text     "product_image_url"
+    t.string   "product_category",                                     :null => false
+    t.string   "product_sub_category",                                 :null => false
+    t.string   "product_identifier1",                                  :null => false
+    t.string   "product_identifier2",                                  :null => false
+    t.float    "product_price",                                        :null => false
+    t.string   "product_availability",                                 :null => false
+    t.string   "product_delivery",       :limit => 1,                  :null => false
+    t.string   "product_delivery_time"
+    t.float    "product_delivery_cost",               :default => 0.0
+    t.text     "product_special_offers"
+    t.text     "product_warranty"
+    t.string   "reason",                                               :null => false
+    t.string   "validity",                                             :null => false
+    t.string   "configured_by",                                        :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at"
+  end
+
+  create_table "local_chennai_tambaram_sharkseapeople_products", :primary_key => "product_id", :force => true do |t|
+    t.string   "product_name",                                         :null => false
+    t.text     "product_image_url"
+    t.string   "product_category",                                     :null => false
+    t.string   "product_sub_category",                                 :null => false
+    t.string   "product_identifier1",                                  :null => false
+    t.string   "product_identifier2",                                  :null => false
+    t.float    "product_price",                                        :null => false
+    t.string   "product_availability",                                 :null => false
+    t.string   "product_delivery",       :limit => 1,                  :null => false
+    t.string   "product_delivery_time"
+    t.float    "product_delivery_cost",               :default => 0.0
+    t.text     "product_special_offers"
+    t.text     "product_warranty"
+    t.string   "reason",                                               :null => false
+    t.string   "validity",                                             :null => false
+    t.string   "configured_by",                                        :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at"
+  end
+
+  create_table "local_chennai_velachery_fevicol_products", :primary_key => "product_id", :force => true do |t|
+    t.string   "product_name",                                         :null => false
+    t.text     "product_image_url"
+    t.string   "product_category",                                     :null => false
+    t.string   "product_sub_category",                                 :null => false
+    t.string   "product_identifier1",                                  :null => false
+    t.string   "product_identifier2",                                  :null => false
+    t.float    "product_price",                                        :null => false
+    t.string   "product_availability",                                 :null => false
+    t.string   "product_delivery",       :limit => 1,                  :null => false
+    t.string   "product_delivery_time"
+    t.float    "product_delivery_cost",               :default => 0.0
+    t.text     "product_special_offers"
+    t.text     "product_warranty"
+    t.string   "reason",                                               :null => false
+    t.string   "validity",                                             :null => false
+    t.string   "configured_by",                                        :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at"
+  end
 
   create_table "local_grid_details", :primary_key => "unique_id", :force => true do |t|
     t.float    "price",                       :null => false

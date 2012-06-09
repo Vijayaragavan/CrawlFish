@@ -1,0 +1,26 @@
+<%= form_tag '/price_search/start_search/price',:method => 'get',:id => "price_search_form" do  %>
+		<table>
+  		<tr>
+			<th scope="col" class="price-search-th" valign="middle">
+				<div id="psc-select-id">
+				<%= select_tag("sub_category_flag", options_for_select(@sub_categories.map{|i| [i.category_name.titlecase,i.sub_category_id]}.unshift(["All",0])),:class=>'price-search-category-select',:title=>"Select a category") %>
+				</div>
+			</th>
+
+			<th scope="col" class="price-search-th" valign="middle">
+				<div id="psc-select-id">
+				<%= select_tag("type",options_for_select([["Both",0],["Local",1],["Online",2]]),:class=>'price-search-category-select',:title=>"Select a type of shop") %>
+				</div>
+			</th>
+
+  			<th scope="col">
+	   			 <%= text_field_tag "price_query",@price_query,{:id => "cf-price-search-form-searchText", :title => "Enter a price to find products in the price range!",:placeholder => "Enter a price",:onFocus => "setFocus()", :onBlur => "setNoFocus()"} %>
+  			</th>
+
+ 			 <th scope="col">
+				<%= submit_tag "",{:id => "cf-price-search-form-searchCompare" , :title => "Click here to search" ,:name => ""} %>
+			</th>
+		</tr>
+		</table>
+<% end %>
+

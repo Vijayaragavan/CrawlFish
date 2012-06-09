@@ -32,16 +32,16 @@
 			</div>
 			<div class="cf-generic-no-results-content">
 				<% if @message="No results fetched!" %>
-				<span>Sorry! We did not get any results for your search keyword.</span>
+				<span style="font-size:13px">Sorry! We did not get any results for your search keyword.</span>
 				<div style="padding-bottom:5px"></div>				
 				<div class="cf-generic-no-results-points">
 					<div class="cf-generic-no-results-points-header">
 						<span style="color:#C42525">Suggestions!</span>
 					</div>
-					<ul>
-						<li>Please search with different keywords</li>
-						<li>Make sure that you have typed search keyword correctly without any spelling mistakes</li>
-						<li>Visit <%= link_to "CrawlFish 101",{:controller => 'footer',:action => 'faq'}%> to learn better to search in CrawlFish</li>
+					<ul style="font-size:13px">
+						<li>Please search with different keywords.</li>
+						<li>Make sure that you have typed search keyword correctly without any spelling mistakes.</li>
+						<li>Visit <%= link_to "CrawlFish 101",{:controller => 'footer',:action => 'faq'}%> to learn better to search in CrawlFish.</li>
 						</ul>
 				</div>
 				<div style="padding-top:10px"></div>	

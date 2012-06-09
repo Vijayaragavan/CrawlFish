@@ -1,0 +1,85 @@
+[Fri Jun  1 08:11:50.835 2012] [ 4261] accepting connections
+[Fri Jun  1 08:21:49.487 2012] [ 4261] caught SIGHUP (seamless=1, in queue=1)
+[Fri Jun  1 08:21:49.518 2012] [ 4261] rotating index 'products_filter_collections_core': success
+[Fri Jun  1 08:21:49.525 2012] [ 4261] rotating index 'filters_collections_core': success
+[Fri Jun  1 08:21:49.525 2012] [ 4261] rotating finished
+[Fri Jun  1 09:37:27.804 2012] [ 4261] caught SIGTERM, shutting down
+[Fri Jun  1 09:37:27.804 2012] [ 4261] shutdown complete
+[Fri Jun  1 10:44:03.034 2012] [ 2407] accepting connections
+[Fri Jun  1 12:16:32.714 2012] [ 2407] caught SIGTERM, shutting down
+[Fri Jun  1 12:16:32.715 2012] [ 2407] shutdown complete
+[Fri Jun  1 14:37:08.214 2012] [ 2164] accepting connections
+[Fri Jun  1 20:15:35.395 2012] [ 2164] caught SIGTERM, shutting down
+[Fri Jun  1 20:15:35.396 2012] [ 2164] shutdown complete
+[Sat Jun  2 06:36:08.370 2012] [ 2971] accepting connections
+[Sat Jun  2 06:38:31.472 2012] [ 2971] caught SIGTERM, shutting down
+[Sat Jun  2 06:38:31.472 2012] [ 2971] shutdown complete
+[Sat Jun  2 10:22:57.884 2012] [ 2180] accepting connections
+[Sat Jun  2 12:20:35.708 2012] [ 2180] caught SIGTERM, shutting down
+[Sat Jun  2 12:20:35.708 2012] [ 2180] shutdown complete
+[Sat Jun  2 15:49:07.189 2012] [ 2289] accepting connections
+[Sat Jun  2 23:43:05.320 2012] [ 2289] caught SIGTERM, shutting down
+[Sat Jun  2 23:43:05.802 2012] [ 2289] shutdown complete
+[Sun Jun  3 11:46:32.288 2012] [ 2834] accepting connections
+[Sun Jun  3 14:47:43.859 2012] [ 2834] caught SIGTERM, shutting down
+[Sun Jun  3 14:47:44.259 2012] [ 2834] shutdown complete
+[Mon Jun  4 10:14:32.572 2012] [ 3051] accepting connections
+[Mon Jun  4 10:53:51.487 2012] [ 2252] accepting connections
+[Mon Jun  4 11:58:02.604 2012] [ 2376] accepting connections
+[Mon Jun  4 14:01:53.038 2012] [ 2376] caught SIGTERM, shutting down
+[Mon Jun  4 14:01:53.038 2012] [ 2376] shutdown complete
+[Mon Jun  4 14:44:26.595 2012] [ 2084] accepting connections
+[Mon Jun  4 23:21:37.761 2012] [ 2017] accepting connections
+[Tue Jun  5 00:06:35.664 2012] [ 2527] accepting connections
+[Tue Jun  5 00:10:19.999 2012] [ 2155] accepting connections
+[Tue Jun  5 00:18:42.939 2012] [ 2155] caught SIGTERM, shutting down
+[Tue Jun  5 00:18:42.943 2012] [ 2155] shutdown complete
+[Tue Jun  5 00:21:01.244 2012] [ 2072] accepting connections
+[Tue Jun  5 03:23:36.316 2012] [ 2072] caught SIGTERM, shutting down
+[Tue Jun  5 03:23:36.743 2012] [ 2072] shutdown complete
+[Tue Jun  5 15:06:05.359 2012] [ 2703] accepting connections
+[Wed Jun  6 00:51:42.493 2012] [ 2703] caught SIGHUP (seamless=1, in queue=1)
+[Wed Jun  6 00:51:42.551 2012] [ 2703] rotating index 'products_filter_collections_core': success
+[Wed Jun  6 00:51:42.565 2012] [ 2703] rotating index 'filters_collections_core': success
+[Wed Jun  6 00:51:42.565 2012] [ 2703] rotating finished
+[Wed Jun  6 01:05:27.121 2012] [ 2703] caught SIGHUP (seamless=1, in queue=1)
+[Wed Jun  6 01:05:27.148 2012] [ 2703] rotating index 'products_filter_collections_core': success
+[Wed Jun  6 01:05:27.160 2012] [ 2703] rotating index 'filters_collections_core': success
+[Wed Jun  6 01:05:27.160 2012] [ 2703] rotating finished
+[Wed Jun  6 04:06:20.249 2012] [ 2703] caught SIGTERM, shutting down
+[Wed Jun  6 04:06:20.300 2012] [ 2703] shutdown complete
+[Wed Jun  6 17:51:53.899 2012] [ 2176] accepting connections
+[Wed Jun  6 21:41:37.205 2012] [ 2176] caught SIGTERM, shutting down
+[Wed Jun  6 21:41:37.205 2012] [ 2176] shutdown complete
+[Thu Jun  7 09:35:31.001 2012] [ 2192] accepting connections
+[Thu Jun  7 10:51:20.730 2012] [ 2192] caught SIGTERM, shutting down
+[Thu Jun  7 10:51:20.731 2012] [ 2192] shutdown complete
+[Thu Jun  7 16:36:14.035 2012] [ 9652] accepting connections
+[Thu Jun  7 20:45:32.281 2012] [ 3031] accepting connections
+[Thu Jun  7 21:47:22.441 2012] [ 3031] caught SIGTERM, shutting down
+[Thu Jun  7 21:47:22.442 2012] [ 3031] shutdown complete
+[Fri Jun  8 10:07:47.374 2012] [ 2968] accepting connections
+[Fri Jun  8 10:52:37.768 2012] [ 2968] caught SIGHUP (seamless=1, in queue=1)
+[Fri Jun  8 10:52:37.772 2012] [ 2968] rotating index 'products_filter_collections_core': success
+[Fri Jun  8 10:52:37.774 2012] [ 2968] rotating index 'filters_collections_core': success
+[Fri Jun  8 10:52:37.774 2012] [ 2968] rotating finished
+[Fri Jun  8 11:38:00.013 2012] [ 2968] caught SIGHUP (seamless=1, in queue=1)
+[Fri Jun  8 11:38:00.018 2012] [ 2968] rotating index 'products_filter_collections_core': success
+[Fri Jun  8 11:38:00.023 2012] [ 2968] rotating index 'filters_collections_core': success
+[Fri Jun  8 11:38:00.023 2012] [ 2968] rotating finished
+[Fri Jun  8 11:52:46.850 2012] [ 2236] accepting connections
+[Fri Jun  8 12:19:28.573 2012] [ 2236] caught SIGHUP (seamless=1, in queue=1)
+[Fri Jun  8 12:19:28.575 2012] [ 2236] rotating index 'products_filter_collections_core': success
+[Fri Jun  8 12:19:28.577 2012] [ 2236] rotating index 'filters_collections_core': success
+[Fri Jun  8 12:19:28.577 2012] [ 2236] rotating finished
+[Fri Jun  8 12:29:23.683 2012] [ 3848] accepting connections
+[Fri Jun  8 18:54:30.679 2012] [ 3848] caught SIGTERM, shutting down
+[Fri Jun  8 18:54:31.089 2012] [ 3848] shutdown complete
+[Fri Jun  8 18:59:42.636 2012] [ 2353] accepting connections
+[Fri Jun  8 20:02:15.978 2012] [ 3534] accepting connections
+[Fri Jun  8 22:07:30.061 2012] [ 3534] caught SIGTERM, shutting down
+[Fri Jun  8 22:07:30.376 2012] [ 3534] shutdown complete
+[Sat Jun  9 09:44:36.840 2012] [ 2237] accepting connections
+[Sat Jun  9 10:46:21.771 2012] [ 2237] caught SIGTERM, shutting down
+[Sat Jun  9 10:46:21.771 2012] [ 2237] shutdown complete
+[Sat Jun  9 16:37:34.541 2012] [ 2391] accepting connections

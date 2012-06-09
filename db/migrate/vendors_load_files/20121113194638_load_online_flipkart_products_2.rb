@@ -4,7 +4,7 @@ class LoadOnlineFlipkartProducts2 < ActiveRecord::Migration
 
     execute <<-SQL
    
-      LOAD DATA LOCAL INFILE '/home/vijayaragavanv/rubyonrails/CrawlFish2012apr13/2012apr12/Online_Flipkart_Books.dat' INTO TABLE online_flipkart_products FIELDS TERMINATED BY '|' LINES TERMINATED BY '\n' set created_at=CURRENT_TIMESTAMP;
+      LOAD DATA LOCAL INFILE '/home/vijayaragavanv/rubyonrails/load/part1/Online_Flipkart_books.dat' INTO TABLE online_flipkart_products FIELDS TERMINATED BY '|' LINES TERMINATED BY '\n' set created_at=CURRENT_TIMESTAMP;
 
     SQL
 

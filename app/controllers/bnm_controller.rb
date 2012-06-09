@@ -20,6 +20,8 @@ class BnmController < ApplicationController
 
        set_sub_category_name(params[:sub_category_id].to_i)
 
+       set_search_case#this method is called from application_controller, it sets the instance variable @search_type from params.
+
        set_excludable_availability_ids(1)
 
        self.set_page

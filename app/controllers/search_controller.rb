@@ -12,12 +12,14 @@ class SearchController < ApplicationController
     if validate_searchkey(@raw_key)
 
         #session[:user_key] = "currentuser"
-        #In the steps below, all the session variables are being set, mainly the session id is concatenated with "generic" which will be used for this sessions view name.
-        session[:current_id] = request.session_options[:id]
-        session[:generic_view_name] = "generic"+session[:current_id]
-        session[:order] = 0
-        session[:query]=@raw_key
+
+        set_session_variables#In this, all the session variables are being set, mainly the session id is concatenated with "generic" which will be used for this sessions view name.
+
+        session[:query] = @raw_key
+
         @view_name = session[:generic_view_name]
+
+        set_search_case#this method is called from application_controller, it sets the instance variable @search_type from params.
 
         #page params from pagination links is set.
         @page = params[:page]
@@ -100,6 +102,8 @@ class SearchController < ApplicationController
     @unmatched_title_keys = [ ]
 
     @exact_title_and_filter_flag = 0
+
+    @available_from_final = Hash.new
 
   end
 
@@ -314,7 +318,7 @@ class SearchController < ApplicationController
             Search.create_generic_view(@master_hash,@view_name)#Create the view using the @view_name set before and populate the view with the ids in the master_hash
 
             @final_search_key = @literal_search_key
-
+		 
             render ('generic')
 
           end

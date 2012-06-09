@@ -1,7 +1,9 @@
 class SpecificController < ApplicationController
 
   include SpecificHelper
- 
+
+  include SearchHelper
+
 # functions defined after this section are direct
 #================ Direct Functions - START ================
   def index
@@ -15,7 +17,7 @@ class SpecificController < ApplicationController
     self.set_instance_variables
 
     self.set_specific_product_id_sub_category_id
-	
+
     set_sub_category_name(@sub_category_id)# called from application controller because the same method is also called in bnm_controller
     set_product# called from application controller because the same method is also called in local_controller
 
@@ -23,7 +25,7 @@ class SpecificController < ApplicationController
 
     self.set_area_id
 
-#    self.set_page
+    set_search_case#this method is called from application_controller, it sets the instance variable @search_type from params.
 
     set_excludable_availability_ids(1) # called from application controller because the same method is also called in bnm_controller
 
@@ -51,6 +53,8 @@ class SpecificController < ApplicationController
      self.set_product_id_sub_category_id
 
      set_sub_category_name(@sub_category_id)# called from application controller because the same method is also called in bnm_controller
+
+     set_search_case#this method is called from application_controller, it sets the instance variable @search_type from params.
 
      self.set_include
 
@@ -99,7 +103,7 @@ class SpecificController < ApplicationController
 
   end
 
- 
+
   def set_page
 
     if params[:page].to_i == 0
@@ -170,7 +174,7 @@ class SpecificController < ApplicationController
                   @product_name = book.book_name
                   @product_image_url = book.book_image_url
 		  @desc_rating_widget=BooksReviews.where(:isbn13 => book.isbn13).map {|i| [i.description,i.average_rating,i.script]}.flatten
-		
+
               end
 
     elsif @sub_category_name == "mobiles_lists"
@@ -272,18 +276,18 @@ class SpecificController < ApplicationController
 		if i.sub_category_id == 1
 
 			@online_deal_product_details = BooksList.fetch_exact_match(i.product_id)
-			
+
 			i.redirect_url = get_valid_url(i.redirect_url)
 
 		elsif i.sub_category_id == 2
 
 			@online_deal_product_details = MobilesLists.fetch_exact_match(i.product_id)
-			
+
 			i.redirect_url = get_valid_url(i.redirect_url)
 
-		end		
+		end
  	end
-	
+
 	@local_deal.each do |i|
 
 		if i.sub_category_id == 1
@@ -294,12 +298,12 @@ class SpecificController < ApplicationController
 
 			@local_deal_product_details = MobilesLists.fetch_exact_match(i.product_id)
 
-		end		
+		end
  	end
 
 
   end
-  
+
   def get_valid_url(url)
 
     /^http/.match(url) ? url : "http://#{url}"

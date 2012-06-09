@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Home Page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/homepage.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+<!--
+function setFocus()
+{
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-price-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+		txtBox.style.border='1px solid #06C';
+
+    }
+}
+
+function setNoFocus()
+{
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-price-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+		txtBox.style.border='1px solid #CCC';
+
+    }
+}
+//-->
+</script>
+</head>
+
+<body onLoad="setFocus()">
+<div class="cf-home-wrapper">
+	<div class="cf-home-header">
+    	<ul class="cf-home-header-links">
+		<li><%= link_to "Home",{:controller => 'main',:action => 'index'},:id=>'cf-a-general'%></li>
+        	<li><%= link_to "What to buy?",{:controller => 'price_search',:action => 'index'},:id=>'cf-a-your-worth'%></li>
+		<li><%= link_to "CrawlFish 101",{:controller => 'footer',:action => 'faq'},:id=>'cf-a-general'%></li>
+        </ul>
+	 <!-- end .cf-home-header --></div>
+
+	 <div class="cf-home-search" id="price-search-body">
+
+		<div class="cf-home-logo">
+                	<img id="imgLogo" src="/Images/CF_logoFishermanBlackRemovedBkgrndPngWoTagline_v15.png" alt="CRAWLFISH LOGO"/>
+       		<!-- end .cf-home-logo --></div>
+		<div id="price-search-notification" style="display:inline"></div>
+		<div class="cf-home-search-form">
+			<%= render ('price_search/form') %>
+		</div>
+		
+		<div class="cf-home-tagline-logo">
+        		<div class="tagline-text">CrawlFish Price Search</div>
+        	<!-- end .cf-home-tagline-logo --></div>
+
+	<!-- end .cf-home-search --> </div>
+	<div class="clear"></div>
+	<div class="cf-home-footer">
+		<div class="cf-home-footer-content">
+			<%= render 'shared/footer' %>
+		</div>
+	<!-- end .cf-home-footer --></div>
+
+ <!-- end .cf-home-wrapper --></div>
+</body>
+</html>

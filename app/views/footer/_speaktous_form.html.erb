@@ -13,7 +13,7 @@
 <div class="cf-speaktous-section">
 
 <%= form_for @speaktous, :url => {:controller => 'footer', :action => 'speak_to_us_submit'},:html => {:id => "speak_to_us_form"},:validate => true  do |f| %>
-	<table class="cf-speaktous-table" border=0 cellspacing=0 cellpadding=10>
+	<table class="cf-speaktous-table" border=0 cellspacing=0 cellpadding=2>
 	<tr>
 	<td class="header">Type</td>
 	<td class="details">
@@ -51,7 +51,7 @@
 	<tr>
 		<td>&nbsp;</td>
 		<td>
-			<%= f.submit "SUBMIT",:class=>'details-submit',:title => "Click here to send SMS" ,:name => ""%>
+			<%= f.submit "SUBMIT",:class=>'details-submit',:title => "Click here to submit your request" ,:name => ""%>
 		</td>
 	</tr>
                 

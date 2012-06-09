@@ -59,7 +59,7 @@ module CategoryHelper
 
   def set_and_return_html(sub_category_id)
 
-    link_to (@sub_categories.select{|i| i.sub_category_id == sub_category_id }.map{|i| i.category_name}.join.capitalize+"["+@count.to_s+"]"), {:controller => 'category', :action => 'switch',:sub_category_id => sub_category_id, :query => params[:query], :view_name => @view_name },{:id => sub_category_id,:class => @html_class}
+    link_to (@sub_categories.select{|i| i.sub_category_id == sub_category_id }.map{|i| i.category_name}.join.capitalize+"["+@count.to_s+"]"), {:controller => 'category', :action => 'switch',:sub_category_id => sub_category_id, :query => params[:query], :view_name => @view_name, :search_case => @search_case },{:id => sub_category_id,:class => @html_class}
 
   end
 

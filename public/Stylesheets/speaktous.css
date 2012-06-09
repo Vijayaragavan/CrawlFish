@@ -98,6 +98,7 @@ a,:focus{
 .header{
 	font-weight:bold;
 	font-size:13px;
+	height:60px;
 	text-align:left;
 }
 
@@ -231,16 +232,18 @@ a,:focus{
 }
 
 .gritter-title {
-        font-size:15px;
+        font-size:13.5px;
 	color:#FFF;
         font-weight:bold;
         padding:0 0 7px 0;
+	text-shadow:none !important;
+	font-family:verdana;
 }
 
 .gritter-item{
 	color: #FFF;
-	font-size: 12px;
-	font-family:arial;
+	font-size: 12.5px;
+	font-family:verdana;
 }
 
  

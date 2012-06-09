@@ -13,7 +13,6 @@ html,body{
 	height:100%;
 }
 
-
 img{
 	border:0;
 	outline:none;
@@ -64,16 +63,59 @@ ul.cf-home-header-links a{
 	padding-top:5px;
 }
 
-ul.cf-home-header-links a#cf-a-virtualmall{
-	width:100px;
-}
-
 ul.cf-home-header-links a:visited{
-	color:#EEE;
+	color:#FFF;
 }
 
 ul.cf-home-header-links a:hover{
-	color:#EEE;
+	color:#FFF;
+	box-shadow:0 2px 4px rgba(0,0,0,0.2);
+	 -moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);
+	background: none repeat scroll 0 0 #444;
+}
+
+ul.cf-home-header-links a#cf-a-your-worth{
+	width:100px;
+}
+
+ul.cf-home-header-links a#cf-a-general{
+	width:100px;
+}
+
+ul.cf-home-header-links a#cf-a-crawlfish-home{
+	width:100px;
+}
+
+#cf-a-your-worth{
+	color:#FFF;
+	background: none repeat scroll 0 0 #C42525;
+}
+
+#cf-a-your-worth:visited{
+	color:#FFF;
+}
+
+#cf-a-your-worth:hover{
+	color:#FFF;
+	box-shadow:0 2px 4px rgba(0,0,0,0.2);
+	 -moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);
+	background: none repeat scroll 0 0 #D42525;
+}
+
+#cf-a-crawlfish-home{
+	color:#FFF;
+	background: none repeat scroll 0 0 #C42525;
+}
+
+#cf-a-crawlfish-home:visited{
+	color:#FFF;
+}
+
+#cf-a-crawlfish-home:hover{
+	color:#FFF;
+	box-shadow:0 2px 4px rgba(0,0,0,0.2);
+	 -moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);
+	background: none repeat scroll 0 0 #D42525;
 }
 
 .cf-home-search{
@@ -109,6 +151,63 @@ ul.cf-home-header-links a:hover{
 	font-family:arial,tahoma,verdana,sans-serif;
 }
 
+.price-search-category-select{
+	height: 30px;
+	border: 1px solid #CCC;
+	font-size: 13px;
+	outline:none;
+	font-family:arial,tahoma,verdana,sans-serif;
+	color:#000; 
+	background:transparent;
+	font-weight:normal; 
+	width:110px;
+	-webkit-appearance: none;
+}
+
+#psc-select-id{
+	overflow:hidden; 
+	width:110px;
+	background: url(../Images/down_arrow_select.jpg) no-repeat scroll 76px 0px #FFF; 
+}
+
+@-moz-document url-prefix(){
+#psc-select-id{
+	overflow:hidden; 
+	width:110px;
+	background:none repeat scroll 66px 0px #FFF;
+}
+}
+
+.tagline-text{
+	font-family: verdana, sans-serif;
+	font-weight:bold;
+	font-size:13.5px;
+	padding-top:25px;
+	padding-bottom:15px;
+	color:#333;
+}
+
+#cf-price-search-form-searchText{
+	border: 1px solid #CCC;
+	font-size: 13px;
+	height: 20px;
+	padding: 4px 20px 4px 8px;
+	width: 300px;
+	outline:none;
+	font-family:arial,tahoma,verdana,sans-serif;
+}
+
+#cf-price-search-form-searchCompare{
+	border: 0px solid #999;
+	cursor: pointer;
+	height: 30px;
+	width:85px;
+	background-image:url(../Images/CF_SearchButtonPng_v04.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+}
+
 #cf-home-search-form-searchCompare {
 	border: 0px solid #999;
 	cursor: pointer;
@@ -141,11 +240,18 @@ ul.cf-home-header-links a:hover{
 .cf-home-interactive-text{
 	padding-top:15px;
 	padding-bottom:15px;
-	text-align:center;
 	color:#333;
+	margin:0 auto;
+	width:500px;
+	font-family: verdana, sans-serif;
 	font-weight:bold;
-	font-size:13px;
-	font-family:arial,sans-serif;
+	font-size:13.5px;
+}
+
+#flash_notice{
+	position:fixed;
+	text-align:center;
+	width:500px;
 }
 
 .clear{
@@ -188,3 +294,29 @@ ul.cf-home-header-links a:hover{
 	background: none repeat scroll 0 0 #F2F2FF;
 	text-decoration:underline
 }
+
+.gritter-title {
+        font-size:13.5px;
+	color:#FFF;
+        font-weight:bold;
+        padding:0 0 7px 0;
+	text-shadow:none !important;
+}
+
+.gritter-item{
+	color: #FFF;
+	font-size: 12px;
+	font-family:verdana;
+}
+
+ 
+.gritter-close {
+        position:absolute;
+        top:5px;
+        right:3px;
+        background:url(../images/gritter-close.png);
+        cursor:pointer;
+        width:30px;
+        height:30px;
+}
+

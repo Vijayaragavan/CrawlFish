@@ -697,16 +697,17 @@ a,:focus{
 }
 
 .gritter-title {
-        font-size:15px;
+        font-size:13.5px;
 	color:#FFF;
         font-weight:bold;
         padding:0 0 7px 0;
+	text-shadow:none !important;
 }
 
 .gritter-item{
 	color: #FFF;
 	font-size: 12px;
-	font-family:arial;
+	font-family:verdana;
 }
 
  

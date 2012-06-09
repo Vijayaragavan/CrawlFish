@@ -20,6 +20,20 @@ function setFocus()
         txtBox.focus();
         txtBox.style.border='1px solid #06C';
     }
+
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-price-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+		txtBox.style.border='1px solid #06C';
+
+    }
 }
 function setNoFocus()
 {
@@ -36,6 +50,20 @@ function setNoFocus()
 	txtBox.style.border='1px solid #CCC';
 
     }
+	
+	if (!document.getElementById)
+    {
+        return;
+    }
+
+    var txtBox = document.getElementById("cf-price-search-form-searchText");
+
+    if (txtBox != null)
+    {
+        txtBox.focus();
+		txtBox.style.border='1px solid #CCC';
+
+    }
 }
 //-->
 </script>
@@ -49,20 +77,27 @@ function setNoFocus()
 
 	<div class="cf-generic-header-logo">
 		<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
-
-
-
 	<!--	 <img id="imgLogo" src="/Images/CF_logoForPagesPng_v4.png" alt="CrawlFish Logo"/> -->
 
 	 <!-- end cf-generic-header-logo --></div>
 
     	<div class="cf-generic-header-search-form">
-    		<%= render ('shared/form') %>
+    		<%= decide_search_form %>
     	<!-- end cf-generic-header-search-form --></div>
 
-	<!--<div class="cf-generic-header-links">-->
-		<!--<a href="home.html">Virtual Mall</a>-->
-	<!-- end cf-generic-header-links --><!--</div> -->
+	<div class="cf-generic-header-links">
+		<ul class="cf-general-header-links-ul">
+			<% if !@search_case.nil? %>
+			<% if @search_case == "products" %>
+        			<li><%= link_to "What to buy?",{:controller => 'price_search',:action => 'index'},:id=>'cf-a-general-buy'%></li>
+				<li><%= link_to "Home",{:controller => 'main',:action => 'index'},:id=>'cf-a-special-home'%></li>
+			<% elsif @search_case == "price" %>
+				<li><%= link_to "What to buy?",{:controller => 'price_search',:action => 'index'},:id=>'cf-a-special-buy'%></li>
+				<li><%= link_to "Home",{:controller => 'main',:action => 'index'},:id=>'cf-a-general-home'%></li>
+			<% end %>
+			<% end %>
+        	</ul>
+	 <!--end cf-generic-header-links --></div>
 
 <!-- end cf-generic-header --></div>
 
@@ -156,7 +191,7 @@ function setNoFocus()
 	<div class="cf-generic-right-sidebar">
 
 		<%= render 'search/filter_results' %>
-
+		<div style="padding-top:20px"></div>
 		<div class="cf-generic-right-sidebar-ad-header">
 						    ADVT.
 	    	<!-- end cf-generic-right-sidebar-ad-header --></div>
@@ -179,17 +214,19 @@ function setNoFocus()
 			</div>
 		<% end %>
 
-	</div>
+	<!-- end cf-generic-right-sidebar--></div>
 
 	<div class="clear"></div>
-	<div class="cf-generic-footer">
+		<div class="cf-generic-footer">
  		<div class="cf-generic-footer-details">
 			<div class="cf-generic-footer-content">
 			<%= render 'shared/footer' %>
 			<!-- end cf-generic-footer-content --></div>
 		</div>
-	<!-- end cf-generic-footer --></div>
+		<!-- end cf-generic-footer --></div>
+
 	</div>
+
  	<!-- end cf-generic-content --></div>
 
 

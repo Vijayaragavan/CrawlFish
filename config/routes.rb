@@ -90,7 +90,9 @@ CrawlFish::Application.routes.draw do
 
  match 'index' => 'Search#index'
 
- match '/shared/index' => 'search#index'
+ match '/shared/index/:search_case' => 'search#index'
+
+  match '/price_search/start_search/:search_case' => 'price_search#start_search'
 
  match 'search/specific' => 'Search#specific'
 
@@ -106,13 +108,13 @@ CrawlFish::Application.routes.draw do
 
  get '/bnm/show_areas/:id' => 'bnm#show_areas'
 
- get'/bnm/show_local_shops/area_id=:area_id/product_id=:product_id/sub_category_id=:sub_category_id' => 'bnm#show_local_shops'
+ get'/bnm/show_local_shops/area_id=:area_id/product_id=:product_id/sub_category_id=:sub_category_id/search_case=:search_case' => 'bnm#show_local_shops'
 
  match 'category/switch/:sub_category_id' => 'category#index'
 
  match 'specific/:specific_product_id/:specific_sub_category_id' => 'specific#specific_search' , :as => :specific
 
-  match 'specific/include_exclude_view_all_local/product_id=:product_id/sub_category_id=:sub_category_id/include=:include/type=:type/area_id=:area_id/page=:page' => 'specific#include_exclude_view_all_local'
+  match 'specific/include_exclude_view_all_local/product_id=:product_id/sub_category_id=:sub_category_id/include=:include/type=:type/area_id=:area_id/page=:page/search_case=:search_case' => 'specific#include_exclude_view_all_local'
 
    match 'local/show_gmap/:vendor_name/:branch_name' => 'local#show_gmap'
 

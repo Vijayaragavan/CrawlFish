@@ -31,46 +31,8 @@ class ApplicationController < ActionController::Base
   end
 
 
-    # functions defined after this section are used for search
+    # functions defined after this section are used for search both in regular search and price search
 #================ SEARCH - START ================
-
- def set_available_from(product_id,sub_category_id)
-
-	available_from_local = LocalGridDetails.get_available_from_local(product_id,sub_category_id)
-
-	available_from_online = OnlineGridDetails.get_available_from_online(product_id,sub_category_id)
-
-	if(available_from_online.nil?)
-
-		available_from_online=0.0
-
-	end
-
-	if(available_from_local.nil?)
-
-		available_from_local=0.0
-
-	end
-	
-	if (available_from_online == 0.0)
-
-		@available_from_final[product_id] = available_from_local
-
-	elsif (available_from_local == 0.0)
-
-		@available_from_final[product_id] = available_from_online
-
-	elsif (available_from_local == 0.0) and (available_from_online == 0.0)
-	
-		@available_from_final[product_id] = 0.0
-		
-	else
-		
-		@available_from_final[product_id] = [available_from_local,available_from_online].min
-
-	end
-
-  end
 
   def debug(variable)
 
@@ -83,6 +45,16 @@ class ApplicationController < ActionController::Base
     puts "===END==="
 
     puts "#################################################################################"
+
+  end
+
+   def error_log(error_message,code = 1)
+
+    puts "XXXXXXX==ERROR MESSAGE START==XXXXXXXXX"
+
+    puts "LOGGED MESSAGE : #{error_message}, CODE : #{code}, at #{Time.now}"
+
+    puts "XXXXXXX==ERROR MESSAGE END==XXXXXXXXX"
 
   end
 
@@ -152,8 +124,6 @@ class ApplicationController < ActionController::Base
    def loop_categories(sub_category_id)#This method will take sub_category_id as input and form its left-side bar of the generic page. Categories, filters and count.
 
      puts "+++++++ApplicationController/loop_categories++++++++++"
-
-     @available_from_final = Hash.new
 
      @sub_categories.each do |i|
 
@@ -228,7 +198,7 @@ class ApplicationController < ActionController::Base
 		if !@master_hash[i.sub_category_id][:final].flatten.empty?
 
              @mobiles_all = MobilesLists.where("mobiles_list_id IN (?)",@master_hash[i.sub_category_id][:final].flatten).order(" FIELD "+"(mobiles_list_id,#{@master_hash[i.sub_category_id][:final].flatten.join(",")})").group("mobile_name")
-	                
+
 		@mobiles_all_count = @mobiles_all.size.size.to_s
 
                 end
@@ -381,15 +351,67 @@ class ApplicationController < ActionController::Base
 
      set_sub_category_name(sub_category_id)
 
-     set_excludable_availability_ids(1)
+    #Senthil: removed exclude_availabilities_array since, availablility should be handled in specific page and
+    #because of handling it here, some products shows up without price.
 
-     General.get_lowest_price(product_ids_array,sub_category_id,@excludable_availability_ids)
+     #set_excludable_availability_ids(1)
+
+     General.get_lowest_price(product_ids_array,sub_category_id)
 
   end
 
   def order_products_id(actual)
 
         actual.flatten.group_by{|x| x}.sort_by{|k, v| -v.size}.map(&:first)
+
+  end
+
+  def validate_searchkey(searchkey)# this method is usead both in regular search and price search.
+
+    if searchkey.empty?
+
+      @message = 'No search key entered!'
+      render ('shared/no_results')
+      return false
+
+    elsif searchkey.gsub(/[ ]/i, '').empty?
+
+      @message = 'Entered only spaces!'
+      render ('shared/no_results')
+      return false
+
+    elsif searchkey.gsub(/[^A-Za-z0-9]/,"").empty?
+
+     @message = 'Entered only symbols!'
+     render ('shared/no_results')
+     return false
+
+    end
+
+    return true
+
+  end
+
+  def set_session_variables
+
+        session[:current_id] = request.session_options[:id]
+        session[:generic_view_name] = "generic"+session[:current_id]
+        session[:order] = 0
+
+  end
+
+  def set_search_case# the purpose of this method is to set the search_type params to an instance variable in all the pages of crawlfish public users to determine which search box should be rendered.
+  # there is a reason behind why it is search_case and not search_type. It is, in specific_page, during pagination of the grids, a url regexp match is done in jQuery to find the parameter "type". If you keep search_type, this interferes with it.
+
+    if !(params[:search_case].nil?)
+
+      @search_case = params[:search_case].to_s
+
+    else
+
+      error_log("params[:search_case] was nil")
+
+    end
 
   end
 

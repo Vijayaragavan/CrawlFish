@@ -1,2 +1,66 @@
-<h1>Errors#error_500</h1>
-<p>app/views/errors/error_500.html.erb</p>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrawlFish - Generic Search page</title>
+<link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+<link href="/Stylesheets/genericsearchpage.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="cf-generic-content">
+
+<div class="cf-generic-header">
+
+	<div class="cf-generic-header-logo">
+		<%= link_to image_tag("/Images/CF_logoOnlyTextWoChartPng_v14.png") ,{:controller => 'main',:action => 'index'},:class => 'imgLogo'%>
+	 <!-- end cf-generic-header-logo --></div>
+
+    	<div class="cf-generic-header-search-form">
+    		<%= render ('shared/form') %>
+    	<!-- end cf-generic-header-search-form --></div>
+
+<!-- end cf-generic-header --></div>
+
+
+<div class="cf-generic-content-wrapper">
+	<div class="cf-generic-no-results-main-content">
+		<div class="cf-generic-no-results">
+			<div class="cf-generic-no-results-header">
+				<span style="color:#C42525">Error - 500 - Internal Server Error</span>
+			</div>
+			<div class="cf-generic-no-results-content">
+				<div style="padding-bottom:10px"></div>	
+				<span style="font-size:13px">Sorry! We could not get the page that you requested.We are notified of this error.</span>
+				<div style="padding-bottom:10px"></div>				
+				<div class="cf-generic-no-results-points" style="padding:15px">
+					<div class="cf-generic-no-results-points-header">
+						<span style="color:#C42525">Suggestions!</span>
+					</div>
+					<span style="font-size:13px">
+						Something went wrong while trying to process your request. Do you want to go back to our home page and start over? <%= link_to "Click here",{:controller => 'main',:action => 'index'}%>
+					</span>
+				</div>
+				<div style="padding-top:20px"></div>	
+				<div class="cf-generic-no-results-link">
+					<%= link_to "BACK", :back %>
+				</div>
+				
+			</div>
+			
+			
+		</div>		
+	<!-- end cf-generic-no-results-main-content --></div>
+
+	<div class="clear"></div>
+	<div class="cf-generic-footer">
+ 		<div class="cf-generic-footer-details">
+			<div class="cf-generic-footer-content">
+			<%= render 'shared/footer' %>
+			<!-- end cf-generic-footer-content --></div>
+		</div>
+	<!-- end cf-generic-footer --></div>
+<!-- end cf-generic-content-wrapper --></div>
+<!-- end cf-generic-content --></div>
+

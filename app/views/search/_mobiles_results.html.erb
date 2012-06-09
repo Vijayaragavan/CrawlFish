@@ -66,14 +66,14 @@
 					 <% @available_from_final_mobiles = @available_from_final[@sub_category_flag].map{|i|  p i[1] if i[0] == mobile.mobiles_list_id }.join %>
 	          				<td class="list-price-range">
 	          					<span class="list-price-range-details">
-	          						Available from <span style="font-weight:bold;color:#06C;font-size:14px;">Rs.<%= @available_from_final_mobiles %></span>
+	          						Available from <span style="font-weight:bold;color:#06C;font-size:14px;">Rs.<%= (@available_from_final_mobiles.to_i).to_s %></span>
 	          					</span>
 	          				</td>
 
           				</tr>
 					<tr>
 						<td class="compare" colspan="2">
-						<%= form_tag url_for(:controller => 'specific', :action => 'specific_search', :sub_category_id => @sub_category_flag, :starts_at => @available_from_final_mobiles )  do  %>
+						<%= form_tag url_for(:controller => 'specific', :action => 'specific_search', :sub_category_id => @sub_category_flag, :starts_at => @available_from_final_mobiles,:search_case =>@search_case )  do  %>
 						<%= select("product", "id",options_for_select(MobilesLists.get_colors(mobile.mobile_name))) %>
 
 						<%= submit_tag "COMPARE" %>

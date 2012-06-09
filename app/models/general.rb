@@ -1,34 +1,51 @@
 require "fileutils"
 class General < ActiveRecord::Base
 
-  def self.get_lowest_price(product_ids,sub_category_id,exclude_availabilities_array)
+  def self.get_lowest_price(product_ids,sub_category_id)
+
+    #Senthil: removed exclude_availabilities_array since, availablility should be handled in specific page and
+    #because of handling it here, some products shows up without price.
 
     product_ids_string = product_ids.join(",")
     sub_category_id_string = sub_category_id.to_s
-    exclude_availabilities_array_string = exclude_availabilities_array.join(",")
+    #exclude_availabilities_array_string = exclude_availabilities_array.join(",")
 
-        sql = "SELECT products_list_id,min(lowest_price) FROM ((SELECT products_list_id , min(`local_grid_details`.`price`) AS lowest_price FROM `local_grid_details` INNER JOIN link_products_lists_vendors ON link_products_lists_vendors.unique_id = local_grid_details.unique_id WHERE (link_products_lists_vendors.products_list_id IN (" + product_ids_string+") AND link_products_lists_vendors.sub_category_id = "+sub_category_id_string +" AND link_products_lists_vendors.availability_id not in ("+exclude_availabilities_array_string+")) group by link_products_lists_vendors.products_list_id)
+        sql = "SELECT products_list_id,min(lowest_price) FROM ((SELECT products_list_id , min(`local_grid_details`.`price`) AS lowest_price FROM `local_grid_details` INNER JOIN link_products_lists_vendors ON link_products_lists_vendors.unique_id = local_grid_details.unique_id WHERE (link_products_lists_vendors.products_list_id IN (" + product_ids_string+") AND link_products_lists_vendors.sub_category_id = "+sub_category_id_string +" ) group by link_products_lists_vendors.products_list_id)
 
     UNION
 
-    (SELECT products_list_id , min(`online_grid_details`.`price`) AS lowest_price FROM `online_grid_details` INNER JOIN link_products_lists_vendors ON link_products_lists_vendors.unique_id = online_grid_details.unique_id WHERE (link_products_lists_vendors.products_list_id IN (" + product_ids_string+") AND link_products_lists_vendors.sub_category_id = "+sub_category_id_string+" AND link_products_lists_vendors.availability_id not in ("+exclude_availabilities_array_string+"))
+    (SELECT products_list_id , min(`online_grid_details`.`price`) AS lowest_price FROM `online_grid_details` INNER JOIN link_products_lists_vendors ON link_products_lists_vendors.unique_id = online_grid_details.unique_id WHERE (link_products_lists_vendors.products_list_id IN (" + product_ids_string+") AND link_products_lists_vendors.sub_category_id = "+sub_category_id_string+" )
     group by link_products_lists_vendors.products_list_id)) AS local_online group by products_list_id"
 
     connection.execute(sql)
 
   end
 
-  def self.get_unique_id_between_given_price(price)
+  def self.get_unique_id_between_given_price(price,gap = 1000,type = "both")
 
-    sql = "(SELECT unique_id
-            FROM online_grid_details
-            WHERE price
-            BETWEEN #{price-1000} AND #{price+1000})
-            UNION
-            (SELECT unique_id
-            FROM local_grid_details
-            WHERE price
-            BETWEEN #{price-1000} AND #{price+1000})"
+    if type == "both"
+
+          sql = "(SELECT unique_id
+                  FROM online_grid_details
+                  WHERE price
+                  BETWEEN #{price-gap} AND #{price+gap})
+                  UNION
+                  (SELECT unique_id
+                  FROM local_grid_details
+                  WHERE price
+                  BETWEEN #{price-gap} AND #{price+gap})"
+
+    else
+
+          table_name = type.to_s+"_grid_details"
+
+          sql = "(SELECT unique_id
+                  FROM #{table_name}
+                  WHERE price
+                  BETWEEN #{price-gap} AND #{price+gap})"
+
+
+    end
 
      connection.execute(sql).map{|i|  i}.flatten
 

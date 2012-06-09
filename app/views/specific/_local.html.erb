@@ -1,11 +1,12 @@
 <% @product_id ||=  params[:product_id] %>
 <% @sub_category_id ||= params[:sub_category_id] %>
 <% @area_id ||= params[:area_id] %>
+<% @search_case ||= params[:search_case] %>
 
 
 <div id="view-all-local" style="display:none">
-	<%= link_to "View all Local Shops",{:controller => 'specific',:product_id => @product_id , :sub_category_id => @sub_category_id,:type => "local",:include => 1 } %>
-				
+	<%= link_to "View all Local Shops",{:controller => 'specific',:product_id => @product_id , :sub_category_id => @sub_category_id,:type => "local",:include => 1,:search_case => @search_case  } %>
+
 </div>
 
 <div class="in-out-of-stock-links">
@@ -30,7 +31,7 @@
 <div style="clear:both;padding-bottom:10px"></div>
 
 <div id="local-grid-pagination-links">
-		<%= will_paginate @local_grids, :params => {:product_id => @product_id,:sub_category_id => @sub_category_id, :area_id => @area_id, :type => "local", :include => @include } %>
+		<%= will_paginate @local_grids, :params => {:product_id => @product_id,:sub_category_id => @sub_category_id, :area_id => @area_id, :type => "local", :include => @include,:search_case => @search_case  } %>
 </div>
 
 <table class="cf-specific-product-grid-table-local-inner" id="tbl-local-inner" data-area="<%= @area %>">
@@ -60,7 +61,7 @@
 		<th id="th-shipping">Delivery time & Cost</th>
 		<th id="th-shop">Option</th>
    	</tr>
-	
+
 	<% end %>
 </table>
 
@@ -83,7 +84,7 @@
 <table class="cf-specific-product-grid-table-online-details" border=0 cellpadding=0 cellspacing=0>
 
 <% @local_grids.each do |grid| %>
-		
+
 
                  <tr class="cf-specific-product-grid-table-local-inner-tr-content">
 
@@ -102,14 +103,14 @@
 			<%="N.A."%>
 		<% else %>
 	    		 <% if grid.delivery.downcase == "y" %>
-    				 <%= grid.delivery_time %>&nbsp;&&nbsp;<%=if (grid.delivery_cost.to_i <= 0) then grid.delivery_cost = "Free"; else ; grid.delivery_cost; end  %>
+    				 <%= grid.delivery_time %>&nbsp;&&nbsp;<%=if (grid.delivery_cost.to_i <= 0) then grid.delivery_cost = "Free"; else ; "Rs." + (grid.delivery_cost.to_i).to_s; end  %>
     			 <% else %>
     				 <%= p "N.A." %>
     			 <% end %>
 		<%end%>
 
     		 </td>
-    		 <td id="local-visit-shop" data-unique_id="<%= grid.unique_id %>" data-query="<%=@query%>"><%= link_to "Visit Shop",{:action => 'show_local_shop',:controller => 'local', :vendor_id => grid.vendor_id, :product_id => @product_id, :sub_category_id => @sub_category_id,:unique_id=>grid.unique_id,:deal=>0} %></td>
+    		 <td id="local-visit-shop" data-unique_id="<%= grid.unique_id %>" data-query="<%=@query%>"><%= link_to "Visit Shop",{:action => 'show_local_shop',:controller => 'local', :vendor_id => grid.vendor_id, :product_id => @product_id, :sub_category_id => @sub_category_id,:unique_id=>grid.unique_id,:deal=>0, :search_case => @search_case } %></td>
     		</tr>
 
 <% end %>

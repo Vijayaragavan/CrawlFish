@@ -15,10 +15,10 @@
 		<tr>
 		<td class="cf-local-shop-tab-vdt-img">
 
-		  <% if vendor_fields.vendor_logo.downcase == "na" %>
-		      <% @logo = "/Images/CF_informationLogoPng_v01.png" %>
+		 	 <% if vendor_fields.vendor_logo.downcase == "na" %>
+		      		<% @logo = "/Images/CF_informationLogoPng_v01.png" %>
 			<% else %>
-			    <% @logo = vendor_fields.vendor_logo %>
+			    	<% @logo = vendor_fields.vendor_logo %>
 			<% end %>
 
 			<%= image_tag(@logo,:alt =>vendor_fields.vendor_name,:title => vendor_fields.vendor_name)%>

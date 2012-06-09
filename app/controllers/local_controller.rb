@@ -18,6 +18,8 @@ class LocalController < ApplicationController
 
       set_product
 
+      set_search_case#this method is called from application_controller, it sets the instance variable @search_type from params.
+
       self.set_local_grid
 
       self.set_vendor

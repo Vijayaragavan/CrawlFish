@@ -1,6 +1,8 @@
 
 <div id ="products">
+<div class="catalogue-pagination-links">
 <%= will_paginate @products%>
+</div>
 <table cellspacing=0 cellpadding=0 class="cf-merchant-content-products-table" border=0>
 <tr>
 <td class="cf-merchant-content-products-table-tr">Action</td>
@@ -56,6 +58,8 @@
 <%end%>
 
 </table>
- <%= will_paginate @products %>
+<div class="catalogue-pagination-links">
+<%= will_paginate @products%>
+</div>
 </div>
 

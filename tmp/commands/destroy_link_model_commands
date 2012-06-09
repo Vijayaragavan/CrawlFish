@@ -1,0 +1,11 @@
+rails destroy model link_f1_books_lists
+rails destroy model link_f2_books_lists
+rails destroy model link_f3_books_lists
+rails destroy model link_f4_books_lists
+rails destroy model link_f5_books_lists
+rails destroy model link_f6_books_lists
+rails destroy model link_f7_books_lists
+rails destroy model link_f8_books_lists
+rails destroy model link_f9_books_lists
+rails destroy model link_f10_books_lists
+

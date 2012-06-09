@@ -10,9 +10,9 @@
 
 <td class="cf-specific-product-header-table-details">
 
-	<div class="cf-specific-product-header-table-details-text"><%= @product_name %></div>
+	<div class="cf-specific-product-header-table-details-text"><%= @product_name.titlecase %></div>
 
-	<div class="cf-specific-product-header-table-details-author">by <b><i><%= @feature_array[0] %></i></b></div>
+	<div class="cf-specific-product-header-table-details-author">by <b><i><%= @feature_array[0].titlecase %></i></b></div>
 
 	<div class="cf-specific-product-header-table-details-avl">
 
@@ -22,7 +22,7 @@
 
 	</div>
 
-	<div class="cf-specific-product-header-table-details-startsat"><span style="font-size:13px">Starts at <span class="rs-green">Rs.<%=@starts_at%></span></span></div>
+	<div class="cf-specific-product-header-table-details-startsat"><span style="font-size:13px">Starts at <span class="rs-green">Rs.<%=(@starts_at.to_i).to_s%></span></span></div>
 	<div class="cf-specific-product-header-table-details-atodetails"><a href="#details">BOOK DETAILS</a></div>
 
 	<div class="cf-specific-product-header-table-details-atodeal"><a href="#deal">DEAL OF THE DAY</a></div>
