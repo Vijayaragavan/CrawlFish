@@ -39,11 +39,13 @@ a,:focus{
 	height:50px;	
 	background: none repeat scroll 0 0 #F4F5F6;
    	border-bottom: 0px solid #CCC;
+	margin-top:-12px;
 }
 
 .cf-aboutus-header-logo{
 	width: 960px;
 	margin:0 auto;
+	float:left;
 }
 
 .imgLogo img{
@@ -51,7 +53,7 @@ a,:focus{
 	height:40px;
 	padding-left:15px;
 	padding-right:15px;
-	margin-top:5px;
+	margin-top:3px;
 	border-right:1px solid #CCC;
 }
 
@@ -59,6 +61,44 @@ a,:focus{
 	width:200px;
 	height:23px;
 	padding-left:5px;
+}
+
+
+.cf-general-header-links-ul{
+	margin-right:0px;
+	list-style:none;
+}
+
+.cf-general-header-links-ul li{
+	float:right;
+	padding-top:15px;	
+}
+
+.cf-general-header-links-ul a{	
+	text-decoration:none;
+	text-align:center;
+	font-weight:bold;
+	margin-right:10px;
+	color:#06C;
+	font-size:13px;	
+	padding-top:5px;
+}
+
+.cf-general-header-links-ul a:visited{
+	color:#06C;
+}
+
+.cf-general-header-links-ul a:hover{
+	color:#06F;
+	text-decoration:underline;
+}
+
+.cf-general-header-links-ul a#cf-a-general-buy{
+	width:100px;
+}
+
+.cf-general-header-links-ul a#cf-a-general-home{
+	width:60px;
 }
 
 .cf-aboutus-content-wrapper{
